@@ -1,0 +1,13 @@
+mutation createHistoryRequest($data: HistoryRequestInput!){
+  createHistoryRequest(data: $data) {
+    data {
+      id
+    }
+  }
+}
+
+mutation getParsingData($data: HistoryRequestInput!) {
+  getParsingData(data: $data) {
+    json
+  }
+}

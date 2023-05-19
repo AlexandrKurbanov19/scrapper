@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "history_requests",
+  "info": {
+    "singularName": "history-request",
+    "pluralName": "history-requests",
+    "displayName": "HistoryRequest",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dataForParsing": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
