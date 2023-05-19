@@ -76,7 +76,7 @@ const WebscraperForm = () => {
                         allowClear
                       >
                         <Option value="avito">Avito</Option>
-                        <Option value="yula">Yula</Option>
+                        {/*<Option value="yula">Yula</Option>*/}
                       </Select>
                     </Form.Item>
                     <Form.Item rules={countOfAdsRules} name="page" label="Введите количество страниц">

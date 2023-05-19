@@ -1,11 +1,17 @@
-const urlBuilder = (geo, category, priceMin, priceMax, page, params) => {
-  const base = 'https://www.avito.ru';
-  return base + "/" + geo + "/" + category + "?f=" + params + "&pmin=" + priceMin + "&pmax=" + priceMax + "&user=1" + `&p=${page}`;
+'use strict'
+const urlBuilder = (geo, category, priceMin, priceMax, page, keyWords) => {
+  try {
+    let url = `${process.env.BASE_AVITO_URL}`;
+
+    return  url + "/" + geo + "/" + category + "?q=" + `${keyWords.replaceAll(' ', '+')}` + "&pmin=" + priceMin + "&pmax=" + priceMax + "&user=1" + `&p=${page}`;
+  } catch (e) {
+    console.error(e, 'error in urlBuilder')
+  }
 }
 module.exports = urlBuilder;
 
 
-// const paramsBuilder = (geo, category, priceMin, priceMax, page, keyWord, adsAuthor) => {
+// const paramsBuilder = (geo, category, priceMin, priceMax, page, keyWord) => {
 //   const params = {};
 //   if (keyWord) {
 //     params.bt = 1;
@@ -18,9 +24,9 @@ module.exports = urlBuilder;
 //   if (priceMax) {
 //     params.pmax = priceMax;
 //   }
-//   // if (adsAuthor) {
-//   //   params.filter_value_names = adsAuthor
-//   // }
+//   if (page) {
+//     params.p = page;
+//   }
 //   return params;
 // }
 // module.exports = paramsBuilder;

@@ -1,11 +1,9 @@
 const urlBuilder = require("../../../../utils/urlBuilder");
-const axios = require("axios");
-const {JSDOM} = require("jsdom");
+const getRequestHtml = require("../../../../utils/getRequestHtml");
+const getContentPage = require("../../../../utils/getContentPage");
+const getPagesList = require("../../../../utils/getPagesList");
 
 const getParsingDataFromUrl = async (args) => {
-  let html;
-  const finalRes = [];
-
   try {
     if (!args) {
       return;
@@ -21,53 +19,68 @@ const getParsingDataFromUrl = async (args) => {
       pmin,
       pmax,
       rangeDate,
-
     } = args?.data?.dataForParsing;
 
-    const headers = {
-      "Accept": "*/*",
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0)"
-  }
+    console.log('args?.data?.dataForParsing', args?.data?.dataForParsing)
 
-  const config = {
-      headers: headers,
-  }
+    const urlForRequest = urlBuilder(selectedGeoPosition, categoryForParsing, pmin, pmax, 1, keyWords);
 
-    const urlForRequest = urlBuilder(selectedGeoPosition, categoryForParsing, pmin, pmax, 1);
-
-    console.log(urlForRequest, 'urlForRequest');
-
-    const response = await axios.get(urlForRequest, config);
-    html = response.data;
-  } catch (e) {
-    if (axios.isAxiosError(e)) {
-      console.error('isAxiosError', e)
+    if (!urlForRequest) {
+      console.log('нет фильтров!')
+      return;
     }
-    console.error(e, 'comment history_request create')
+
+    const html = await getRequestHtml(urlForRequest);
+
+    if (!html) {
+      return;
+    }
+
+    const pages = getPagesList(html);
+
+    console.log(urlForRequest, 'urlForRequest')
+    console.log(pages?.length, 'pages?.length')
+
+    let mainResult = [];
+
+
+    if (pages?.length > 1) {
+      const lastPage = Number(pages.at(-1));
+
+      if (lastPage > 50) {
+        console.log('дохера страниц для бесплатного парсинга!')
+        return;
+      }
+
+      if (!lastPage) {
+        return;
+      }
+      const allPages = Array.from({length: lastPage}, (_, index) => index + 1);
+
+      for (const page of allPages) {
+            let url = urlForRequest.replace(/&p=\d+/g,"&p="+page);
+            const pageHtml = await getRequestHtml(url + `&p=${page}`);
+            const pageContent = getContentPage(pageHtml);
+            mainResult.push(pageContent);
+      }
+    } else if (pages?.length === 1){
+      mainResult = getContentPage(html);
+    } else {
+      console.error('Ошибка с масивом страниц!')
+      return;
+    }
+
+
+    if (mainResult && Array.isArray(mainResult) && mainResult?.length) {
+      return mainResult.flat();
+    }
+    return [
+      {
+        message: 'Пришла пустота ирод!'
+      }
+    ]
+  } catch (e) {
+    console.error('getParsingDataFromUrl', e);
   }
-  let pages;
-  if (html) {
-    const dom = new JSDOM(html);
-    const document = dom.window.document;
-    const items = document.querySelectorAll('[data-marker=item]');
-    const pagesCount = document.querySelector("[data-marker='pagination-button/nextPage']").parentElement.previousSibling.childNodes[0].getAttribute('data-value');
-
-    pages = pagesCount;
-
-
-    items.forEach((el) => finalRes.push({
-      id: el.id,
-      url: `https://www.avito.ru${el.querySelector('[itemprop=url]').getAttribute('href')}`,
-      price: Number(el.querySelector('[itemprop=price]').getAttribute('content')),
-      currency: el.querySelector('[itemprop=priceCurrency]').getAttribute('content'),
-      description: el.querySelector('[itemprop=description]').getAttribute('content'),
-      city: el.querySelector('[itemprop=description]').getAttribute('content'),
-      area: el.querySelector('[class*="geo-icons"]').nextSibling.textContent,
-      title: el.querySelector('[itemprop=name]').textContent,
-      dateOfPosting: el.querySelector('[data-marker=item-date]').textContent,
-    }));
-  }
-
-  return finalRes;
 }
 module.exports = getParsingDataFromUrl;
