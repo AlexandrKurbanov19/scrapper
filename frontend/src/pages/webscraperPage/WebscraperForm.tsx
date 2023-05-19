@@ -11,6 +11,7 @@ import {useCallback, useMemo, useState} from "react";
 import {useCreateHistoryRequestMutation, HistoryRequestInput, useGetParsingDataMutation} from '../../generated/graphql';
 import { ExportToExcel } from "../components/ExelExporter/ExcelExporter";
 import {data} from "autoprefixer";
+import ResultScrapper from "../components/ResultScrapper/ResultScrapper";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -20,7 +21,7 @@ const countOfAdsRules = [{ required: true, message: 'Пожалуйста вве
 
 const WebscraperForm = () => {
   const [pending, setPending] = useState<boolean>(false);
-  const [getParsingData, { data: parsingData }] = useGetParsingDataMutation({
+  const [getParsingData, { data: parsingData, loading }] = useGetParsingDataMutation({
     onCompleted: () => {
       setPending(false);
     }
@@ -56,11 +57,11 @@ const WebscraperForm = () => {
       <Layout>
         <Spin spinning={pending} size="large" tip="Выполняеться парсинг...">
           <Card className="h-full">
+            <Title className="text-center" type="danger" level={2}>БЕСПЛАТНЫЙ СБОР БАЗЫ</Title>
             {
               !parsingData && (
                 <div>
-                  <Title className="text-center" level={2}>Заполните данные для парсинга</Title>
-                  <Title type="warning" className="text-center" level={4}>Чем детальнее вы заполняете данные, тем качественне финальный результат</Title>
+                  <Title type="secondary" className="text-center" level={5}>Это ознакомительная версия парсера, количество бесплатных запрос: 5</Title>
                   <Form
                     layout="vertical"
                     initialValues={{ size: "default" }}
@@ -136,7 +137,10 @@ const WebscraperForm = () => {
             }
             {
               parsingData && (
-                <ExportToExcel apiData={normalaizeData} />
+                <ResultScrapper
+                  loading={loading}
+                  dataForDownload={normalaizeData}
+                />
               )
             }
           </Card>

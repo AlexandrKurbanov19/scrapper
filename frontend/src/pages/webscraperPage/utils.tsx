@@ -37,6 +37,7 @@ export const categoryOptions =[
   },
   {
     label: 'Для дома и дачи',
+    value: 'dlya_doma_i_dachi',
     options: [
       { label: 'Бытовая техника', value: 'bytovaya_tehnika' },
       { label: 'Мебель и интерьер', value: 'mebel_i_interer' },

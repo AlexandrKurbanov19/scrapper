@@ -44,6 +44,14 @@ const items: MenuItem[] = [
     ),
     '2'
   ),
+  getItem(
+    (
+      <Link href="/instruction">
+        Инструкция
+      </Link>
+    ),
+    '3'
+  ),
 ];
 
 const SidebarMenu = () => (

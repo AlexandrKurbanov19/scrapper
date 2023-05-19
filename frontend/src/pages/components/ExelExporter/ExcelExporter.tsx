@@ -23,8 +23,8 @@ export const ExportToExcel: FC<IProp> = ({ apiData }) => {
   };
 
   return (
-    <Space wrap className="flex justify-center items-center">
-      <Button type="primary" danger size="large" onClick={(e) => exportToCSV(apiData, fileName)}>
+    <Space wrap>
+      <Button type="default" size="middle" onClick={(e) => exportToCSV(apiData, fileName)}>
         Скачать результат парсинга
       </Button>
     </Space>
