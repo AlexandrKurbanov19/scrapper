@@ -3,7 +3,7 @@ import {Button, Card, Divider, Layout} from "antd";
 import { Typography } from 'antd';
 import Link from "next/link";
 
-const { Title, Text} = Typography;
+const { Title} = Typography;
 
 const Home: NextPage = () => {
 

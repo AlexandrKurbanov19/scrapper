@@ -17,7 +17,7 @@ const Index = () => {
 
   return (
     <Card className="text-lg">
-      <Title level={4}>Запустите парсер в 4 этапа :</Title>
+      <Title level={2}>Запустите парсер в 4 этапа :</Title>
       <Divider/>
       <div className="max-w-[850px]">
         <Steps

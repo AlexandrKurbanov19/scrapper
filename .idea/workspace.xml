@@ -5,14 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7fbb32-fda0-4f69-a7bd-3b3cdc50c07a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/components/ResultScrapper/ResultScrapper.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/instruction/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/returnNumberOfPagesToParse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/parsingExamples/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/result/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/ExelExporter/ExcelExporter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/components/ExelExporter/ExcelExporter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/SidebarMenu/SidebarMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/components/SidebarMenu/SidebarMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/WebscraperForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/WebscraperForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/utils.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/utils.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/endpoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/endpoint.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/getParsingDataFromUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/getParsingDataFromUrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/utils/getRequestHtml.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/utils/getRequestHtml.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ErrorBoundary.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/LoginPage/LoginPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/CommonLayout/CommonLayout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/ExelExporter/ExcelExporter.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/ExelExporter/utils/getExelColWidths.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/Footer/Footer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/HeaderCustom/HeaderCustom.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/ResultScrapper/ResultScrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/SidebarMenu/SidebarMenu.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/instruction/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/instruction/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/WebscraperForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/utils.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/utils.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,22 +51,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Alexandr/Desktop/програмирование/проект парсер/frontend/src/pages",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "C:\\Users\\Alexandr\\Desktop\\програмирование\\проект парсер\\frontend\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alexandr/Desktop/програмирование/проект парсер/frontend/src/pages&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Alexandr\\Desktop\\програмирование\\проект парсер\\frontend\\node_modules\\typescript\\lib&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -63,11 +80,11 @@
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src\pages\components\ResultScrapper" />
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src\pages\components" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src\pages\components\ResultScrapper" />
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\public\assets" />
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\backend\src\custom-graphql\mutation\getParsingData" />
-      <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src\pages" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -92,6 +109,9 @@
       <workItem from="1684328349775" duration="11983000" />
       <workItem from="1684478036623" duration="16135000" />
       <workItem from="1684510816651" duration="5838000" />
+      <workItem from="1684594681159" duration="5422000" />
+      <workItem from="1684741960669" duration="480000" />
+      <workItem from="1684742465519" duration="13809000" />
     </task>
     <servers />
   </component>

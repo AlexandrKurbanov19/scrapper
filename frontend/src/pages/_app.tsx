@@ -5,7 +5,7 @@ import React from 'react';
 import moment from "moment";
 import ruRU from 'antd/lib/locale/ru_RU';
 import {ConfigProvider} from "antd";
-import CommonLayout from "./components/CommonLayout/CommonLayout";
+import CommonLayout from "../components/CommonLayout/CommonLayout";
 
 moment.locale('ru');
 const MyApp = ({ Component, pageProps, apollo }: any) => {
