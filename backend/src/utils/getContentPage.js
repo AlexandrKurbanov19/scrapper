@@ -15,12 +15,15 @@ const getContentPage = (html) => {
     items.forEach((el) => finalRes.push({
       id: el.id,
       url: `${process.env.BASE_AVITO_URL}${el.querySelector('[itemprop=url]').getAttribute('href')}`,
+      title: el.querySelector('[itemprop=name]').textContent,
+      dateOfPosting: el.querySelector('[data-marker=item-date]').textContent,
       price: Number(el.querySelector('[itemprop=price]').getAttribute('content')),
       currency: el.querySelector('[itemprop=priceCurrency]').getAttribute('content'),
       description: el.querySelector('[itemprop=description]').getAttribute('content'),
-      area: el.querySelector('[class*="geo-icons"]')?.nextSibling.textContent,
-      title: el.querySelector('[itemprop=name]').textContent,
-      dateOfPosting: el.querySelector('[data-marker=item-date]').textContent,
+      address:  el.querySelector('[data-marker=item-address]')?.textContent,
+      sellerRating:  el.querySelector('[data-marker="seller-rating/score"]')?.textContent,
+      sellerReviewsCount:  el.querySelector('[data-marker="seller-rating/summary"]')?.textContent,
+      sellerInfo: el?.querySelector('[class*="iva-item-sellerInfo"]')?.innerText?.replace(/(\r\n|\n|\r)/gm, " "),
     }));
 
     return finalRes;

@@ -5,31 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa7fbb32-fda0-4f69-a7bd-3b3cdc50c07a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/returnNumberOfPagesToParse.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/parsingExamples/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/result/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/query/AuthFlowMutation.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/lib/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/auth/LoginPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/auth/RegistrationPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/endpoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/endpoint.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/getParsingDataFromUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/getParsingDataFromUrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/utils/getRequestHtml.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/utils/getRequestHtml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ErrorBoundary.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/LoginPage/LoginPage.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/CommonLayout/CommonLayout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/ExelExporter/ExcelExporter.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/ExelExporter/utils/getExelColWidths.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/Footer/Footer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/HeaderCustom/HeaderCustom.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/ResultScrapper/ResultScrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/components/SidebarMenu/SidebarMenu.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/instruction/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/instruction/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/WebscraperForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/webscraperPage/utils.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/utils.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/returnNumberOfPagesToParse.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/utils/returnNumberOfPagesToParse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/utils/getContentPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/utils/getContentPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/utils/urlBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/utils/urlBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/generated/graphql.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,10 +70,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend" />
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src\pages\components" />
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\src\pages\components\ResultScrapper" />
       <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\frontend\public\assets" />
-      <recent name="C:\Users\Alexandr\Desktop\програмирование\проект парсер\backend\src\custom-graphql\mutation\getParsingData" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -112,6 +101,7 @@
       <workItem from="1684594681159" duration="5422000" />
       <workItem from="1684741960669" duration="480000" />
       <workItem from="1684742465519" duration="13809000" />
+      <workItem from="1684817088329" duration="11640000" />
     </task>
     <servers />
   </component>

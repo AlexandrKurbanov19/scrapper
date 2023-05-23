@@ -15,6 +15,20 @@ import ParserForm from "./ParserForm";
 
 const { Title } = Typography;
 
+interface IParsingDataItem {
+  address?: string,
+  currency?: string,
+  dateOfPosting?: string,
+  description?: string,
+  id?: string,
+  price?: number,
+  title?: string,
+  url?: string,
+  sellerRating?: string,
+  sellerReviewsCount?: string,
+  sellerInfo?: string,
+}
+
 const Parser = () => {
   const [parsingData, setParsingData] = useState<GetParsingDataMutation['getParsingData'] | undefined>(undefined);
   const [freeRequest, setFreeRequest] = useState(
@@ -80,12 +94,15 @@ const Parser = () => {
 
   const normalizedData = useMemo(() => {
     if (parsingData && Array.isArray(parsingData)) {
-      return parsingData?.map((el: any) => ({
-        "Ссылка": el.url,
-        "Валюта": el.currency,
-        "Цена товара": el.price,
-        "Описание товара": el.description,
-        "Дата публикации": el.dateOfPosting,
+      return parsingData?.map((el: IParsingDataItem) => ({
+        "Название": el?.title,
+        "Дата публикации": el?.dateOfPosting,
+        "Цена товара": el?.price,
+        "Ссылка": el?.url,
+        "Описание товара": el?.description,
+        "Валюта": el?.currency,
+        "Адрес": el?.address,
+        "Информация о продавце": el?.sellerInfo,
       }))
     }
     return [];

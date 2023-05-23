@@ -4,7 +4,7 @@ import {
   Input,
   InputNumber,
   Typography,
-  Select, DatePicker,
+  Select, DatePicker, Switch,
 } from 'antd';
 import {categoryOptions} from "./utils";
 import {FC} from "react";
@@ -13,7 +13,10 @@ const { Option } = Select;
 const { RangePicker } = DatePicker;
 const { Title } = Typography;
 const siteRules = [{ required: true, message: 'Пожалуйста выберите сайт!' }]
-const countOfAdsRules = [{ required: true, message: 'Пожалуйста введите колличество обьявлений!'  }];
+const categoryForParsingRules = [{ required: true, message: 'Пожалуйста выберете категорию для поиска!' }]
+const emailRules = [{ required: true, message: 'Пожалуйста введите свой email!' }]
+const keyWordRules = [{ required: true, message: 'Укажите ключевые слова для поиска' }]
+const countOfAdsRules = [{ required: true, message: 'Пожалуйста введите колличество страниц для парсинга!'  }];
 
 interface IParserForm {
   freeRequestCount?: number,
@@ -56,27 +59,7 @@ const ParserForm: FC<IParserForm> = (
             <Option value="LAMODA" disabled>LAMODA</Option>
           </Select>
         </Form.Item>
-        <Form.Item rules={countOfAdsRules} name="page" label="Введите количество страниц">
-          <InputNumber min={1} max={20} placeholder="10" />
-        </Form.Item>
-        <Form.Item name="email" label="Введите email">
-          <Input placeholder="test@ya.ru" />
-        </Form.Item>
-        <Form.Item name="keyWords" label="Введите ключевые слова для поиска">
-          <Input placeholder="Iphone 13 Pro" />
-        </Form.Item>
-        <Form.Item initialValue="Either" name="adsAuthor" label="Выберите тип автора объявления">
-          <Select
-            placeholder="Любой"
-            allowClear
-          >
-            <Option value="Either">Любой</Option>
-            <Option value="Person">Частное лицо</Option>
-            <Option value="Company">Компания</Option>
-            <Option value="Owner">Собственник</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item initialValue={'all'} name="selectedGeoPosition" label="Выберите город/область (можно несколько)">
+        <Form.Item initialValue={'all'} name="selectedGeoPosition" label="Выберите город/область">
           <Select
             placeholder="Москва"
             allowClear
@@ -87,12 +70,40 @@ const ParserForm: FC<IParserForm> = (
             <Option value="all">Все регионы</Option>
           </Select>
         </Form.Item>
-        <Form.Item name="categoryForParsing" label="Выберите категорию">
+        <Form.Item name="categoryForParsing" rules={categoryForParsingRules} label="Выберите категорию">
           <Select
             placeholder="Все категории"
             allowClear
             options={categoryOptions}
           />
+        </Form.Item>
+        <Form.Item name="keyWords" rules={keyWordRules} label="Введите ключевые слова для поиска">
+          <Input placeholder="Iphone 13 Pro" />
+        </Form.Item>
+        <Form.Item rules={countOfAdsRules} name="page" label="Введите количество страниц">
+          <InputNumber min={1} max={20} placeholder="10" />
+        </Form.Item>
+        <Form.Item name="email" rules={emailRules} label="Введите email">
+          <Input placeholder="test@ya.ru" />
+        </Form.Item>
+        <Form.Item initialValue="0" name="adsAuthor" label="Выберите тип автора объявления">
+          <Select
+            placeholder="Любой"
+            allowClear
+          >
+            <Option value="0">Любой</Option>
+            <Option value="1">Частное лицо</Option>
+            <Option value="2">Компания</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item name="selleRating" initialValue={null} label="Рейтинг продавца">
+          <Select
+            placeholder="Любой"
+            allowClear
+          >
+            <Option value={null}>Любой</Option>
+            <Option value="1212562">4 звезды и выше</Option>
+          </Select>
         </Form.Item>
         <Form.Item>
           <Form.Item name="pmin" className="inline-block mr-3" label="Цена от:">

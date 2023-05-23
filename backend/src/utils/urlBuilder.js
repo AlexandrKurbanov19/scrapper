@@ -1,33 +1,39 @@
 'use strict'
-const urlBuilder = (geo, category, priceMin, priceMax, page, keyWords) => {
+const urlBuilder = (args) => {
   try {
-    let url = `${process.env.BASE_AVITO_URL}`;
+    const {
+      selectedGeoPosition, categoryForParsing, pmin, pmax, keyWords, adsAuthor, selleRating
+    } = args;
+    let baseUrl = `${process.env.BASE_AVITO_URL}`;
+    let params = '';
 
-    return  url + "/" + geo + "/" + category + "?q=" + `${keyWords.replaceAll(' ', '+')}` + "&pmin=" + priceMin + "&pmax=" + priceMax + "&user=1" + `&p=${page}`;
+    if (selectedGeoPosition) {
+      baseUrl += `/${selectedGeoPosition}`;
+    }
+    if (categoryForParsing) {
+      baseUrl +=  `/${categoryForParsing}`;
+    }
+    if (keyWords) {
+      params +=  `?q=${keyWords?.replaceAll(' ', '+')}`;
+    }
+    if (pmin) {
+      params +=  `&pmin=${pmin}`;
+    }
+    if (pmax) {
+      params +=  `&pmax=${pmax}`;
+    }
+    if (adsAuthor) {
+      params +=  `&user=${adsAuthor}`;
+    }
+    params += `&p=${1}`;
+    if (selleRating) {
+      params += `&params[115385][0]=${selleRating}`;
+    }
+
+    return baseUrl + params;
   } catch (e) {
-    console.error(e, 'error in urlBuilder')
+    console.error(e, 'ошибка при формировании url')
   }
 }
 module.exports = urlBuilder;
-
-
-// const paramsBuilder = (geo, category, priceMin, priceMax, page, keyWord) => {
-//   const params = {};
-//   if (keyWord) {
-//     params.bt = 1;
-//     params.q = keyWord;
-//     params.s = 2;
-//   }
-//   if (priceMin) {
-//     params.pmin = priceMin;
-//   }
-//   if (priceMax) {
-//     params.pmax = priceMax;
-//   }
-//   if (page) {
-//     params.p = page;
-//   }
-//   return params;
-// }
-// module.exports = paramsBuilder;
 

@@ -6,25 +6,15 @@ const returnNumberOfPagesToParse = require("./returnNumberOfPagesToParse");
 
 const getParsingDataFromUrl = async (args) => {
   try {
-    if (!args) {
+    if (!args?.data?.dataForParsing) {
       return;
     }
 
-    const {
-      siteNameForParsing,
-      page,
-      keyWords,
-      adsAuthor,
-      selectedGeoPosition,
-      categoryForParsing,
-      pmin,
-      pmax,
-      rangeDate,
-    } = args?.data?.dataForParsing;
+    const { page } = args?.data?.dataForParsing;
 
-    console.log('args?.data?.dataForParsing', args?.data?.dataForParsing)
+    const urlForRequest = urlBuilder(args?.data?.dataForParsing);
 
-    const urlForRequest = urlBuilder(selectedGeoPosition, categoryForParsing, pmin, pmax, 1, keyWords);
+    console.log('urlForRequest', urlForRequest);
 
     if (!urlForRequest) {
       console.log('нет фильтров!')
@@ -48,7 +38,7 @@ const getParsingDataFromUrl = async (args) => {
     if (pages?.length > 1) {
       const lastPage = returnNumberOfPagesToParse(pages, page);
 
-      if (lastPage > 100) {
+      if (lastPage > 50) {
         console.log('дохера страниц для бесплатного парсинга!')
         return;
       }
@@ -59,7 +49,7 @@ const getParsingDataFromUrl = async (args) => {
       const allPages = Array.from({length: lastPage}, (_, index) => index + 1);
 
       for (const page of allPages) {
-            let url = urlForRequest.replace(/&p=\d+/g,"&p="+page);
+            let url = urlForRequest?.replace(/&p=\d+/g,"&p="+page);
             console.log('url in the loop', page, url);
             const pageHtml = await getRequestHtml(url + `&p=${page}`);
             const pageContent = getContentPage(pageHtml);
