@@ -1,5 +1,5 @@
-import type { NextPage } from 'next';
-import {Button, Card, Divider, Layout} from "antd";
+import { NextPage } from 'next';
+import { Button, Card, Divider, Layout } from "antd";
 import { Typography } from 'antd';
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
               осуществляет парсинг с соблюдением законов РФ и собирает данные только из открытых источников без нарушения действующих норм. Базы данных, которые передает клиентам, получены законным путем. Таблицы excel перед отправкой проверяются на вредоносное ПО.
             </p>
           </div>
-          <Button type='link'>
+          <Button type="link">
             <Link className="p-0 m-0" href="/zakon/">
               ЗАКОН И ПАРСИНГ В РОССИИ
             </Link>

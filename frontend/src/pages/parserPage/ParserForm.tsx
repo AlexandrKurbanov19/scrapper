@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Button,
   Form,
@@ -29,7 +31,6 @@ const ParserForm: FC<IParserForm> = (
     freeRequestCount,
     onSubmitForm,
     onSubmitFormFailed
-
   }
 ) => {
   return (

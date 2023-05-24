@@ -1,3 +1,5 @@
+'use client';
+
 import React, {useState} from 'react';
 import {Card, Divider, Steps} from "antd";
 import { Typography } from 'antd';

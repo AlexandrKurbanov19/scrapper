@@ -1,4 +1,5 @@
 const getParsingDataFromUrl = require("./utils/getParsingDataFromUrl");
+
 const endpoint = async (next, parent, args) => {
   try {
     const res = await getParsingDataFromUrl(args);

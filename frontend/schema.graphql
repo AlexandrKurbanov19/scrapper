@@ -306,6 +306,7 @@ type Query {
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   me: UsersPermissionsMe
+  sendFeedback(data: sendFeedbackInput): sendFeedbackResponse!
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
@@ -665,4 +666,14 @@ type UsersPermissionsUserRelationResponseCollection {
 
 type getParsingDataResponse {
   json: JSON
+}
+
+input sendFeedbackInput {
+  email: String!
+  text: String!
+  title: String
+}
+
+type sendFeedbackResponse {
+  status: Boolean
 }

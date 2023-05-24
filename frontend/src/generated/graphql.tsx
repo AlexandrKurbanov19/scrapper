@@ -462,6 +462,7 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  sendFeedback: SendFeedbackResponse;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -494,6 +495,11 @@ export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QuerySendFeedbackArgs = {
+  data?: InputMaybe<SendFeedbackInput>;
 };
 
 
@@ -951,6 +957,17 @@ export type GetParsingDataResponse = {
   json?: Maybe<Scalars['JSON']>;
 };
 
+export type SendFeedbackInput = {
+  email: Scalars['String'];
+  text: Scalars['String'];
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type SendFeedbackResponse = {
+  __typename?: 'sendFeedbackResponse';
+  status?: Maybe<Scalars['Boolean']>;
+};
+
 export type CreateHistoryRequestMutationVariables = Exact<{
   data: HistoryRequestInput;
 }>;
@@ -964,6 +981,13 @@ export type GetParsingDataMutationVariables = Exact<{
 
 
 export type GetParsingDataMutation = { __typename?: 'Mutation', getParsingData: { __typename?: 'getParsingDataResponse', json?: any | null } };
+
+export type SendFeedbackDataQueryVariables = Exact<{
+  data: SendFeedbackInput;
+}>;
+
+
+export type SendFeedbackDataQuery = { __typename?: 'Query', sendFeedback: { __typename?: 'sendFeedbackResponse', status?: boolean | null } };
 
 
 export const CreateHistoryRequestDocument = gql`
@@ -1034,3 +1058,38 @@ export function useGetParsingDataMutation(baseOptions?: Apollo.MutationHookOptio
 export type GetParsingDataMutationHookResult = ReturnType<typeof useGetParsingDataMutation>;
 export type GetParsingDataMutationResult = Apollo.MutationResult<GetParsingDataMutation>;
 export type GetParsingDataMutationOptions = Apollo.BaseMutationOptions<GetParsingDataMutation, GetParsingDataMutationVariables>;
+export const SendFeedbackDataDocument = gql`
+    query sendFeedbackData($data: sendFeedbackInput!) {
+  sendFeedback(data: $data) {
+    status
+  }
+}
+    `;
+
+/**
+ * __useSendFeedbackDataQuery__
+ *
+ * To run a query within a React component, call `useSendFeedbackDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSendFeedbackDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSendFeedbackDataQuery({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useSendFeedbackDataQuery(baseOptions: Apollo.QueryHookOptions<SendFeedbackDataQuery, SendFeedbackDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SendFeedbackDataQuery, SendFeedbackDataQueryVariables>(SendFeedbackDataDocument, options);
+      }
+export function useSendFeedbackDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SendFeedbackDataQuery, SendFeedbackDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SendFeedbackDataQuery, SendFeedbackDataQueryVariables>(SendFeedbackDataDocument, options);
+        }
+export type SendFeedbackDataQueryHookResult = ReturnType<typeof useSendFeedbackDataQuery>;
+export type SendFeedbackDataLazyQueryHookResult = ReturnType<typeof useSendFeedbackDataLazyQuery>;
+export type SendFeedbackDataQueryResult = Apollo.QueryResult<SendFeedbackDataQuery, SendFeedbackDataQueryVariables>;
