@@ -96,12 +96,57 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = HistoryRequest | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = HistoryDataParsing | HistoryRequest | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+
+export type HistoryDataParsing = {
+  __typename?: 'HistoryDataParsing';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  history_request?: Maybe<HistoryRequestEntityResponse>;
+  parsingData?: Maybe<Scalars['JSON']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type HistoryDataParsingEntity = {
+  __typename?: 'HistoryDataParsingEntity';
+  attributes?: Maybe<HistoryDataParsing>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type HistoryDataParsingEntityResponse = {
+  __typename?: 'HistoryDataParsingEntityResponse';
+  data?: Maybe<HistoryDataParsingEntity>;
+};
+
+export type HistoryDataParsingEntityResponseCollection = {
+  __typename?: 'HistoryDataParsingEntityResponseCollection';
+  data: Array<HistoryDataParsingEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type HistoryDataParsingFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<HistoryDataParsingFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  history_request?: InputMaybe<HistoryRequestFiltersInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<HistoryDataParsingFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<HistoryDataParsingFiltersInput>>>;
+  parsingData?: InputMaybe<JsonFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type HistoryDataParsingInput = {
+  history_request?: InputMaybe<Scalars['ID']>;
+  parsingData?: InputMaybe<Scalars['JSON']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
 
 export type HistoryRequest = {
   __typename?: 'HistoryRequest';
   createdAt?: Maybe<Scalars['DateTime']>;
   dataForParsing: Scalars['JSON'];
+  history_data_parsing?: Maybe<HistoryDataParsingEntityResponse>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -126,6 +171,7 @@ export type HistoryRequestFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<HistoryRequestFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   dataForParsing?: InputMaybe<JsonFilterInput>;
+  history_data_parsing?: InputMaybe<HistoryDataParsingFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<HistoryRequestFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<HistoryRequestFiltersInput>>>;
@@ -139,6 +185,7 @@ export type HistoryRequestInput = {
   dataForParsing?: InputMaybe<Scalars['JSON']>;
   finalPrice?: InputMaybe<Scalars['Int']>;
   firstPrice?: InputMaybe<Scalars['Int']>;
+  history_data_parsing?: InputMaybe<Scalars['ID']>;
   keyWords?: InputMaybe<Scalars['String']>;
   rangeDate?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   siteNameForParsing?: InputMaybe<Scalars['String']>;
@@ -256,6 +303,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createHistoryDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
   createHistoryRequest?: Maybe<HistoryRequestEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -263,6 +311,7 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteHistoryDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
   deleteHistoryRequest?: Maybe<HistoryRequestEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -283,6 +332,7 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateFileInfo: UploadFileEntityResponse;
+  updateHistoryDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
   updateHistoryRequest?: Maybe<HistoryRequestEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -298,6 +348,11 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String'];
   password: Scalars['String'];
   passwordConfirmation: Scalars['String'];
+};
+
+
+export type MutationCreateHistoryDataParsingArgs = {
+  data: HistoryDataParsingInput;
 };
 
 
@@ -323,6 +378,11 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
+};
+
+
+export type MutationDeleteHistoryDataParsingArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -402,6 +462,12 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
+export type MutationUpdateHistoryDataParsingArgs = {
+  data: HistoryDataParsingInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateHistoryRequestArgs = {
   data: HistoryRequestInput;
   id: Scalars['ID'];
@@ -455,8 +521,15 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>;
 };
 
+export enum PublicationState {
+  Live = 'LIVE',
+  Preview = 'PREVIEW'
+}
+
 export type Query = {
   __typename?: 'Query';
+  historyDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
+  historyDataParsings?: Maybe<HistoryDataParsingEntityResponseCollection>;
   historyRequest?: Maybe<HistoryRequestEntityResponse>;
   historyRequests?: Maybe<HistoryRequestEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
@@ -471,6 +544,19 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryHistoryDataParsingArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryHistoryDataParsingsArgs = {
+  filters?: InputMaybe<HistoryDataParsingFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -968,6 +1054,13 @@ export type SendFeedbackResponse = {
   status?: Maybe<Scalars['Boolean']>;
 };
 
+export type CreateHistoryDataParsingMutationVariables = Exact<{
+  data: HistoryDataParsingInput;
+}>;
+
+
+export type CreateHistoryDataParsingMutation = { __typename?: 'Mutation', createHistoryDataParsing?: { __typename?: 'HistoryDataParsingEntityResponse', data?: { __typename?: 'HistoryDataParsingEntity', id?: string | null } | null } | null };
+
 export type CreateHistoryRequestMutationVariables = Exact<{
   data: HistoryRequestInput;
 }>;
@@ -990,6 +1083,41 @@ export type SendFeedbackDataQueryVariables = Exact<{
 export type SendFeedbackDataQuery = { __typename?: 'Query', sendFeedback: { __typename?: 'sendFeedbackResponse', status?: boolean | null } };
 
 
+export const CreateHistoryDataParsingDocument = gql`
+    mutation createHistoryDataParsing($data: HistoryDataParsingInput!) {
+  createHistoryDataParsing(data: $data) {
+    data {
+      id
+    }
+  }
+}
+    `;
+export type CreateHistoryDataParsingMutationFn = Apollo.MutationFunction<CreateHistoryDataParsingMutation, CreateHistoryDataParsingMutationVariables>;
+
+/**
+ * __useCreateHistoryDataParsingMutation__
+ *
+ * To run a mutation, you first call `useCreateHistoryDataParsingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateHistoryDataParsingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createHistoryDataParsingMutation, { data, loading, error }] = useCreateHistoryDataParsingMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateHistoryDataParsingMutation(baseOptions?: Apollo.MutationHookOptions<CreateHistoryDataParsingMutation, CreateHistoryDataParsingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateHistoryDataParsingMutation, CreateHistoryDataParsingMutationVariables>(CreateHistoryDataParsingDocument, options);
+      }
+export type CreateHistoryDataParsingMutationHookResult = ReturnType<typeof useCreateHistoryDataParsingMutation>;
+export type CreateHistoryDataParsingMutationResult = Apollo.MutationResult<CreateHistoryDataParsingMutation>;
+export type CreateHistoryDataParsingMutationOptions = Apollo.BaseMutationOptions<CreateHistoryDataParsingMutation, CreateHistoryDataParsingMutationVariables>;
 export const CreateHistoryRequestDocument = gql`
     mutation createHistoryRequest($data: HistoryRequestInput!) {
   createHistoryRequest(data: $data) {

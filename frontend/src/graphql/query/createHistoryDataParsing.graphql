@@ -1,0 +1,7 @@
+mutation createHistoryDataParsing($data: HistoryDataParsingInput!) {
+    createHistoryDataParsing(data: $data) {
+        data {
+            id
+        }
+    }
+}

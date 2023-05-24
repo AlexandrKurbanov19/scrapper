@@ -1,0 +1,5 @@
+mutation getParsingData($data: HistoryRequestInput!) {
+    getParsingData(data: $data) {
+        json
+    }
+}

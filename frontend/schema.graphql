@@ -81,11 +81,52 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = HistoryRequest | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = HistoryDataParsing | HistoryRequest | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+
+type HistoryDataParsing {
+  createdAt: DateTime
+  history_request: HistoryRequestEntityResponse
+  parsingData: JSON
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type HistoryDataParsingEntity {
+  attributes: HistoryDataParsing
+  id: ID
+}
+
+type HistoryDataParsingEntityResponse {
+  data: HistoryDataParsingEntity
+}
+
+type HistoryDataParsingEntityResponseCollection {
+  data: [HistoryDataParsingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HistoryDataParsingFiltersInput {
+  and: [HistoryDataParsingFiltersInput]
+  createdAt: DateTimeFilterInput
+  history_request: HistoryRequestFiltersInput
+  id: IDFilterInput
+  not: HistoryDataParsingFiltersInput
+  or: [HistoryDataParsingFiltersInput]
+  parsingData: JSONFilterInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HistoryDataParsingInput {
+  history_request: ID
+  parsingData: JSON
+  publishedAt: DateTime
+}
 
 type HistoryRequest {
   createdAt: DateTime
   dataForParsing: JSON!
+  history_data_parsing: HistoryDataParsingEntityResponse
   updatedAt: DateTime
 }
 
@@ -107,6 +148,7 @@ input HistoryRequestFiltersInput {
   and: [HistoryRequestFiltersInput]
   createdAt: DateTimeFilterInput
   dataForParsing: JSONFilterInput
+  history_data_parsing: HistoryDataParsingFiltersInput
   id: IDFilterInput
   not: HistoryRequestFiltersInput
   or: [HistoryRequestFiltersInput]
@@ -120,6 +162,7 @@ input HistoryRequestInput {
   dataForParsing: JSON
   finalPrice: Int
   firstPrice: Int
+  history_data_parsing: ID
   keyWords: String
   rangeDate: [String]
   siteNameForParsing: String
@@ -237,6 +280,7 @@ input JSONFilterInput {
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  createHistoryDataParsing(data: HistoryDataParsingInput!): HistoryDataParsingEntityResponse
   createHistoryRequest(data: HistoryRequestInput!): HistoryRequestEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
@@ -246,6 +290,7 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  deleteHistoryDataParsing(id: ID!): HistoryDataParsingEntityResponse
   deleteHistoryRequest(id: ID!): HistoryRequestEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
@@ -274,6 +319,7 @@ type Mutation {
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  updateHistoryDataParsing(data: HistoryDataParsingInput!, id: ID!): HistoryDataParsingEntityResponse
   updateHistoryRequest(data: HistoryRequestInput!, id: ID!): HistoryRequestEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
@@ -300,7 +346,14 @@ input PaginationArg {
   start: Int
 }
 
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
 type Query {
+  historyDataParsing(id: ID): HistoryDataParsingEntityResponse
+  historyDataParsings(filters: HistoryDataParsingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HistoryDataParsingEntityResponseCollection
   historyRequest(id: ID): HistoryRequestEntityResponse
   historyRequests(filters: HistoryRequestFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): HistoryRequestEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse

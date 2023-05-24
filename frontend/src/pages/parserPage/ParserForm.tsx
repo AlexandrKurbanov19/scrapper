@@ -97,12 +97,16 @@ const ParserForm: FC<IParserForm> = (
             <Option value="2">Компания</Option>
           </Select>
         </Form.Item>
-        <Form.Item name="selleRating" initialValue={null} label="Рейтинг продавца">
+        <Form.Item
+          name="selleRating"
+          initialValue={undefined}
+          label="Рейтинг продавца"
+        >
           <Select
             placeholder="Любой"
             allowClear
           >
-            <Option value={null}>Любой</Option>
+            <Option value={undefined}>Любой</Option>
             <Option value="1212562">4 звезды и выше</Option>
           </Select>
         </Form.Item>

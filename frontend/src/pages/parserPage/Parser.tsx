@@ -10,7 +10,7 @@ import {useCallback, useEffect, useMemo, useState} from "react";
 import {
   useCreateHistoryRequestMutation,
   useGetParsingDataMutation,
-  GetParsingDataMutation
+  GetParsingDataMutation, useCreateHistoryDataParsingMutation
 } from '../../generated/graphql';
 import ResultScrapper from "../../components/ResultScrapper/ResultScrapper";
 import ParserForm from "./ParserForm";
@@ -37,6 +37,8 @@ const Parser = () => {
     { count:  0}
   );
   const [pending, setPending] = useState<boolean>(false);
+
+  const [createHistoryDataParsing, { data: historyDataParsingData}] = useCreateHistoryDataParsingMutation();
   const [createHistoryRequest, { data: historyRequestData}] = useCreateHistoryRequestMutation();
   const [getParsingData, { data: parsingResponseData, loading }] = useGetParsingDataMutation({
     onCompleted: (data) => {
@@ -59,6 +61,24 @@ const Parser = () => {
       setFreeRequest((prev) => ({ ...prev, count: oldCount}))
     }
   }, []);
+
+
+  useEffect(() => {
+      const historyRequestId = historyRequestData?.createHistoryRequest?.data?.id;
+      if (historyRequestId && parsingData) {
+        (async () => {
+          await createHistoryDataParsing({
+            variables: {
+              data: {
+                history_request: historyRequestId,
+                parsingData: parsingData,
+              }
+            }
+          })
+        })();
+      }
+    },
+    [historyRequestData, parsingData]);
 
   const onSubmitFailed = useCallback( (errorInfo: any) => {
     console.log('Failed:', errorInfo);

@@ -15,6 +15,12 @@
     "dataForParsing": {
       "type": "json",
       "required": true
+    },
+    "history_data_parsing": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::history-data-parsing.history-data-parsing",
+      "inversedBy": "history_request"
     }
   }
 }

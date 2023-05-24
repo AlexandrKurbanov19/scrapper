@@ -5,9 +5,3 @@ mutation createHistoryRequest($data: HistoryRequestInput!){
     }
   }
 }
-
-mutation getParsingData($data: HistoryRequestInput!) {
-  getParsingData(data: $data) {
-    json
-  }
-}
