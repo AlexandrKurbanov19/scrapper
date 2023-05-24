@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7259cce5-0d13-4ddf-83f7-d4dc7b853ec9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/custom-graphql/query/sendFeedback/endpoint.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/custom-graphql/query/sendFeedback/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/sendEmail/nodemailer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/query/sendFeedback.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/feedback/FeedbackForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/feedback/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/endpoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/custom-graphql/mutation/getParsingData/endpoint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/graphql.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/graphql.schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/generated/graphql.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/instruction/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/instruction/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="7259cce5-0d13-4ddf-83f7-d4dc7b853ec9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684905606083</updated>
-      <workItem from="1684905607602" duration="10272000" />
+      <workItem from="1684905607602" duration="10576000" />
     </task>
     <servers />
   </component>
