@@ -1,0 +1,12 @@
+mutation updateUserBlock($id: ID!, $blocked: Boolean!) {
+    updateUsersPermissionsUser(id: $id, data: {
+        blocked: $blocked,
+    }) {
+        data {
+            id
+            attributes {
+                blocked
+            }
+        }
+    }
+}

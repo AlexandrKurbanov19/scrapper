@@ -1,0 +1,10 @@
+mutation createLesson($data: LessonInput!) {
+    createLesson(data: $data) {
+        data {
+            id
+            attributes {
+                title
+            }
+        }
+    }
+}

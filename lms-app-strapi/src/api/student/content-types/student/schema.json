@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "singularName": "student",
+    "pluralName": "students",
+    "displayName": "Student",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "patronymic": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "telegram": {
+      "type": "string"
+    },
+    "vk": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "student"
+    },
+    "parents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::parent.parent",
+      "inversedBy": "children"
+    },
+    "tutors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tutor.tutor",
+      "mappedBy": "students"
+    },
+    "curators": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::curator.curator",
+      "inversedBy": "students"
+    },
+    "student_tariff_periods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-tariff-period.student-tariff-period",
+      "mappedBy": "student"
+    },
+    "avatarUrl": {
+      "type": "string"
+    },
+    "tariff": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tariff.tariff",
+      "inversedBy": "students"
+    },
+    "birthday": {
+      "type": "date"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course",
+      "mappedBy": "student"
+    }
+  }
+}

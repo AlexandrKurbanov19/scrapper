@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "history_data_parsings",
+  "info": {
+    "singularName": "history-data-parsing",
+    "pluralName": "history-data-parsings",
+    "displayName": "HistoryDataParsing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "parsingData": {
+      "type": "json"
+    },
+    "history_request": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::history-request.history-request",
+      "inversedBy": "history_data_parsing"
+    }
+  }
+}

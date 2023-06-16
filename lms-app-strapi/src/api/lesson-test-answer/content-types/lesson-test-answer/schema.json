@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lesson_test_answers",
+  "info": {
+    "singularName": "lesson-test-answer",
+    "pluralName": "lesson-test-answers",
+    "displayName": "LessonTestAnswer"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attemptNumber": {
+      "type": "integer",
+      "min": 1,
+      "required": true
+    },
+    "startDateTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "completeDateTime": {
+      "type": "datetime"
+    },
+    "answers": {
+      "type": "json",
+      "required": true
+    },
+    "points": {
+      "type": "integer",
+      "min": 0
+    },
+    "lessonProgress": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lesson-progress.lesson-progress",
+      "inversedBy": "lessonTestAnswers"
+    },
+    "lessonProgressWhereAccepted": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lesson-progress.lesson-progress",
+      "mappedBy": "acceptedLessonTestAnswer"
+    }
+  }
+}

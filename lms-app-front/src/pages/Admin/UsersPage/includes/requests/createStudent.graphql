@@ -1,0 +1,7 @@
+mutation createStudent($data: StudentInput!) {
+    createStudent(data: $data) {
+        data {
+            id
+        }
+    }
+}

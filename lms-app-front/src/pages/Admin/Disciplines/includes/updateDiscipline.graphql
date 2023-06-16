@@ -1,0 +1,10 @@
+mutation updateDiscipline($id: ID!, $data: DisciplineInput!) {
+    updateDiscipline(id: $id, data: $data) {
+        data {
+            id
+            attributes {
+                title
+            }
+        }
+    }
+}

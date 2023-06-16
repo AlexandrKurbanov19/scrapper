@@ -1,0 +1,12 @@
+mutation removeComment($id: ID!) {
+    updateComment(
+        id: $id,
+        data: {
+            isDeleted: true,
+        }
+    ) {
+        data {
+            id
+        }
+    }
+}

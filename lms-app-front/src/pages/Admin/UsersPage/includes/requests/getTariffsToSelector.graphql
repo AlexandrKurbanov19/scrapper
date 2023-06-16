@@ -1,0 +1,14 @@
+query getTariffsToSelector {
+    tariffs(
+        pagination: {
+            pageSize: 100
+        }
+    ) {
+        data {
+            id
+            attributes {
+                name
+            }
+        }
+    }
+}

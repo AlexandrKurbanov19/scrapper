@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lesson_practical_task_answers",
+  "info": {
+    "singularName": "lesson-practical-task-answer",
+    "pluralName": "lesson-practical-task-answers",
+    "displayName": "LessonPracticalTaskAnswer"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attemptNumber": {
+      "type": "integer",
+      "min": 1,
+      "required": true
+    },
+    "startDateTime": {
+      "type": "datetime"
+    },
+    "completeDateTime": {
+      "type": "datetime"
+    },
+    "answers": {
+      "type": "json",
+      "required": true
+    },
+    "points": {
+      "type": "integer",
+      "min": 0
+    },
+    "whenWasRatedDateTime": {
+      "type": "datetime"
+    },
+    "lessonProgress": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lesson-progress.lesson-progress",
+      "inversedBy": "lessonPracticalTaskAnswer"
+    }
+  }
+}

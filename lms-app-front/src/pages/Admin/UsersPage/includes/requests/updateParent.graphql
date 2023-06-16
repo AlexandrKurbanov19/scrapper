@@ -1,0 +1,7 @@
+mutation updateParent($id: ID!, $data: ParentInput!) {
+    updateParent(id: $id, data: $data) {
+        data {
+            id
+        }
+    }
+}

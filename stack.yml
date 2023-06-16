@@ -1,0 +1,118 @@
+version: '3.7'
+services:
+  video:
+    privileged: true
+    restart: always
+    image: gitlab.doenv.ru:5050/evtuhovdo/lms-app-online:3-0-0-video-s3
+    ports:
+      - "3031:80"
+    volumes:
+      - "/data/s3_lms_online:/opt/static/"
+
+  minio:
+    # Нужно использовать именно эту версию minio, в ней файлы хранятся как обычные файлы в ОС
+    image: docker.io/bitnami/minio:2022.5.26
+    restart: always
+    ports:
+      - '9900:9000'
+      - '9910:9001'
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    volumes:
+      - '/data/s3_lms_online:/data:rw'
+
+  front:
+    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG${FRONT_SUFFIX:-front}
+    ports:
+      - "9211:80"
+    networks:
+      lms-app-online:
+    command: '/bin/sh -c "mkdir -p /var/www/runtime && echo \"${FRONT_RUNTIME_ENV}\" > /var/www/runtime/env-config.js; nginx"'
+    healthcheck:
+      test: ["CMD-SHELL", "wget -O /dev/null --no-verbose --tries=1 --spider http://localhost || exit 1"]
+      interval: 3s
+      retries: 5
+      start_period: 5s
+    deploy:
+      replicas: 1
+      update_config:
+        order: start-first
+        parallelism: 1
+#      resources:
+#        limits:
+#          cpus: "10"
+#          memory: "10G"
+#        reservations:
+#          cpus: "20"
+#          memory: "512M"
+
+  strapi:
+    tty: true
+    stdin_open: true
+    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG${STRAPI_SUFFIX:-strapi}
+    ports:
+      - "9221:80"
+    networks:
+      lms-app-online:
+    command: '/bin/sh -c "echo \"${STRAPI_LOCAL_ENV}\" > /app/.env; yarn cs:import -y && yarn run start"'
+#    command: '/bin/sh -c "echo \"${STRAPI_LOCAL_ENV}\" > /app/.env; yarn cs:import -y; yarn run start"'
+#    command: '/bin/sh -c "echo \"${STRAPI_LOCAL_ENV}\" > /app/.env; yarn run start"'
+    volumes:
+      - lms-app-strapi-public:/app/public
+    healthcheck:
+      test: ["CMD-SHELL", "wget -O /dev/null --no-verbose --tries=1 --spider http://localhost/_health || exit 1"]
+      interval: 3s
+      retries: 5
+      start_period: 10s
+    deploy:
+      replicas: 1
+      update_config:
+        order: start-first
+        parallelism: 1
+        delay: 20s
+#      resources:
+#        limits:
+#          cpus: "10"
+#          memory: "20G"
+#        reservations:
+#          cpus: "2"
+#          memory: "2G"
+
+  postgres:
+    image: postgres:15.2-alpine
+    volumes:
+      - ${LMS_ONLINE_POSTGRES_VOLUME}:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${LMS_ONLINE_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${LMS_ONLINE_POSTGRES_PASSWORD}
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U ${LMS_ONLINE_POSTGRES_USER} -d ${LMS_ONLINE_POSTGRES_USER}'" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    ports:
+      - mode: host
+        target: 5432
+        published: 5433
+    networks:
+      lms-app-online:
+    deploy:
+      replicas: 1
+      update_config:
+        order: stop-first
+        parallelism: 1
+        delay: 20s
+#      resources:
+#        limits:
+#          cpus: "20"
+#          memory: "20G"
+#        reservations:
+#          cpus: "2"
+#          memory: "2G"
+
+networks:
+  lms-app-online:
+
+volumes:
+  lms-app-strapi-public:

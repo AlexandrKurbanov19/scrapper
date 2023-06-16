@@ -1,0 +1,10 @@
+mutation updateLesson($id: ID!, $data: LessonInput!) {
+    updateLesson(id: $id, data: $data) {
+        data {
+            id
+            attributes {
+                title
+            }
+        }
+    }
+}

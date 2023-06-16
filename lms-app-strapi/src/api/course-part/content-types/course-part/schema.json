@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_parts",
+  "info": {
+    "singularName": "course-part",
+    "pluralName": "course-parts",
+    "displayName": "CoursePart"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "inversedBy": "course_parts"
+    },
+    "curator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::curator.curator",
+      "inversedBy": "assigned_course_parts"
+    },
+    "tutor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tutor.tutor",
+      "inversedBy": "assigned_course_parts"
+    },
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date",
+      "required": true
+    },
+    "tariff": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tariff.tariff"
+    },
+    "payed": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lesson.lesson",
+      "mappedBy": "coursePart"
+    }
+  }
+}

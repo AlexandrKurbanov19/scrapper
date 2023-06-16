@@ -1,0 +1,18 @@
+query getAllThemes($filters: ThemeFiltersInput, $pagination: PaginationArg = {}, $sort: [String] = []) {
+    themes(filters: $filters, pagination: $pagination, sort: $sort) {
+        meta {
+            pagination {
+                page
+                pageCount
+                pageSize
+                total
+            }
+        }
+        data {
+            id
+            attributes {
+                title
+            }
+        }
+    }
+}

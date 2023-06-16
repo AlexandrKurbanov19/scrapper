@@ -1,0 +1,39 @@
+@use 'src/styles/mixins' as mx;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include mx.tablet {
+    padding-top: 12px;
+  }
+}
+
+.titleContainer {
+  display: flex;
+  gap: 20px;
+  padding: 16px 0;
+
+  @include mx.tablet {
+    padding: 0;
+    margin-bottom: 12px;
+  }
+
+  .title {
+    color: var(--lms-colorText);
+  }
+
+  .stats {
+    color: var(--lms-colorTextSecondary);
+  }
+}
+
+.datePicker {
+  padding: 12px 0;
+
+  @include mx.tablet {
+    padding: 0;
+    margin-bottom: 12px;
+  }
+}

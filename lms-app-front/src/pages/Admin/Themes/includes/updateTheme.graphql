@@ -1,0 +1,10 @@
+mutation updateTheme($id: ID!, $data: ThemeInput!) {
+    updateTheme(id: $id, data: $data) {
+        data {
+            id
+            attributes {
+                title
+            }
+        }
+    }
+}

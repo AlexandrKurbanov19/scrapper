@@ -1,0 +1,9 @@
+{
+  "version": 5,
+  "source": {
+    "tokensFile": "tokens/token.json"
+  },
+  "target": {
+    "jsonsDir": "tokens"
+  }
+}

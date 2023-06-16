@@ -1,0 +1,2171 @@
+type Administrator {
+  avatarUrl: String
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  telegram: String
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+  vk: String
+}
+
+type AdministratorEntity {
+  attributes: Administrator
+  id: ID
+}
+
+type AdministratorEntityResponse {
+  data: AdministratorEntity
+}
+
+type AdministratorEntityResponseCollection {
+  data: [AdministratorEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input AdministratorFiltersInput {
+  and: [AdministratorFiltersInput]
+  avatarUrl: StringFilterInput
+  createdAt: DateTimeFilterInput
+  email: StringFilterInput
+  firstname: StringFilterInput
+  id: IDFilterInput
+  lastname: StringFilterInput
+  not: AdministratorFiltersInput
+  or: [AdministratorFiltersInput]
+  patronymic: StringFilterInput
+  phone: StringFilterInput
+  telegram: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+  vk: StringFilterInput
+}
+
+input AdministratorInput {
+  avatarUrl: String
+  email: String
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  telegram: String
+  user: ID
+  vk: String
+}
+
+type AuditLog {
+  action: ENUM_AUDITLOG_ACTION!
+  contentType: String!
+  createdAt: DateTime
+  entityId: Int
+  params: JSON
+  result: JSON
+  updatedAt: DateTime
+  userAuthor: UsersPermissionsUserEntityResponse
+}
+
+type AuditLogEntity {
+  attributes: AuditLog
+  id: ID
+}
+
+type AuditLogEntityResponse {
+  data: AuditLogEntity
+}
+
+type AuditLogEntityResponseCollection {
+  data: [AuditLogEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input AuditLogFiltersInput {
+  action: StringFilterInput
+  and: [AuditLogFiltersInput]
+  contentType: StringFilterInput
+  createdAt: DateTimeFilterInput
+  entityId: IntFilterInput
+  id: IDFilterInput
+  not: AuditLogFiltersInput
+  or: [AuditLogFiltersInput]
+  params: JSONFilterInput
+  result: JSONFilterInput
+  updatedAt: DateTimeFilterInput
+  userAuthor: UsersPermissionsUserFiltersInput
+}
+
+input AuditLogInput {
+  action: ENUM_AUDITLOG_ACTION
+  contentType: String
+  entityId: Int
+  params: JSON
+  result: JSON
+  userAuthor: ID
+}
+
+input BooleanFilterInput {
+  and: [Boolean]
+  between: [Boolean]
+  contains: Boolean
+  containsi: Boolean
+  endsWith: Boolean
+  eq: Boolean
+  eqi: Boolean
+  gt: Boolean
+  gte: Boolean
+  in: [Boolean]
+  lt: Boolean
+  lte: Boolean
+  ne: Boolean
+  not: BooleanFilterInput
+  notContains: Boolean
+  notContainsi: Boolean
+  notIn: [Boolean]
+  notNull: Boolean
+  null: Boolean
+  or: [Boolean]
+  startsWith: Boolean
+}
+
+type Comment {
+  attaches: JSON
+  authorUser: UsersPermissionsUserEntityResponse
+  createdAt: DateTime
+  isDeleted: Boolean!
+  subjectContentType: ENUM_COMMENT_SUBJECTCONTENTTYPE!
+  subjectContentTypeId: String!
+  text: String
+  updatedAt: DateTime
+}
+
+type CommentEntity {
+  attributes: Comment
+  id: ID
+}
+
+type CommentEntityResponse {
+  data: CommentEntity
+}
+
+type CommentEntityResponseCollection {
+  data: [CommentEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CommentFiltersInput {
+  and: [CommentFiltersInput]
+  attaches: JSONFilterInput
+  authorUser: UsersPermissionsUserFiltersInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  isDeleted: BooleanFilterInput
+  not: CommentFiltersInput
+  or: [CommentFiltersInput]
+  subjectContentType: StringFilterInput
+  subjectContentTypeId: StringFilterInput
+  text: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CommentInput {
+  attaches: JSON
+  authorUser: ID
+  isDeleted: Boolean
+  subjectContentType: ENUM_COMMENT_SUBJECTCONTENTTYPE
+  subjectContentTypeId: String
+  text: String
+}
+
+type Course {
+  course_parts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartRelationResponseCollection
+  createdAt: DateTime
+  endDate: Date!
+  startDate: Date!
+  student: StudentEntityResponse
+  updatedAt: DateTime
+}
+
+type CourseEntity {
+  attributes: Course
+  id: ID
+}
+
+type CourseEntityResponse {
+  data: CourseEntity
+}
+
+type CourseEntityResponseCollection {
+  data: [CourseEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CourseFiltersInput {
+  and: [CourseFiltersInput]
+  course_parts: CoursePartFiltersInput
+  createdAt: DateTimeFilterInput
+  endDate: DateFilterInput
+  id: IDFilterInput
+  not: CourseFiltersInput
+  or: [CourseFiltersInput]
+  startDate: DateFilterInput
+  student: StudentFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CourseInput {
+  course_parts: [ID]
+  endDate: Date
+  startDate: Date
+  student: ID
+}
+
+type CoursePart {
+  course: CourseEntityResponse
+  createdAt: DateTime
+  curator: CuratorEntityResponse
+  endDate: Date!
+  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
+  payed: Boolean!
+  startDate: Date!
+  tariff: TariffEntityResponse
+  tutor: TutorEntityResponse
+  updatedAt: DateTime
+}
+
+type CoursePartEntity {
+  attributes: CoursePart
+  id: ID
+}
+
+type CoursePartEntityResponse {
+  data: CoursePartEntity
+}
+
+type CoursePartEntityResponseCollection {
+  data: [CoursePartEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CoursePartFiltersInput {
+  and: [CoursePartFiltersInput]
+  course: CourseFiltersInput
+  createdAt: DateTimeFilterInput
+  curator: CuratorFiltersInput
+  endDate: DateFilterInput
+  id: IDFilterInput
+  lessons: LessonFiltersInput
+  not: CoursePartFiltersInput
+  or: [CoursePartFiltersInput]
+  payed: BooleanFilterInput
+  startDate: DateFilterInput
+  tariff: TariffFiltersInput
+  tutor: TutorFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CoursePartInput {
+  course: ID
+  curator: ID
+  endDate: Date
+  lessons: [ID]
+  payed: Boolean
+  startDate: Date
+  tariff: ID
+  tutor: ID
+}
+
+type CoursePartRelationResponseCollection {
+  data: [CoursePartEntity!]!
+}
+
+type CourseRelationResponseCollection {
+  data: [CourseEntity!]!
+}
+
+type Curator {
+  assigned_course_parts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartRelationResponseCollection
+  avatarUrl: String
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
+  telegram: String
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+  vk: String
+}
+
+type CuratorEntity {
+  attributes: Curator
+  id: ID
+}
+
+type CuratorEntityResponse {
+  data: CuratorEntity
+}
+
+type CuratorEntityResponseCollection {
+  data: [CuratorEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CuratorFiltersInput {
+  and: [CuratorFiltersInput]
+  assigned_course_parts: CoursePartFiltersInput
+  avatarUrl: StringFilterInput
+  createdAt: DateTimeFilterInput
+  email: StringFilterInput
+  firstname: StringFilterInput
+  id: IDFilterInput
+  lastname: StringFilterInput
+  not: CuratorFiltersInput
+  or: [CuratorFiltersInput]
+  patronymic: StringFilterInput
+  phone: StringFilterInput
+  students: StudentFiltersInput
+  telegram: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+  vk: StringFilterInput
+}
+
+input CuratorInput {
+  assigned_course_parts: [ID]
+  avatarUrl: String
+  email: String
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  students: [ID]
+  telegram: String
+  user: ID
+  vk: String
+}
+
+type CuratorRelationResponseCollection {
+  data: [CuratorEntity!]!
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+input DateFilterInput {
+  and: [Date]
+  between: [Date]
+  contains: Date
+  containsi: Date
+  endsWith: Date
+  eq: Date
+  eqi: Date
+  gt: Date
+  gte: Date
+  in: [Date]
+  lt: Date
+  lte: Date
+  ne: Date
+  not: DateFilterInput
+  notContains: Date
+  notContainsi: Date
+  notIn: [Date]
+  notNull: Boolean
+  null: Boolean
+  or: [Date]
+  startsWith: Date
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input DateTimeFilterInput {
+  and: [DateTime]
+  between: [DateTime]
+  contains: DateTime
+  containsi: DateTime
+  endsWith: DateTime
+  eq: DateTime
+  eqi: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime]
+  lt: DateTime
+  lte: DateTime
+  ne: DateTime
+  not: DateTimeFilterInput
+  notContains: DateTime
+  notContainsi: DateTime
+  notIn: [DateTime]
+  notNull: Boolean
+  null: Boolean
+  or: [DateTime]
+  startsWith: DateTime
+}
+
+type Discipline {
+  createdAt: DateTime
+  modules(filters: ModuleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ModuleRelationResponseCollection
+  title: String!
+  updatedAt: DateTime
+}
+
+type DisciplineEntity {
+  attributes: Discipline
+  id: ID
+}
+
+type DisciplineEntityResponse {
+  data: DisciplineEntity
+}
+
+type DisciplineEntityResponseCollection {
+  data: [DisciplineEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input DisciplineFiltersInput {
+  and: [DisciplineFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  modules: ModuleFiltersInput
+  not: DisciplineFiltersInput
+  or: [DisciplineFiltersInput]
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input DisciplineInput {
+  modules: [ID]
+  title: String
+}
+
+enum ENUM_AUDITLOG_ACTION {
+  CREATE
+  DELETE
+  UPDATE
+}
+
+enum ENUM_COMMENT_SUBJECTCONTENTTYPE {
+  CURATOR
+  PARENT
+  STUDENT
+  TEACHER
+  TUTOR
+}
+
+enum ENUM_VIDEO_POSTPROCESSSTATUS {
+  IN_PROCESS
+  NEED_PROCESS
+  PROCESS_DONE
+  PROCESS_ERROR
+}
+
+input FileInfoInput {
+  alternativeText: String
+  caption: String
+  name: String
+}
+
+input FloatFilterInput {
+  and: [Float]
+  between: [Float]
+  contains: Float
+  containsi: Float
+  endsWith: Float
+  eq: Float
+  eqi: Float
+  gt: Float
+  gte: Float
+  in: [Float]
+  lt: Float
+  lte: Float
+  ne: Float
+  not: FloatFilterInput
+  notContains: Float
+  notContainsi: Float
+  notIn: [Float]
+  notNull: Boolean
+  null: Boolean
+  or: [Float]
+  startsWith: Float
+}
+
+union GenericMorph = Administrator | AuditLog | Comment | Course | CoursePart | Curator | Discipline | HistoryDataParsing | HistoryRequest | I18NLocale | Lesson | LessonKnowledgeConsolidationTask | LessonPracticalTask | LessonPracticalTaskAnswer | LessonProgress | LessonTest | LessonTestAnswer | Module | Parent | Student | StudentTariffPeriod | Tariff | Teacher | Theme | Tutor | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video
+
+type HistoryDataParsing {
+  createdAt: DateTime
+  history_request: HistoryRequestEntityResponse
+  parsingData: JSON
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type HistoryDataParsingEntity {
+  attributes: HistoryDataParsing
+  id: ID
+}
+
+type HistoryDataParsingEntityResponse {
+  data: HistoryDataParsingEntity
+}
+
+type HistoryDataParsingEntityResponseCollection {
+  data: [HistoryDataParsingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HistoryDataParsingFiltersInput {
+  and: [HistoryDataParsingFiltersInput]
+  createdAt: DateTimeFilterInput
+  history_request: HistoryRequestFiltersInput
+  id: IDFilterInput
+  not: HistoryDataParsingFiltersInput
+  or: [HistoryDataParsingFiltersInput]
+  parsingData: JSONFilterInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HistoryDataParsingInput {
+  history_request: ID
+  parsingData: JSON
+  publishedAt: DateTime
+}
+
+type HistoryRequest {
+  createdAt: DateTime
+  dataForParsing: JSON!
+  history_data_parsing: HistoryDataParsingEntityResponse
+  updatedAt: DateTime
+}
+
+type HistoryRequestEntity {
+  attributes: HistoryRequest
+  id: ID
+}
+
+type HistoryRequestEntityResponse {
+  data: HistoryRequestEntity
+}
+
+type HistoryRequestEntityResponseCollection {
+  data: [HistoryRequestEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HistoryRequestFiltersInput {
+  and: [HistoryRequestFiltersInput]
+  createdAt: DateTimeFilterInput
+  dataForParsing: JSONFilterInput
+  history_data_parsing: HistoryDataParsingFiltersInput
+  id: IDFilterInput
+  not: HistoryRequestFiltersInput
+  or: [HistoryRequestFiltersInput]
+  updatedAt: DateTimeFilterInput
+}
+
+input HistoryRequestInput {
+  adsAuthor: String
+  categoryForParsing: [String]
+  countAds: Int
+  dataForParsing: JSON
+  finalPrice: Int
+  firstPrice: Int
+  history_data_parsing: ID
+  keyWords: String
+  rangeDate: [String]
+  siteNameForParsing: String
+}
+
+type I18NLocale {
+  code: String
+  createdAt: DateTime
+  name: String
+  updatedAt: DateTime
+}
+
+type I18NLocaleEntity {
+  attributes: I18NLocale
+  id: ID
+}
+
+type I18NLocaleEntityResponse {
+  data: I18NLocaleEntity
+}
+
+type I18NLocaleEntityResponseCollection {
+  data: [I18NLocaleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input I18NLocaleFiltersInput {
+  and: [I18NLocaleFiltersInput]
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: I18NLocaleFiltersInput
+  or: [I18NLocaleFiltersInput]
+  updatedAt: DateTimeFilterInput
+}
+
+input IDFilterInput {
+  and: [ID]
+  between: [ID]
+  contains: ID
+  containsi: ID
+  endsWith: ID
+  eq: ID
+  eqi: ID
+  gt: ID
+  gte: ID
+  in: [ID]
+  lt: ID
+  lte: ID
+  ne: ID
+  not: IDFilterInput
+  notContains: ID
+  notContainsi: ID
+  notIn: [ID]
+  notNull: Boolean
+  null: Boolean
+  or: [ID]
+  startsWith: ID
+}
+
+input IntFilterInput {
+  and: [Int]
+  between: [Int]
+  contains: Int
+  containsi: Int
+  endsWith: Int
+  eq: Int
+  eqi: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  lt: Int
+  lte: Int
+  ne: Int
+  not: IntFilterInput
+  notContains: Int
+  notContainsi: Int
+  notIn: [Int]
+  notNull: Boolean
+  null: Boolean
+  or: [Int]
+  startsWith: Int
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+input JSONFilterInput {
+  and: [JSON]
+  between: [JSON]
+  contains: JSON
+  containsi: JSON
+  endsWith: JSON
+  eq: JSON
+  eqi: JSON
+  gt: JSON
+  gte: JSON
+  in: [JSON]
+  lt: JSON
+  lte: JSON
+  ne: JSON
+  not: JSONFilterInput
+  notContains: JSON
+  notContainsi: JSON
+  notIn: [JSON]
+  notNull: Boolean
+  null: Boolean
+  or: [JSON]
+  startsWith: JSON
+}
+
+type Lesson {
+  coursePart: CoursePartEntityResponse
+  createdAt: DateTime
+  goalText: String!
+  intoLeftContent: JSON!
+  intoRightContent: JSON!
+  lessonKnowledgeConsolidationTask: LessonKnowledgeConsolidationTaskEntityResponse
+  lessonPracticalTask: LessonPracticalTaskEntityResponse
+  lessonProgress: LessonProgressEntityResponse
+  lessonTest: LessonTestEntityResponse
+  module: ModuleEntityResponse
+  nextLessonSpoiler: String!
+  numberOfTestAttemptsForLesson: Int!
+  order: Int
+  outroContent: JSON!
+  testSpoilerText: String!
+  theme: ThemeEntityResponse
+  theoryContent: JSON!
+  title: String!
+  updatedAt: DateTime
+}
+
+type LessonEntity {
+  attributes: Lesson
+  id: ID
+}
+
+type LessonEntityResponse {
+  data: LessonEntity
+}
+
+type LessonEntityResponseCollection {
+  data: [LessonEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LessonFiltersInput {
+  and: [LessonFiltersInput]
+  coursePart: CoursePartFiltersInput
+  createdAt: DateTimeFilterInput
+  goalText: StringFilterInput
+  id: IDFilterInput
+  intoLeftContent: JSONFilterInput
+  intoRightContent: JSONFilterInput
+  lessonKnowledgeConsolidationTask: LessonKnowledgeConsolidationTaskFiltersInput
+  lessonPracticalTask: LessonPracticalTaskFiltersInput
+  lessonProgress: LessonProgressFiltersInput
+  lessonTest: LessonTestFiltersInput
+  module: ModuleFiltersInput
+  nextLessonSpoiler: StringFilterInput
+  not: LessonFiltersInput
+  numberOfTestAttemptsForLesson: IntFilterInput
+  or: [LessonFiltersInput]
+  order: IntFilterInput
+  outroContent: JSONFilterInput
+  testSpoilerText: StringFilterInput
+  theme: ThemeFiltersInput
+  theoryContent: JSONFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input LessonInput {
+  coursePart: ID
+  goalText: String
+  intoLeftContent: JSON
+  intoRightContent: JSON
+  lessonKnowledgeConsolidationTask: ID
+  lessonPracticalTask: ID
+  lessonProgress: ID
+  lessonTest: ID
+  module: ID
+  nextLessonSpoiler: String
+  numberOfTestAttemptsForLesson: Int
+  order: Int
+  outroContent: JSON
+  testSpoilerText: String
+  theme: ID
+  theoryContent: JSON
+  title: String
+}
+
+type LessonKnowledgeConsolidationTask {
+  createdAt: DateTime
+  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
+  questions: JSON!
+  rightAnswers: JSON!
+  testMaxPoints: Int!
+  updatedAt: DateTime
+}
+
+type LessonKnowledgeConsolidationTaskEntity {
+  attributes: LessonKnowledgeConsolidationTask
+  id: ID
+}
+
+type LessonKnowledgeConsolidationTaskEntityResponse {
+  data: LessonKnowledgeConsolidationTaskEntity
+}
+
+type LessonKnowledgeConsolidationTaskEntityResponseCollection {
+  data: [LessonKnowledgeConsolidationTaskEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LessonKnowledgeConsolidationTaskFiltersInput {
+  and: [LessonKnowledgeConsolidationTaskFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  lessons: LessonFiltersInput
+  not: LessonKnowledgeConsolidationTaskFiltersInput
+  or: [LessonKnowledgeConsolidationTaskFiltersInput]
+  questions: JSONFilterInput
+  rightAnswers: JSONFilterInput
+  testMaxPoints: IntFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input LessonKnowledgeConsolidationTaskInput {
+  lessons: [ID]
+  questions: JSON
+  rightAnswers: JSON
+  testMaxPoints: Int
+}
+
+type LessonPracticalTask {
+  createdAt: DateTime
+  deadlineDaysAfterFinishTest: Int!
+  lesson: LessonEntityResponse
+  questions: JSON!
+  rightAnswers: JSON!
+  testMaxPoints: Int!
+  updatedAt: DateTime
+}
+
+type LessonPracticalTaskAnswer {
+  answers: JSON!
+  attemptNumber: Int!
+  completeDateTime: DateTime
+  createdAt: DateTime
+  lessonProgress: LessonProgressEntityResponse
+  points: Int
+  startDateTime: DateTime
+  updatedAt: DateTime
+  whenWasRatedDateTime: DateTime
+}
+
+type LessonPracticalTaskAnswerEntity {
+  attributes: LessonPracticalTaskAnswer
+  id: ID
+}
+
+type LessonPracticalTaskAnswerEntityResponse {
+  data: LessonPracticalTaskAnswerEntity
+}
+
+type LessonPracticalTaskAnswerEntityResponseCollection {
+  data: [LessonPracticalTaskAnswerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LessonPracticalTaskAnswerFiltersInput {
+  and: [LessonPracticalTaskAnswerFiltersInput]
+  answers: JSONFilterInput
+  attemptNumber: IntFilterInput
+  completeDateTime: DateTimeFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  lessonProgress: LessonProgressFiltersInput
+  not: LessonPracticalTaskAnswerFiltersInput
+  or: [LessonPracticalTaskAnswerFiltersInput]
+  points: IntFilterInput
+  startDateTime: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  whenWasRatedDateTime: DateTimeFilterInput
+}
+
+input LessonPracticalTaskAnswerInput {
+  answers: JSON
+  attemptNumber: Int
+  completeDateTime: DateTime
+  lessonProgress: ID
+  points: Int
+  startDateTime: DateTime
+  whenWasRatedDateTime: DateTime
+}
+
+type LessonPracticalTaskEntity {
+  attributes: LessonPracticalTask
+  id: ID
+}
+
+type LessonPracticalTaskEntityResponse {
+  data: LessonPracticalTaskEntity
+}
+
+type LessonPracticalTaskEntityResponseCollection {
+  data: [LessonPracticalTaskEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LessonPracticalTaskFiltersInput {
+  and: [LessonPracticalTaskFiltersInput]
+  createdAt: DateTimeFilterInput
+  deadlineDaysAfterFinishTest: IntFilterInput
+  id: IDFilterInput
+  lesson: LessonFiltersInput
+  not: LessonPracticalTaskFiltersInput
+  or: [LessonPracticalTaskFiltersInput]
+  questions: JSONFilterInput
+  rightAnswers: JSONFilterInput
+  testMaxPoints: IntFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input LessonPracticalTaskInput {
+  deadlineDaysAfterFinishTest: Int
+  lesson: ID
+  questions: JSON
+  rightAnswers: JSON
+  testMaxPoints: Int
+}
+
+type LessonProgress {
+  acceptedLessonTestAnswer: LessonTestAnswerEntityResponse
+  createdAt: DateTime
+  intoReadDateTime: DateTime
+  lesson: LessonEntityResponse
+  lessonPracticalTaskAnswer: LessonPracticalTaskAnswerEntityResponse
+  lessonTestAnswers(filters: LessonTestAnswerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonTestAnswerRelationResponseCollection
+  theoryReadDateTime: DateTime
+  updatedAt: DateTime
+}
+
+type LessonProgressEntity {
+  attributes: LessonProgress
+  id: ID
+}
+
+type LessonProgressEntityResponse {
+  data: LessonProgressEntity
+}
+
+type LessonProgressEntityResponseCollection {
+  data: [LessonProgressEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LessonProgressFiltersInput {
+  acceptedLessonTestAnswer: LessonTestAnswerFiltersInput
+  and: [LessonProgressFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  intoReadDateTime: DateTimeFilterInput
+  lesson: LessonFiltersInput
+  lessonPracticalTaskAnswer: LessonPracticalTaskAnswerFiltersInput
+  lessonTestAnswers: LessonTestAnswerFiltersInput
+  not: LessonProgressFiltersInput
+  or: [LessonProgressFiltersInput]
+  theoryReadDateTime: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input LessonProgressInput {
+  acceptedLessonTestAnswer: ID
+  intoReadDateTime: DateTime
+  lesson: ID
+  lessonPracticalTaskAnswer: ID
+  lessonTestAnswers: [ID]
+  theoryReadDateTime: DateTime
+}
+
+type LessonRelationResponseCollection {
+  data: [LessonEntity!]!
+}
+
+type LessonTest {
+  createdAt: DateTime
+  lesson: LessonEntityResponse
+  questions: JSON!
+  rightAnswers: JSON!
+  testMaxPoints: Int!
+  updatedAt: DateTime
+}
+
+type LessonTestAnswer {
+  answers: JSON!
+  attemptNumber: Int!
+  completeDateTime: DateTime
+  createdAt: DateTime
+  lessonProgress: LessonProgressEntityResponse
+  lessonProgressWhereAccepted: LessonProgressEntityResponse
+  points: Int
+  startDateTime: DateTime!
+  updatedAt: DateTime
+}
+
+type LessonTestAnswerEntity {
+  attributes: LessonTestAnswer
+  id: ID
+}
+
+type LessonTestAnswerEntityResponse {
+  data: LessonTestAnswerEntity
+}
+
+type LessonTestAnswerEntityResponseCollection {
+  data: [LessonTestAnswerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LessonTestAnswerFiltersInput {
+  and: [LessonTestAnswerFiltersInput]
+  answers: JSONFilterInput
+  attemptNumber: IntFilterInput
+  completeDateTime: DateTimeFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  lessonProgress: LessonProgressFiltersInput
+  lessonProgressWhereAccepted: LessonProgressFiltersInput
+  not: LessonTestAnswerFiltersInput
+  or: [LessonTestAnswerFiltersInput]
+  points: IntFilterInput
+  startDateTime: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input LessonTestAnswerInput {
+  answers: JSON
+  attemptNumber: Int
+  completeDateTime: DateTime
+  lessonProgress: ID
+  lessonProgressWhereAccepted: ID
+  points: Int
+  startDateTime: DateTime
+}
+
+type LessonTestAnswerRelationResponseCollection {
+  data: [LessonTestAnswerEntity!]!
+}
+
+type LessonTestEntity {
+  attributes: LessonTest
+  id: ID
+}
+
+type LessonTestEntityResponse {
+  data: LessonTestEntity
+}
+
+type LessonTestEntityResponseCollection {
+  data: [LessonTestEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LessonTestFiltersInput {
+  and: [LessonTestFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  lesson: LessonFiltersInput
+  not: LessonTestFiltersInput
+  or: [LessonTestFiltersInput]
+  questions: JSONFilterInput
+  rightAnswers: JSONFilterInput
+  testMaxPoints: IntFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input LessonTestInput {
+  lesson: ID
+  questions: JSON
+  rightAnswers: JSON
+  testMaxPoints: Int
+}
+
+type Module {
+  age: Int!
+  createdAt: DateTime
+  discipline: DisciplineEntityResponse
+  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
+  title: String!
+  updatedAt: DateTime
+}
+
+type ModuleEntity {
+  attributes: Module
+  id: ID
+}
+
+type ModuleEntityResponse {
+  data: ModuleEntity
+}
+
+type ModuleEntityResponseCollection {
+  data: [ModuleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ModuleFiltersInput {
+  age: IntFilterInput
+  and: [ModuleFiltersInput]
+  createdAt: DateTimeFilterInput
+  discipline: DisciplineFiltersInput
+  id: IDFilterInput
+  lessons: LessonFiltersInput
+  not: ModuleFiltersInput
+  or: [ModuleFiltersInput]
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ModuleInput {
+  age: Int
+  discipline: ID
+  lessons: [ID]
+  title: String
+}
+
+type ModuleRelationResponseCollection {
+  data: [ModuleEntity!]!
+}
+
+type Mutation {
+  """Change user password. Confirm with the current password."""
+  changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  createAdministrator(data: AdministratorInput!): AdministratorEntityResponse
+  createAuditLog(data: AuditLogInput!): AuditLogEntityResponse
+  createComment(data: CommentInput!): CommentEntityResponse
+  createCourse(data: CourseInput!): CourseEntityResponse
+  createCoursePart(data: CoursePartInput!): CoursePartEntityResponse
+  createCurator(data: CuratorInput!): CuratorEntityResponse
+  createDiscipline(data: DisciplineInput!): DisciplineEntityResponse
+  createHistoryDataParsing(data: HistoryDataParsingInput!): HistoryDataParsingEntityResponse
+  createHistoryRequest(data: HistoryRequestInput!): HistoryRequestEntityResponse
+  createLesson(data: LessonInput!): LessonEntityResponse
+  createLessonKnowledgeConsolidationTask(data: LessonKnowledgeConsolidationTaskInput!): LessonKnowledgeConsolidationTaskEntityResponse
+  createLessonPracticalTask(data: LessonPracticalTaskInput!): LessonPracticalTaskEntityResponse
+  createLessonPracticalTaskAnswer(data: LessonPracticalTaskAnswerInput!): LessonPracticalTaskAnswerEntityResponse
+  createLessonProgress(data: LessonProgressInput!): LessonProgressEntityResponse
+  createLessonTest(data: LessonTestInput!): LessonTestEntityResponse
+  createLessonTestAnswer(data: LessonTestAnswerInput!): LessonTestAnswerEntityResponse
+  createModule(data: ModuleInput!): ModuleEntityResponse
+  createParent(data: ParentInput!): ParentEntityResponse
+  createStudent(data: StudentInput!): StudentEntityResponse
+  createStudentTariffPeriod(data: StudentTariffPeriodInput!): StudentTariffPeriodEntityResponse
+  createTariff(data: TariffInput!): TariffEntityResponse
+  createTeacher(data: TeacherInput!): TeacherEntityResponse
+  createTheme(data: ThemeInput!): ThemeEntityResponse
+  createTutor(data: TutorInput!): TutorEntityResponse
+  createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
+  createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
+
+  """Create a new role"""
+  createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
+
+  """Create a new user"""
+  createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  createVideo(data: VideoInput!): VideoEntityResponse
+  deleteAdministrator(id: ID!): AdministratorEntityResponse
+  deleteAuditLog(id: ID!): AuditLogEntityResponse
+  deleteComment(id: ID!): CommentEntityResponse
+  deleteCourse(id: ID!): CourseEntityResponse
+  deleteCoursePart(id: ID!): CoursePartEntityResponse
+  deleteCurator(id: ID!): CuratorEntityResponse
+  deleteDiscipline(id: ID!): DisciplineEntityResponse
+  deleteHistoryDataParsing(id: ID!): HistoryDataParsingEntityResponse
+  deleteHistoryRequest(id: ID!): HistoryRequestEntityResponse
+  deleteLesson(id: ID!): LessonEntityResponse
+  deleteLessonKnowledgeConsolidationTask(id: ID!): LessonKnowledgeConsolidationTaskEntityResponse
+  deleteLessonPracticalTask(id: ID!): LessonPracticalTaskEntityResponse
+  deleteLessonPracticalTaskAnswer(id: ID!): LessonPracticalTaskAnswerEntityResponse
+  deleteLessonProgress(id: ID!): LessonProgressEntityResponse
+  deleteLessonTest(id: ID!): LessonTestEntityResponse
+  deleteLessonTestAnswer(id: ID!): LessonTestAnswerEntityResponse
+  deleteModule(id: ID!): ModuleEntityResponse
+  deleteParent(id: ID!): ParentEntityResponse
+  deleteStudent(id: ID!): StudentEntityResponse
+  deleteStudentTariffPeriod(id: ID!): StudentTariffPeriodEntityResponse
+  deleteTariff(id: ID!): TariffEntityResponse
+  deleteTeacher(id: ID!): TeacherEntityResponse
+  deleteTheme(id: ID!): ThemeEntityResponse
+  deleteTutor(id: ID!): TutorEntityResponse
+  deleteUploadFile(id: ID!): UploadFileEntityResponse
+  deleteUploadFolder(id: ID!): UploadFolderEntityResponse
+
+  """Delete an existing role"""
+  deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
+
+  """Delete an existing user"""
+  deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+  deleteVideo(id: ID!): VideoEntityResponse
+
+  """Confirm an email users email address"""
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+
+  """Request a reset password token"""
+  forgotPassword(email: String!): UsersPermissionsPasswordPayload
+  getParsingData(data: HistoryRequestInput): getParsingDataResponse!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  multipleUpload(field: String, files: [Upload]!, ref: String, refId: ID): [UploadFileEntityResponse]!
+
+  """Register a user"""
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  removeFile(id: ID!): UploadFileEntityResponse
+
+  """
+  Reset user password. Confirm with a code (resetToken from forgotPassword)
+  """
+  resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateAdministrator(data: AdministratorInput!, id: ID!): AdministratorEntityResponse
+  updateAuditLog(data: AuditLogInput!, id: ID!): AuditLogEntityResponse
+  updateComment(data: CommentInput!, id: ID!): CommentEntityResponse
+  updateCourse(data: CourseInput!, id: ID!): CourseEntityResponse
+  updateCoursePart(data: CoursePartInput!, id: ID!): CoursePartEntityResponse
+  updateCurator(data: CuratorInput!, id: ID!): CuratorEntityResponse
+  updateDiscipline(data: DisciplineInput!, id: ID!): DisciplineEntityResponse
+  updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  updateHistoryDataParsing(data: HistoryDataParsingInput!, id: ID!): HistoryDataParsingEntityResponse
+  updateHistoryRequest(data: HistoryRequestInput!, id: ID!): HistoryRequestEntityResponse
+  updateLesson(data: LessonInput!, id: ID!): LessonEntityResponse
+  updateLessonKnowledgeConsolidationTask(data: LessonKnowledgeConsolidationTaskInput!, id: ID!): LessonKnowledgeConsolidationTaskEntityResponse
+  updateLessonPracticalTask(data: LessonPracticalTaskInput!, id: ID!): LessonPracticalTaskEntityResponse
+  updateLessonPracticalTaskAnswer(data: LessonPracticalTaskAnswerInput!, id: ID!): LessonPracticalTaskAnswerEntityResponse
+  updateLessonProgress(data: LessonProgressInput!, id: ID!): LessonProgressEntityResponse
+  updateLessonTest(data: LessonTestInput!, id: ID!): LessonTestEntityResponse
+  updateLessonTestAnswer(data: LessonTestAnswerInput!, id: ID!): LessonTestAnswerEntityResponse
+  updateModule(data: ModuleInput!, id: ID!): ModuleEntityResponse
+  updateParent(data: ParentInput!, id: ID!): ParentEntityResponse
+  updateStudent(data: StudentInput!, id: ID!): StudentEntityResponse
+  updateStudentTariffPeriod(data: StudentTariffPeriodInput!, id: ID!): StudentTariffPeriodEntityResponse
+  updateTariff(data: TariffInput!, id: ID!): TariffEntityResponse
+  updateTeacher(data: TeacherInput!, id: ID!): TeacherEntityResponse
+  updateTheme(data: ThemeInput!, id: ID!): ThemeEntityResponse
+  updateTutor(data: TutorInput!, id: ID!): TutorEntityResponse
+  updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
+  updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
+
+  """Update an existing role"""
+  updateUsersPermissionsRole(data: UsersPermissionsRoleInput!, id: ID!): UsersPermissionsUpdateRolePayload
+
+  """Update an existing user"""
+  updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
+  updateVideo(data: VideoInput!, id: ID!): VideoEntityResponse
+  upload(field: String, file: Upload!, info: FileInfoInput, ref: String, refId: ID): UploadFileEntityResponse!
+}
+
+type MyProfileResponse {
+  avatarUrl: String
+  email: String!
+  firstname: String
+  id: ID!
+  lastname: String
+  patronymic: String
+  role: MyProfileRole!
+  userId: ID!
+}
+
+type MyProfileRole {
+  id: ID!
+  name: String!
+}
+
+type Pagination {
+  page: Int!
+  pageCount: Int!
+  pageSize: Int!
+  total: Int!
+}
+
+input PaginationArg {
+  limit: Int
+  page: Int
+  pageSize: Int
+  start: Int
+}
+
+type Parent {
+  avatarUrl: String
+  children(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  telegram: String
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+  vk: String
+}
+
+type ParentEntity {
+  attributes: Parent
+  id: ID
+}
+
+type ParentEntityResponse {
+  data: ParentEntity
+}
+
+type ParentEntityResponseCollection {
+  data: [ParentEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ParentFiltersInput {
+  and: [ParentFiltersInput]
+  avatarUrl: StringFilterInput
+  children: StudentFiltersInput
+  createdAt: DateTimeFilterInput
+  email: StringFilterInput
+  firstname: StringFilterInput
+  id: IDFilterInput
+  lastname: StringFilterInput
+  not: ParentFiltersInput
+  or: [ParentFiltersInput]
+  patronymic: StringFilterInput
+  phone: StringFilterInput
+  telegram: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+  vk: StringFilterInput
+}
+
+input ParentInput {
+  avatarUrl: String
+  children: [ID]
+  email: String
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  telegram: String
+  user: ID
+  vk: String
+}
+
+type ParentRelationResponseCollection {
+  data: [ParentEntity!]!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type Query {
+  administrator(id: ID): AdministratorEntityResponse
+  administrators(filters: AdministratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdministratorEntityResponseCollection
+  auditLog(id: ID): AuditLogEntityResponse
+  auditLogs(filters: AuditLogFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AuditLogEntityResponseCollection
+  comment(id: ID): CommentEntityResponse
+  comments(filters: CommentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CommentEntityResponseCollection
+  course(id: ID): CourseEntityResponse
+  coursePart(id: ID): CoursePartEntityResponse
+  courseParts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartEntityResponseCollection
+  courses(filters: CourseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CourseEntityResponseCollection
+  curator(id: ID): CuratorEntityResponse
+  curators(filters: CuratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CuratorEntityResponseCollection
+  discipline(id: ID): DisciplineEntityResponse
+  disciplines(filters: DisciplineFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DisciplineEntityResponseCollection
+  historyDataParsing(id: ID): HistoryDataParsingEntityResponse
+  historyDataParsings(filters: HistoryDataParsingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HistoryDataParsingEntityResponseCollection
+  historyRequest(id: ID): HistoryRequestEntityResponse
+  historyRequests(filters: HistoryRequestFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): HistoryRequestEntityResponseCollection
+  i18NLocale(id: ID): I18NLocaleEntityResponse
+  i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
+  lesson(id: ID): LessonEntityResponse
+  lessonKnowledgeConsolidationTask(id: ID): LessonKnowledgeConsolidationTaskEntityResponse
+  lessonKnowledgeConsolidationTasks(filters: LessonKnowledgeConsolidationTaskFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonKnowledgeConsolidationTaskEntityResponseCollection
+  lessonPracticalTask(id: ID): LessonPracticalTaskEntityResponse
+  lessonPracticalTaskAnswer(id: ID): LessonPracticalTaskAnswerEntityResponse
+  lessonPracticalTaskAnswers(filters: LessonPracticalTaskAnswerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonPracticalTaskAnswerEntityResponseCollection
+  lessonPracticalTasks(filters: LessonPracticalTaskFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonPracticalTaskEntityResponseCollection
+  lessonProgress(id: ID): LessonProgressEntityResponse
+  lessonProgresses(filters: LessonProgressFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonProgressEntityResponseCollection
+  lessonTest(id: ID): LessonTestEntityResponse
+  lessonTestAnswer(id: ID): LessonTestAnswerEntityResponse
+  lessonTestAnswers(filters: LessonTestAnswerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonTestAnswerEntityResponseCollection
+  lessonTests(filters: LessonTestFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonTestEntityResponseCollection
+  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonEntityResponseCollection
+  me: UsersPermissionsMe
+  module(id: ID): ModuleEntityResponse
+  modules(filters: ModuleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ModuleEntityResponseCollection
+  myProfile: MyProfileResponse!
+  parent(id: ID): ParentEntityResponse
+  parents(filters: ParentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ParentEntityResponseCollection
+  sendFeedback(data: sendFeedbackInput): sendFeedbackResponse!
+  student(id: ID): StudentEntityResponse
+  studentTariffPeriod(id: ID): StudentTariffPeriodEntityResponse
+  studentTariffPeriods(filters: StudentTariffPeriodFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentTariffPeriodEntityResponseCollection
+  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentEntityResponseCollection
+  tariff(id: ID): TariffEntityResponse
+  tariffs(filters: TariffFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TariffEntityResponseCollection
+  teacher(id: ID): TeacherEntityResponse
+  teachers(filters: TeacherFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TeacherEntityResponseCollection
+  theme(id: ID): ThemeEntityResponse
+  themes(filters: ThemeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ThemeEntityResponseCollection
+  tutor(id: ID): TutorEntityResponse
+  tutors(filters: TutorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TutorEntityResponseCollection
+  uploadFile(id: ID): UploadFileEntityResponse
+  uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
+  uploadFolder(id: ID): UploadFolderEntityResponse
+  uploadFolders(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderEntityResponseCollection
+  usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
+  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
+  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  video(id: ID): VideoEntityResponse
+  videos(filters: VideoFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): VideoEntityResponseCollection
+}
+
+type ResponseCollectionMeta {
+  pagination: Pagination!
+}
+
+input StringFilterInput {
+  and: [String]
+  between: [String]
+  contains: String
+  containsi: String
+  endsWith: String
+  eq: String
+  eqi: String
+  gt: String
+  gte: String
+  in: [String]
+  lt: String
+  lte: String
+  ne: String
+  not: StringFilterInput
+  notContains: String
+  notContainsi: String
+  notIn: [String]
+  notNull: Boolean
+  null: Boolean
+  or: [String]
+  startsWith: String
+}
+
+type Student {
+  avatarUrl: String
+  birthday: Date
+  courses(filters: CourseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CourseRelationResponseCollection
+  createdAt: DateTime
+  curators(filters: CuratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CuratorRelationResponseCollection
+  email: String!
+  firstname: String
+  lastname: String
+  parents(filters: ParentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ParentRelationResponseCollection
+  patronymic: String
+  phone: String
+  student_tariff_periods(filters: StudentTariffPeriodFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentTariffPeriodRelationResponseCollection
+  tariff: TariffEntityResponse
+  telegram: String
+  tutors(filters: TutorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TutorRelationResponseCollection
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+  vk: String
+}
+
+type StudentEntity {
+  attributes: Student
+  id: ID
+}
+
+type StudentEntityResponse {
+  data: StudentEntity
+}
+
+type StudentEntityResponseCollection {
+  data: [StudentEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input StudentFiltersInput {
+  and: [StudentFiltersInput]
+  avatarUrl: StringFilterInput
+  birthday: DateFilterInput
+  courses: CourseFiltersInput
+  createdAt: DateTimeFilterInput
+  curators: CuratorFiltersInput
+  email: StringFilterInput
+  firstname: StringFilterInput
+  id: IDFilterInput
+  lastname: StringFilterInput
+  not: StudentFiltersInput
+  or: [StudentFiltersInput]
+  parents: ParentFiltersInput
+  patronymic: StringFilterInput
+  phone: StringFilterInput
+  student_tariff_periods: StudentTariffPeriodFiltersInput
+  tariff: TariffFiltersInput
+  telegram: StringFilterInput
+  tutors: TutorFiltersInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+  vk: StringFilterInput
+}
+
+input StudentInput {
+  avatarUrl: String
+  birthday: Date
+  courses: [ID]
+  curators: [ID]
+  email: String
+  firstname: String
+  lastname: String
+  parents: [ID]
+  patronymic: String
+  phone: String
+  student_tariff_periods: [ID]
+  tariff: ID
+  telegram: String
+  tutors: [ID]
+  user: ID
+  vk: String
+}
+
+type StudentRelationResponseCollection {
+  data: [StudentEntity!]!
+}
+
+type StudentTariffPeriod {
+  active: Boolean!
+  createdAt: DateTime
+  end: Date!
+  start: Date!
+  student: StudentEntityResponse
+  tariff: TariffEntityResponse
+  updatedAt: DateTime
+}
+
+type StudentTariffPeriodEntity {
+  attributes: StudentTariffPeriod
+  id: ID
+}
+
+type StudentTariffPeriodEntityResponse {
+  data: StudentTariffPeriodEntity
+}
+
+type StudentTariffPeriodEntityResponseCollection {
+  data: [StudentTariffPeriodEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input StudentTariffPeriodFiltersInput {
+  active: BooleanFilterInput
+  and: [StudentTariffPeriodFiltersInput]
+  createdAt: DateTimeFilterInput
+  end: DateFilterInput
+  id: IDFilterInput
+  not: StudentTariffPeriodFiltersInput
+  or: [StudentTariffPeriodFiltersInput]
+  start: DateFilterInput
+  student: StudentFiltersInput
+  tariff: TariffFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input StudentTariffPeriodInput {
+  active: Boolean
+  end: Date
+  start: Date
+  student: ID
+  tariff: ID
+}
+
+type StudentTariffPeriodRelationResponseCollection {
+  data: [StudentTariffPeriodEntity!]!
+}
+
+type Tariff {
+  createdAt: DateTime
+  description: JSON!
+  name: String!
+  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
+  updatedAt: DateTime
+}
+
+type TariffEntity {
+  attributes: Tariff
+  id: ID
+}
+
+type TariffEntityResponse {
+  data: TariffEntity
+}
+
+type TariffEntityResponseCollection {
+  data: [TariffEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input TariffFiltersInput {
+  and: [TariffFiltersInput]
+  createdAt: DateTimeFilterInput
+  description: JSONFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: TariffFiltersInput
+  or: [TariffFiltersInput]
+  students: StudentFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input TariffInput {
+  description: JSON
+  name: String
+  students: [ID]
+}
+
+type Teacher {
+  avatarUrl: String
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  telegram: String
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+  vk: String
+}
+
+type TeacherEntity {
+  attributes: Teacher
+  id: ID
+}
+
+type TeacherEntityResponse {
+  data: TeacherEntity
+}
+
+type TeacherEntityResponseCollection {
+  data: [TeacherEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input TeacherFiltersInput {
+  and: [TeacherFiltersInput]
+  avatarUrl: StringFilterInput
+  createdAt: DateTimeFilterInput
+  email: StringFilterInput
+  firstname: StringFilterInput
+  id: IDFilterInput
+  lastname: StringFilterInput
+  not: TeacherFiltersInput
+  or: [TeacherFiltersInput]
+  patronymic: StringFilterInput
+  phone: StringFilterInput
+  telegram: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+  vk: StringFilterInput
+}
+
+input TeacherInput {
+  avatarUrl: String
+  email: String
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  telegram: String
+  user: ID
+  vk: String
+}
+
+type Theme {
+  createdAt: DateTime
+  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
+  title: String!
+  updatedAt: DateTime
+}
+
+type ThemeEntity {
+  attributes: Theme
+  id: ID
+}
+
+type ThemeEntityResponse {
+  data: ThemeEntity
+}
+
+type ThemeEntityResponseCollection {
+  data: [ThemeEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ThemeFiltersInput {
+  and: [ThemeFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  lessons: LessonFiltersInput
+  not: ThemeFiltersInput
+  or: [ThemeFiltersInput]
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ThemeInput {
+  lessons: [ID]
+  title: String
+}
+
+type Tutor {
+  assigned_course_parts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartRelationResponseCollection
+  avatarUrl: String
+  createdAt: DateTime
+  email: String!
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
+  telegram: String
+  updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
+  vk: String
+}
+
+type TutorEntity {
+  attributes: Tutor
+  id: ID
+}
+
+type TutorEntityResponse {
+  data: TutorEntity
+}
+
+type TutorEntityResponseCollection {
+  data: [TutorEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input TutorFiltersInput {
+  and: [TutorFiltersInput]
+  assigned_course_parts: CoursePartFiltersInput
+  avatarUrl: StringFilterInput
+  createdAt: DateTimeFilterInput
+  email: StringFilterInput
+  firstname: StringFilterInput
+  id: IDFilterInput
+  lastname: StringFilterInput
+  not: TutorFiltersInput
+  or: [TutorFiltersInput]
+  patronymic: StringFilterInput
+  phone: StringFilterInput
+  students: StudentFiltersInput
+  telegram: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
+  vk: StringFilterInput
+}
+
+input TutorInput {
+  assigned_course_parts: [ID]
+  avatarUrl: String
+  email: String
+  firstname: String
+  lastname: String
+  patronymic: String
+  phone: String
+  students: [ID]
+  telegram: String
+  user: ID
+  vk: String
+}
+
+type TutorRelationResponseCollection {
+  data: [TutorEntity!]!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  alternativeText: String
+  caption: String
+  createdAt: DateTime
+  ext: String
+  formats: JSON
+  hash: String!
+  height: Int
+  mime: String!
+  name: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [GenericMorph]
+  size: Float!
+  updatedAt: DateTime
+  url: String!
+  width: Int
+}
+
+type UploadFileEntity {
+  attributes: UploadFile
+  id: ID
+}
+
+type UploadFileEntityResponse {
+  data: UploadFileEntity
+}
+
+type UploadFileEntityResponseCollection {
+  data: [UploadFileEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UploadFileFiltersInput {
+  alternativeText: StringFilterInput
+  and: [UploadFileFiltersInput]
+  caption: StringFilterInput
+  createdAt: DateTimeFilterInput
+  ext: StringFilterInput
+  folder: UploadFolderFiltersInput
+  folderPath: StringFilterInput
+  formats: JSONFilterInput
+  hash: StringFilterInput
+  height: IntFilterInput
+  id: IDFilterInput
+  mime: StringFilterInput
+  name: StringFilterInput
+  not: UploadFileFiltersInput
+  or: [UploadFileFiltersInput]
+  previewUrl: StringFilterInput
+  provider: StringFilterInput
+  provider_metadata: JSONFilterInput
+  size: FloatFilterInput
+  updatedAt: DateTimeFilterInput
+  url: StringFilterInput
+  width: IntFilterInput
+}
+
+input UploadFileInput {
+  alternativeText: String
+  caption: String
+  ext: String
+  folder: ID
+  folderPath: String
+  formats: JSON
+  hash: String
+  height: Int
+  mime: String
+  name: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  size: Float
+  url: String
+  width: Int
+}
+
+type UploadFileRelationResponseCollection {
+  data: [UploadFileEntity!]!
+}
+
+type UploadFolder {
+  children(filters: UploadFolderFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFolderRelationResponseCollection
+  createdAt: DateTime
+  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  name: String!
+  parent: UploadFolderEntityResponse
+  path: String!
+  pathId: Int!
+  updatedAt: DateTime
+}
+
+type UploadFolderEntity {
+  attributes: UploadFolder
+  id: ID
+}
+
+type UploadFolderEntityResponse {
+  data: UploadFolderEntity
+}
+
+type UploadFolderEntityResponseCollection {
+  data: [UploadFolderEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UploadFolderFiltersInput {
+  and: [UploadFolderFiltersInput]
+  children: UploadFolderFiltersInput
+  createdAt: DateTimeFilterInput
+  files: UploadFileFiltersInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: UploadFolderFiltersInput
+  or: [UploadFolderFiltersInput]
+  parent: UploadFolderFiltersInput
+  path: StringFilterInput
+  pathId: IntFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input UploadFolderInput {
+  children: [ID]
+  files: [ID]
+  name: String
+  parent: ID
+  path: String
+  pathId: Int
+}
+
+type UploadFolderRelationResponseCollection {
+  data: [UploadFolderEntity!]!
+}
+
+type UsersPermissionsCreateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsDeleteRolePayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String! = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  blocked: Boolean
+  confirmed: Boolean
+  email: String
+  id: ID!
+  role: UsersPermissionsMeRole
+  username: String!
+}
+
+type UsersPermissionsMeRole {
+  description: String
+  id: ID!
+  name: String!
+  type: String
+}
+
+type UsersPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsPermission {
+  action: String!
+  createdAt: DateTime
+  role: UsersPermissionsRoleEntityResponse
+  updatedAt: DateTime
+}
+
+type UsersPermissionsPermissionEntity {
+  attributes: UsersPermissionsPermission
+  id: ID
+}
+
+input UsersPermissionsPermissionFiltersInput {
+  action: StringFilterInput
+  and: [UsersPermissionsPermissionFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: UsersPermissionsPermissionFiltersInput
+  or: [UsersPermissionsPermissionFiltersInput]
+  role: UsersPermissionsRoleFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+type UsersPermissionsPermissionRelationResponseCollection {
+  data: [UsersPermissionsPermissionEntity!]!
+}
+
+input UsersPermissionsRegisterInput {
+  email: String!
+  password: String!
+  username: String!
+}
+
+type UsersPermissionsRole {
+  createdAt: DateTime
+  description: String
+  name: String!
+  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
+  type: String
+  updatedAt: DateTime
+  users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
+}
+
+type UsersPermissionsRoleEntity {
+  attributes: UsersPermissionsRole
+  id: ID
+}
+
+type UsersPermissionsRoleEntityResponse {
+  data: UsersPermissionsRoleEntity
+}
+
+type UsersPermissionsRoleEntityResponseCollection {
+  data: [UsersPermissionsRoleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UsersPermissionsRoleFiltersInput {
+  and: [UsersPermissionsRoleFiltersInput]
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: UsersPermissionsRoleFiltersInput
+  or: [UsersPermissionsRoleFiltersInput]
+  permissions: UsersPermissionsPermissionFiltersInput
+  type: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  users: UsersPermissionsUserFiltersInput
+}
+
+input UsersPermissionsRoleInput {
+  description: String
+  name: String
+  permissions: [ID]
+  type: String
+  users: [ID]
+}
+
+type UsersPermissionsUpdateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsUser {
+  administrator: AdministratorEntityResponse
+  blocked: Boolean
+  confirmed: Boolean
+  createdAt: DateTime
+  curator: CuratorEntityResponse
+  email: String!
+  parent: ParentEntityResponse
+  provider: String
+  role: UsersPermissionsRoleEntityResponse
+  student: StudentEntityResponse
+  teacher: TeacherEntityResponse
+  tutor: TutorEntityResponse
+  updatedAt: DateTime
+  username: String!
+}
+
+type UsersPermissionsUserEntity {
+  attributes: UsersPermissionsUser
+  id: ID
+}
+
+type UsersPermissionsUserEntityResponse {
+  data: UsersPermissionsUserEntity
+}
+
+type UsersPermissionsUserEntityResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UsersPermissionsUserFiltersInput {
+  administrator: AdministratorFiltersInput
+  and: [UsersPermissionsUserFiltersInput]
+  blocked: BooleanFilterInput
+  confirmationToken: StringFilterInput
+  confirmed: BooleanFilterInput
+  createdAt: DateTimeFilterInput
+  curator: CuratorFiltersInput
+  email: StringFilterInput
+  id: IDFilterInput
+  not: UsersPermissionsUserFiltersInput
+  or: [UsersPermissionsUserFiltersInput]
+  parent: ParentFiltersInput
+  password: StringFilterInput
+  provider: StringFilterInput
+  resetPasswordToken: StringFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  student: StudentFiltersInput
+  teacher: TeacherFiltersInput
+  tutor: TutorFiltersInput
+  updatedAt: DateTimeFilterInput
+  username: StringFilterInput
+}
+
+input UsersPermissionsUserInput {
+  administrator: ID
+  blocked: Boolean
+  confirmationToken: String
+  confirmed: Boolean
+  curator: ID
+  email: String
+  parent: ID
+  password: String
+  provider: String
+  resetPasswordToken: String
+  role: ID
+  student: ID
+  teacher: ID
+  tutor: ID
+  username: String
+}
+
+type UsersPermissionsUserRelationResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+}
+
+type Video {
+  createdAt: DateTime
+  filename: String!
+  hls: String!
+  originalVideoUri: String!
+  postProcessStatus: ENUM_VIDEO_POSTPROCESSSTATUS!
+  shortCode: String!
+  thumb: String!
+  updatedAt: DateTime
+}
+
+type VideoEntity {
+  attributes: Video
+  id: ID
+}
+
+type VideoEntityResponse {
+  data: VideoEntity
+}
+
+type VideoEntityResponseCollection {
+  data: [VideoEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input VideoFiltersInput {
+  and: [VideoFiltersInput]
+  createdAt: DateTimeFilterInput
+  filename: StringFilterInput
+  hls: StringFilterInput
+  id: IDFilterInput
+  not: VideoFiltersInput
+  or: [VideoFiltersInput]
+  originalVideoUri: StringFilterInput
+  postProcessStatus: StringFilterInput
+  shortCode: StringFilterInput
+  thumb: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input VideoInput {
+  filename: String
+  hls: String
+  originalVideoUri: String
+  postProcessStatus: ENUM_VIDEO_POSTPROCESSSTATUS
+  shortCode: String
+  thumb: String
+}
+
+type getParsingDataResponse {
+  json: JSON
+}
+
+input sendFeedbackInput {
+  email: String!
+  text: String!
+  title: String
+}
+
+type sendFeedbackResponse {
+  status: Boolean
+}

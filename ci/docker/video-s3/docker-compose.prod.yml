@@ -1,0 +1,26 @@
+version: '2'
+services:
+  video:
+    privileged: true
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3031:80"
+    volumes:
+      - "/data/s3_lms_online:/opt/static/"
+      - "./nginx.conf:/usr/local/nginx/conf/nginx.conf"
+    links:
+      - minio
+  minio:
+    # Нужно использовать именно эту версию minio, в ней файлы хранятся как обычные файлы в ОС
+    image: docker.io/bitnami/minio:2022.5.26
+    restart: always
+    ports:
+      - '9900:9000'
+      - '9910:9001'
+    env_file:
+      - ./local.env
+    volumes:
+      - '/data/s3_lms_online:/data:rw'

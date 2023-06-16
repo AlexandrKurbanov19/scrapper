@@ -1,0 +1,13 @@
+{
+  "name": "Student",
+  "description": "Ученик",
+  "type": "authenticated",
+  "permissions": [
+    {
+      "action": "plugin::users-permissions.auth.changePassword"
+    },
+    {
+      "action": "plugin::users-permissions.user.me"
+    }
+  ]
+}

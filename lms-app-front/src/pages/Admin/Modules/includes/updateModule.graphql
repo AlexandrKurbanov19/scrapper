@@ -1,0 +1,19 @@
+mutation updateModule($id: ID!, $data: ModuleInput!) {
+    updateModule(id: $id, data: $data) {
+        data {
+            id
+            attributes {
+                age
+                title
+                discipline {
+                    data {
+                        id
+                        attributes {
+                            title
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

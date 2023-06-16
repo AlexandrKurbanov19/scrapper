@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": false
+    },
+    "attaches": {
+      "type": "json"
+    },
+    "subjectContentType": {
+      "type": "enumeration",
+      "enum": [
+        "PARENT",
+        "STUDENT",
+        "TEACHER",
+        "TUTOR",
+        "CURATOR"
+      ],
+      "required": true
+    },
+    "authorUser": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "subjectContentTypeId": {
+      "type": "string",
+      "required": true
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

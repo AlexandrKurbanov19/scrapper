@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getInvalidFieldsFromZodError can get error list 1`] = `
+[
+  "input.phone",
+  "input.fio",
+  "input.birthday",
+]
+`;

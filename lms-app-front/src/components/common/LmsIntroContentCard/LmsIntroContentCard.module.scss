@@ -1,0 +1,45 @@
+.wrapperCard {
+  max-width: 856px;
+  width: 100%;
+  border-radius: 16px;
+  background: #fff;
+  font-family: 'SF Pro Text', sans-serif;
+  font-style: normal;
+  margin: 24px 0;
+  .title {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #000000;
+    }
+    .contentTitle {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.85);
+      margin-bottom: 8px;
+    }
+    .contentList {
+      padding-left: 24px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.85);
+      margin-bottom: 24px;
+    }
+    .contentLeft {
+      max-width: 504px;
+      width: 100%;
+    }
+    .contentRight {
+      max-width: 288px;
+      width: 100%;
+      .contentRightImg {
+        background: #A9A9A9;
+        border-radius: 6px;
+      }
+    }
+}

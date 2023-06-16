@@ -1,0 +1,7 @@
+mutation createLessonPracticalTask($data: LessonPracticalTaskInput!) {
+    createLessonPracticalTask(data: $data) {
+        data {
+            id
+        }
+    }
+}

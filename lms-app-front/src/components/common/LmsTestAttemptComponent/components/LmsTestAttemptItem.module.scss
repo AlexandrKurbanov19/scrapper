@@ -1,0 +1,38 @@
+.testAttemptContainer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'SF Pro Text', sans-serif;
+  margin-top: 18px;
+
+  .testAttemptImg {
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .smile {
+    background: #94D210;
+  }
+  .sadness {
+    background: #FA5D7E;
+  }
+  .testAttemptText {
+    p {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.88);
+    }
+    span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}

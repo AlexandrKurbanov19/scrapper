@@ -1,0 +1,94 @@
+.testResult {
+  max-width: 856px;
+  margin: 24px 0;
+  .resultCount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px;
+    p {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+    .stepCount {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: rgba(0, 0, 0, 0.45);
+      display: block;
+      span {
+        color: rgba(0, 0, 0, 0.88);
+      }
+    }
+  }
+
+  .maxPoints {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .icon {
+    max-width: 63px;
+    width: 100%;
+    margin-bottom: 28px;
+  }
+  .maxPointsWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .maxPointsNums {
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 0.88);
+    .success {
+      color: #52C41A;
+    }
+    .fail {
+      color: #FF4D4F;
+    }
+  }
+  .maxPointsText {
+    margin-bottom: 24px;
+    text-align: center;
+    width: 100%;
+    white-space: pre-line;
+  }
+  .maxPointsDescription {
+    background: #FFFBE6;
+    border-radius: 12px;
+    max-width: 720px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 24px 32px;
+
+
+    p {
+      max-width: 474px;
+      width: 100%;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .repeatTheory {
+    background: #FFF1F0;
+  }
+  .btnWrap {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+}

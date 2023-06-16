@@ -1,0 +1,37 @@
+query getStudentById($id: ID!) {
+    student(id: $id) {
+        data {
+            id
+            attributes {
+                user {
+                    data {
+                        id
+                        attributes {
+                            blocked
+                            email
+                        }
+                    }
+                }
+                firstname
+                lastname
+                patronymic
+                email
+                phone
+                telegram
+                vk
+                avatarUrl
+                birthday
+                tariff {
+                    data {
+                        id
+                    }
+                }
+                parents {
+                    data {
+                        id
+                    }
+                }
+            }
+        }
+    }
+}

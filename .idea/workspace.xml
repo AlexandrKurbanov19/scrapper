@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7259cce5-0d13-4ddf-83f7-d4dc7b853ec9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/query/createHistoryDataParsing.graphql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/graphql/query/getParsingData.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/api/history-request/content-types/history-request/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/api/history-request/content-types/history-request/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/graphql.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/graphql.schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/generated/graphql.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/query/query.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/graphql/query/createHistoryRequest.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/Parser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/parserPage/ParserForm.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="ea5a04d7-239f-4834-975d-f6896e9aa5d3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,47 +16,89 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2QE4rOdxOJV7Yde77zmNAFvwNQj" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2QmI71Nux1iS8D9U3fiENuKFzUd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alexandr/Desktop/програмирование/проект парсер/frontend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\Alexandr\\Desktop\\програмирование\\проект парсер\\frontend\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Alexandr\\Desktop\\програмирование\\проект парсер\\frontend\\node_modules\\typescript\\lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/LMS__ONLINE-54",
+    "last_opened_file_path": "C:/Users/Alexandr/Desktop/програмирование/парсер 2/lms-app-front/src/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "watcher.settings",
+    "ts.external.directory.path": "C:\\Users\\Alexandr\\Desktop\\програмирование\\парсер 2\\lms-app-front\\node_modules\\typescript\\lib"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.rcb.reactComponents" value="false" />
         <entry key="com.haulmont.rcb.reactInspector" value="false" />
+        <entry key="com.haulmont.rcb.storybook" value="false" />
       </map>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\парсер 2\lms-app-front\src\components" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\парсер 2\lms-app-front\src\pages\ParserPage" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\парсер 2\lms-app-strapi\src" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\парсер 2\lms-app-strapi\src\custom-graphql\query" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\парсер 2\lms-app-strapi\src\custom-graphql\mutation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\парсер 2\lms-app-strapi\src\utils" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\парсер 2\lms-app-strapi\src\utils\parsingUtils" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\lms-New\lms-app-front\src\components\common\LmsTestAttemptComponent\components" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\lms-New\lms-app-front\src\fonts" />
+      <recent name="C:\Users\Alexandr\Desktop\програмирование\lms-New\lms-app-front\src\components\common\FullScreenComponent\types" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.Strapi debug">
+    <configuration name="Strapi debug" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$/lms-app-strapi">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Jest.All strapi Tests" />
+      <item itemvalue="Node.js.Strapi debug" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7259cce5-0d13-4ddf-83f7-d4dc7b853ec9" name="Changes" comment="" />
-      <created>1684905606083</created>
+      <changelist id="ea5a04d7-239f-4834-975d-f6896e9aa5d3" name="Changes" comment="" />
+      <created>1685952159283</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1684905606083</updated>
-      <workItem from="1684905607602" duration="10576000" />
-      <workItem from="1684938292676" duration="2606000" />
+      <updated>1685952159283</updated>
+      <workItem from="1685952161565" duration="14250000" />
+      <workItem from="1686021321382" duration="11994000" />
+      <workItem from="1686044085775" duration="1285000" />
+      <workItem from="1686109210866" duration="24199000" />
+      <workItem from="1686194165867" duration="15450000" />
+      <workItem from="1686281887818" duration="18557000" />
+      <workItem from="1686643444998" duration="2761000" />
+      <workItem from="1686646374953" duration="17175000" />
+      <workItem from="1686711872468" duration="2888000" />
+      <workItem from="1686714940170" duration="10880000" />
+      <workItem from="1686731561876" duration="4585000" />
+      <workItem from="1686736755578" duration="5426000" />
+      <workItem from="1686798297230" duration="3494000" />
+      <workItem from="1686827382968" duration="2926000" />
+      <workItem from="1686885081180" duration="3699000" />
+      <workItem from="1686891517124" duration="15000" />
+      <workItem from="1686891544923" duration="1607000" />
+      <workItem from="1686893186730" duration="4352000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,15 @@
+query getProfile_dp {
+    myProfile {
+        id
+        userId
+        firstname
+        lastname
+        patronymic
+        avatarUrl
+        email
+        role {
+            id
+            name
+        }
+    }
+}

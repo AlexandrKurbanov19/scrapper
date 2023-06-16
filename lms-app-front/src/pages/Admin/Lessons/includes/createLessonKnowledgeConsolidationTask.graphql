@@ -1,0 +1,7 @@
+mutation createLessonKnowledgeConsolidationTask($data: LessonKnowledgeConsolidationTaskInput!) {
+    createLessonKnowledgeConsolidationTask(data: $data) {
+        data {
+            id
+        }
+    }
+}

@@ -1,0 +1,289 @@
+{
+  "name": "Administrator",
+  "description": "Администратор платформы и школы",
+  "type": "administrator",
+  "permissions": [
+    {
+      "action": "api::administrator.administrator.create"
+    },
+    {
+      "action": "api::administrator.administrator.delete"
+    },
+    {
+      "action": "api::administrator.administrator.find"
+    },
+    {
+      "action": "api::administrator.administrator.findOne"
+    },
+    {
+      "action": "api::administrator.administrator.update"
+    },
+    {
+      "action": "api::audit-log.audit-log.find"
+    },
+    {
+      "action": "api::audit-log.audit-log.findOne"
+    },
+    {
+      "action": "api::comment.comment.create"
+    },
+    {
+      "action": "api::comment.comment.find"
+    },
+    {
+      "action": "api::comment.comment.findOne"
+    },
+    {
+      "action": "api::comment.comment.update"
+    },
+    {
+      "action": "api::curator.curator.create"
+    },
+    {
+      "action": "api::curator.curator.find"
+    },
+    {
+      "action": "api::curator.curator.findOne"
+    },
+    {
+      "action": "api::curator.curator.update"
+    },
+    {
+      "action": "api::discipline.discipline.create"
+    },
+    {
+      "action": "api::discipline.discipline.find"
+    },
+    {
+      "action": "api::discipline.discipline.findOne"
+    },
+    {
+      "action": "api::discipline.discipline.update"
+    },
+    {
+      "action": "api::editorjs.editorjs.fetchUrl"
+    },
+    {
+      "action": "api::editorjs.editorjs.uploadFile"
+    },
+    {
+      "action": "api::editorjs.editorjs.uploadImage"
+    },
+    {
+      "action": "api::editorjs.editorjs.uploadVideo"
+    },
+    {
+      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.create"
+    },
+    {
+      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.find"
+    },
+    {
+      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.findOne"
+    },
+    {
+      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.update"
+    },
+    {
+      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.create"
+    },
+    {
+      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.find"
+    },
+    {
+      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.findOne"
+    },
+    {
+      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.update"
+    },
+    {
+      "action": "api::lesson-practical-task.lesson-practical-task.create"
+    },
+    {
+      "action": "api::lesson-practical-task.lesson-practical-task.find"
+    },
+    {
+      "action": "api::lesson-practical-task.lesson-practical-task.findOne"
+    },
+    {
+      "action": "api::lesson-practical-task.lesson-practical-task.update"
+    },
+    {
+      "action": "api::lesson-progress.lesson-progress.create"
+    },
+    {
+      "action": "api::lesson-progress.lesson-progress.find"
+    },
+    {
+      "action": "api::lesson-progress.lesson-progress.findOne"
+    },
+    {
+      "action": "api::lesson-progress.lesson-progress.update"
+    },
+    {
+      "action": "api::lesson-test-answer.lesson-test-answer.create"
+    },
+    {
+      "action": "api::lesson-test-answer.lesson-test-answer.find"
+    },
+    {
+      "action": "api::lesson-test-answer.lesson-test-answer.findOne"
+    },
+    {
+      "action": "api::lesson-test-answer.lesson-test-answer.update"
+    },
+    {
+      "action": "api::lesson-test.lesson-test.create"
+    },
+    {
+      "action": "api::lesson-test.lesson-test.find"
+    },
+    {
+      "action": "api::lesson-test.lesson-test.findOne"
+    },
+    {
+      "action": "api::lesson-test.lesson-test.update"
+    },
+    {
+      "action": "api::lesson.lesson.create"
+    },
+    {
+      "action": "api::lesson.lesson.find"
+    },
+    {
+      "action": "api::lesson.lesson.findOne"
+    },
+    {
+      "action": "api::lesson.lesson.update"
+    },
+    {
+      "action": "api::module.module.create"
+    },
+    {
+      "action": "api::module.module.find"
+    },
+    {
+      "action": "api::module.module.findOne"
+    },
+    {
+      "action": "api::module.module.update"
+    },
+    {
+      "action": "api::parent.parent.create"
+    },
+    {
+      "action": "api::parent.parent.find"
+    },
+    {
+      "action": "api::parent.parent.findOne"
+    },
+    {
+      "action": "api::parent.parent.update"
+    },
+    {
+      "action": "api::student-tariff-period.student-tariff-period.create"
+    },
+    {
+      "action": "api::student-tariff-period.student-tariff-period.find"
+    },
+    {
+      "action": "api::student-tariff-period.student-tariff-period.findOne"
+    },
+    {
+      "action": "api::student-tariff-period.student-tariff-period.update"
+    },
+    {
+      "action": "api::student.student.create"
+    },
+    {
+      "action": "api::student.student.find"
+    },
+    {
+      "action": "api::student.student.findOne"
+    },
+    {
+      "action": "api::student.student.update"
+    },
+    {
+      "action": "api::tariff.tariff.create"
+    },
+    {
+      "action": "api::tariff.tariff.find"
+    },
+    {
+      "action": "api::tariff.tariff.findOne"
+    },
+    {
+      "action": "api::tariff.tariff.update"
+    },
+    {
+      "action": "api::teacher.teacher.create"
+    },
+    {
+      "action": "api::teacher.teacher.find"
+    },
+    {
+      "action": "api::teacher.teacher.findOne"
+    },
+    {
+      "action": "api::teacher.teacher.update"
+    },
+    {
+      "action": "api::theme.theme.create"
+    },
+    {
+      "action": "api::theme.theme.find"
+    },
+    {
+      "action": "api::theme.theme.findOne"
+    },
+    {
+      "action": "api::theme.theme.update"
+    },
+    {
+      "action": "api::tutor.tutor.create"
+    },
+    {
+      "action": "api::tutor.tutor.find"
+    },
+    {
+      "action": "api::tutor.tutor.findOne"
+    },
+    {
+      "action": "api::tutor.tutor.update"
+    },
+    {
+      "action": "api::video.video.find"
+    },
+    {
+      "action": "api::video.video.findOne"
+    },
+    {
+      "action": "api::video.video.getByShortCode"
+    },
+    {
+      "action": "plugin::users-permissions.auth.changePassword"
+    },
+    {
+      "action": "plugin::users-permissions.auth.forgotPassword"
+    },
+    {
+      "action": "plugin::users-permissions.auth.resetPassword"
+    },
+    {
+      "action": "plugin::users-permissions.role.find"
+    },
+    {
+      "action": "plugin::users-permissions.role.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.user.find"
+    },
+    {
+      "action": "plugin::users-permissions.user.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.user.update"
+    }
+  ]
+}

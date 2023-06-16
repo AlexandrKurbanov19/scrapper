@@ -1,0 +1,19 @@
+mutation createModule($data: ModuleInput!) {
+    createModule(data: $data) {
+        data {
+            id
+            attributes {
+                age
+                title
+                discipline {
+                    data {
+                        id
+                        attributes {
+                            title
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

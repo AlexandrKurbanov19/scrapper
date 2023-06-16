@@ -1,0 +1,10 @@
+mutation createDiscipline($data: DisciplineInput!) {
+    createDiscipline(data: $data) {
+        data {
+            id
+            attributes {
+                title
+            }
+        }
+    }
+}

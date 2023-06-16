@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lesson_practical_tasks",
+  "info": {
+    "singularName": "lesson-practical-task",
+    "pluralName": "lesson-practical-tasks",
+    "displayName": "LessonPracticalTask",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "questions": {
+      "type": "json",
+      "required": true
+    },
+    "rightAnswers": {
+      "type": "json",
+      "required": true
+    },
+    "testMaxPoints": {
+      "type": "integer",
+      "min": 0,
+      "required": true
+    },
+    "deadlineDaysAfterFinishTest": {
+      "type": "integer",
+      "min": 1,
+      "required": true
+    },
+    "lesson": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lesson.lesson",
+      "mappedBy": "lessonPracticalTask"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+mutation updateLessonTest($id: ID!, $data: LessonTestInput!) {
+    updateLessonTest(data: $data, id: $id) {
+        data {
+            id
+        }
+    }
+}

@@ -1,0 +1,41 @@
+query getParentById($id: ID!) {
+    parent(id: $id) {
+        data {
+            id
+            attributes {
+                user {
+                    data {
+                        id
+                        attributes {
+                            blocked
+                            email
+                        }
+                    }
+                }
+                firstname
+                lastname
+                patronymic
+                email
+                phone
+                telegram
+                vk
+                avatarUrl
+                children {
+                    data {
+                        id
+                        attributes {
+                            firstname
+                            lastname
+                            patronymic
+                            email
+                            phone
+                            telegram
+                            vk
+                            avatarUrl
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+mutation createLessonTest($data: LessonTestInput!) {
+    createLessonTest(data: $data) {
+        data {
+            id
+        }
+    }
+}

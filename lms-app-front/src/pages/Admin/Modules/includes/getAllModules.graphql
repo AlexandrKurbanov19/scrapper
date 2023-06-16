@@ -1,0 +1,27 @@
+query getAllModules($filters: ModuleFiltersInput, $pagination: PaginationArg = {}, $sort: [String] = []) {
+    modules(filters: $filters, pagination: $pagination, sort: $sort) {
+        meta {
+            pagination {
+                page
+                pageCount
+                pageSize
+                total
+            }
+        }
+        data {
+            id
+            attributes {
+                title
+                age
+                discipline {
+                    data {
+                        id
+                        attributes {
+                            title
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
