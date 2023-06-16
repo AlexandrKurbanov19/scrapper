@@ -1,41 +1,43 @@
-import React, {useCallback, useState} from 'react';
-import FeedbackForm from "./FeedbackForm";
-import {Card, Divider, message, Typography} from "antd";
-import {useSendFeedbackDataLazyQuery} from "../../generated/graphql";
-import CommonLayout from "../../components/layout/CommonLayout";
+import React, { useCallback, useState } from 'react';
+import {
+  Card, Divider, message, Typography,
+} from 'antd';
+import FeedbackForm from './FeedbackForm';
+import { useSendFeedbackDataLazyQuery } from '../../generated/graphql';
+import CommonLayout from '../../components/layout/CommonLayout';
 
-const { Title} = Typography;
+const { Title } = Typography;
 
 const FeedBackPage = () => {
   const [pending, setPending] = useState<boolean>(false);
-  const [sendFeedback,{ data, error}] = useSendFeedbackDataLazyQuery({
+  const [sendFeedback, { data, error }] = useSendFeedbackDataLazyQuery({
     onCompleted: (data) => {
       if (data.sendFeedback.status) {
         message.success('Ваше сообщение отправлено!');
         setPending(false);
       } else {
-        message.error('При отправке произошла ошибка!')
+        message.error('При отправке произошла ошибка!');
       }
-    }
-  })
-  const onSubmitFailed = useCallback( (errorInfo: any) => {
+    },
+  });
+  const onSubmitFailed = useCallback((errorInfo: any) => {
     console.log('Failed:', errorInfo);
-  }, [])
+  }, []);
   const onSubmit = useCallback(async (values: any) => {
-    setPending(true)
+    setPending(true);
     if (values) {
       await sendFeedback({
         variables: {
           data: values,
-        }
-      })
+        },
+      });
     }
   }, [sendFeedback]);
   return (
     <CommonLayout>
       <Card className="text-lg">
         <Title level={2}>Страница обратной связи:</Title>
-        <Divider/>
+        <Divider />
         <FeedbackForm
           onSubmitForm={onSubmit}
           onSubmitFormFailed={onSubmitFailed}

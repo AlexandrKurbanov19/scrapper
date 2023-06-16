@@ -3,6 +3,8 @@ export const INDEX = '/';
 // NO-AUTH
 export const ABOUT_PAGE = '/about';
 export const FEEDBACK_PAGE = '/feedback';
+export const INSTRUCTION_PAGE = '/instruction';
+export const PARSING_EXAMPLE_PAGE = '/example';
 export const PARSER_PAGE = '/parser';
 export const LAW_PAGE = '/law';
 // AUTH

@@ -1,4 +1,5 @@
-const sendEmail = require("../../../sendEmail/nodemailer");
+import sendEmail from "../../../sendEmail/nodemailer";
+
 const sendFeedbackEndpoint = async (next, parent, args) => {
   try {
     if (!args?.data) {

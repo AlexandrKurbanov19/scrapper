@@ -4,7 +4,7 @@
   "info": {
     "singularName": "student-tariff-period",
     "pluralName": "student-tariff-periods",
-    "displayName": "StudentTariffPeriod",
+    "displayName": "TariffPeriod",
     "description": ""
   },
   "options": {
@@ -25,11 +25,11 @@
       "type": "date",
       "required": true
     },
-    "student": {
+    "users_permissions_user": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::student.student",
-      "inversedBy": "student_tariff_periods"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "tariff_periods"
     },
     "active": {
       "type": "boolean",

@@ -1,20 +1,20 @@
 import React from 'react';
-import {useLocation} from 'react-router';
-import type {MenuProps} from 'antd';
-import {Link} from 'react-router-dom';
+import { useLocation } from 'react-router';
+import type { MenuProps } from 'antd';
+import { Link } from 'react-router-dom';
 
 import {
   ABOUT_PAGE,
-  DISCIPLINES, FEEDBACK_PAGE, LAW_PAGE,
+  DISCIPLINES, FEEDBACK_PAGE, INSTRUCTION_PAGE, LAW_PAGE,
   LESSON_DEMO,
   LESSONS,
-  MODULES, PARSER_PAGE,
+  MODULES, PARSER_PAGE, PARSING_EXAMPLE_PAGE,
   STUDENT_DASHBOARD,
   STUDENT_LESSONS,
   THEMES,
   USERS,
 } from '../../routes';
-import {RoleNamesEnum} from '../../domain/types';
+import { RoleNamesEnum } from '../../domain/types';
 
 const adminMenuItems: MenuProps['items'] = [
   {
@@ -71,6 +71,14 @@ const guestMenuItems: MenuProps['items'] = [
     key: PARSER_PAGE,
     label: (<Link to={PARSER_PAGE}>Демо парсер</Link>),
   },
+  {
+    key: INSTRUCTION_PAGE,
+    label: (<Link to={INSTRUCTION_PAGE}>Инструкции</Link>),
+  },
+  {
+    key: PARSING_EXAMPLE_PAGE,
+    label: (<Link to={PARSING_EXAMPLE_PAGE}>Примеры парсинга</Link>),
+  },
 ];
 
 const useSideBarMenu = (roleName: RoleNamesEnum) => {
@@ -110,6 +118,8 @@ const useSideBarMenu = (roleName: RoleNamesEnum) => {
       LAW_PAGE,
       FEEDBACK_PAGE,
       PARSER_PAGE,
+      INSTRUCTION_PAGE,
+      PARSING_EXAMPLE_PAGE,
     ].filter((key) => location.pathname.search(key) > -1);
 
     return {

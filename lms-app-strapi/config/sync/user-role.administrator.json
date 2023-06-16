@@ -19,24 +19,6 @@
       "action": "api::administrator.administrator.update"
     },
     {
-      "action": "api::audit-log.audit-log.find"
-    },
-    {
-      "action": "api::audit-log.audit-log.findOne"
-    },
-    {
-      "action": "api::comment.comment.create"
-    },
-    {
-      "action": "api::comment.comment.find"
-    },
-    {
-      "action": "api::comment.comment.findOne"
-    },
-    {
-      "action": "api::comment.comment.update"
-    },
-    {
       "action": "api::curator.curator.create"
     },
     {
@@ -49,18 +31,6 @@
       "action": "api::curator.curator.update"
     },
     {
-      "action": "api::discipline.discipline.create"
-    },
-    {
-      "action": "api::discipline.discipline.find"
-    },
-    {
-      "action": "api::discipline.discipline.findOne"
-    },
-    {
-      "action": "api::discipline.discipline.update"
-    },
-    {
       "action": "api::editorjs.editorjs.fetchUrl"
     },
     {
@@ -71,102 +41,6 @@
     },
     {
       "action": "api::editorjs.editorjs.uploadVideo"
-    },
-    {
-      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.create"
-    },
-    {
-      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.find"
-    },
-    {
-      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.findOne"
-    },
-    {
-      "action": "api::lesson-knowledge-consolidation-task.lesson-knowledge-consolidation-task.update"
-    },
-    {
-      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.create"
-    },
-    {
-      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.find"
-    },
-    {
-      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.findOne"
-    },
-    {
-      "action": "api::lesson-practical-task-answer.lesson-practical-task-answer.update"
-    },
-    {
-      "action": "api::lesson-practical-task.lesson-practical-task.create"
-    },
-    {
-      "action": "api::lesson-practical-task.lesson-practical-task.find"
-    },
-    {
-      "action": "api::lesson-practical-task.lesson-practical-task.findOne"
-    },
-    {
-      "action": "api::lesson-practical-task.lesson-practical-task.update"
-    },
-    {
-      "action": "api::lesson-progress.lesson-progress.create"
-    },
-    {
-      "action": "api::lesson-progress.lesson-progress.find"
-    },
-    {
-      "action": "api::lesson-progress.lesson-progress.findOne"
-    },
-    {
-      "action": "api::lesson-progress.lesson-progress.update"
-    },
-    {
-      "action": "api::lesson-test-answer.lesson-test-answer.create"
-    },
-    {
-      "action": "api::lesson-test-answer.lesson-test-answer.find"
-    },
-    {
-      "action": "api::lesson-test-answer.lesson-test-answer.findOne"
-    },
-    {
-      "action": "api::lesson-test-answer.lesson-test-answer.update"
-    },
-    {
-      "action": "api::lesson-test.lesson-test.create"
-    },
-    {
-      "action": "api::lesson-test.lesson-test.find"
-    },
-    {
-      "action": "api::lesson-test.lesson-test.findOne"
-    },
-    {
-      "action": "api::lesson-test.lesson-test.update"
-    },
-    {
-      "action": "api::lesson.lesson.create"
-    },
-    {
-      "action": "api::lesson.lesson.find"
-    },
-    {
-      "action": "api::lesson.lesson.findOne"
-    },
-    {
-      "action": "api::lesson.lesson.update"
-    },
-    {
-      "action": "api::module.module.create"
-    },
-    {
-      "action": "api::module.module.find"
-    },
-    {
-      "action": "api::module.module.findOne"
-    },
-    {
-      "action": "api::module.module.update"
     },
     {
       "action": "api::parent.parent.create"
@@ -227,18 +101,6 @@
     },
     {
       "action": "api::teacher.teacher.update"
-    },
-    {
-      "action": "api::theme.theme.create"
-    },
-    {
-      "action": "api::theme.theme.find"
-    },
-    {
-      "action": "api::theme.theme.findOne"
-    },
-    {
-      "action": "api::theme.theme.update"
     },
     {
       "action": "api::tutor.tutor.create"

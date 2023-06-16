@@ -14,14 +14,7 @@ import {
   LOGOUT,
   RESET_PASSWORD,
   USERS,
-  PARENT,
-  STUDENT,
-  DISCIPLINES,
-  MODULES,
-  THEMES,
-  LESSONS,
-  LESSON,
-  STUDENT_DASHBOARD, ABOUT_PAGE, LAW_PAGE, FEEDBACK_PAGE, PARSER_PAGE,
+  STUDENT_DASHBOARD, ABOUT_PAGE, LAW_PAGE, FEEDBACK_PAGE, PARSER_PAGE, INSTRUCTION_PAGE, PARSING_EXAMPLE_PAGE,
 } from './routes';
 import { RoleNamesEnum } from './domain/types';
 
@@ -30,20 +23,13 @@ import ForgetPasswordPage from './pages/Auth/ForgetPasswordPage';
 import LogoutPage from './pages/Auth/LogoutPage';
 import ResetPasswordPage from './pages/Auth/ResetPasswordPage';
 
-import UsersPage from './pages/Admin/UsersPage/UsersPage';
-import StudentPage from './pages/Admin/UsersPage/includes/single/StudentPage';
-import ParentPage from './pages/Admin/UsersPage/includes/single/ParentPage';
-import DisciplinePage from './pages/Admin/Disciplines/DisciplinePage';
-import ModulesPage from './pages/Admin/Modules/ModulesPage';
-import ThemesPage from './pages/Admin/Themes/ThemesPage';
-import LessonsPage from './pages/Admin/Lessons/LessonsPage';
-import LessonPage from './pages/Admin/Lessons/LessonPage';
-
 import LayoutContextProvider from './components/layout/LayoutContextProvider';
-import AboutPage from "./pages/AboutPage/AboutPage";
-import LawsPage from "./pages/LawsPage/LawsPage";
-import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
-import ParserPage from "./pages/ParserPage/ParserPage";
+import AboutPage from './pages/AboutPage/AboutPage';
+import LawsPage from './pages/LawsPage/LawsPage';
+import FeedbackPage from './pages/FeedbackPage/FeedbackPage';
+import ParserPage from './pages/ParserPage/ParserPage';
+import InstructionPage from './pages/InstructionPage/InstructionPage';
+import ParsingExamplePage from './pages/ParsingExamplePage/ParsingExamplePage';
 
 const RouterComponent = () => {
   const { profileStore: { profile } } = useStore();
@@ -61,6 +47,8 @@ const RouterComponent = () => {
                 <Route path={ABOUT_PAGE} element={<AboutPage />} />
                 <Route path={LAW_PAGE} element={<LawsPage />} />
                 <Route path={FEEDBACK_PAGE} element={<FeedbackPage />} />
+                <Route path={INSTRUCTION_PAGE} element={<InstructionPage />} />
+                <Route path={PARSING_EXAMPLE_PAGE} element={<ParsingExamplePage />} />
                 <Route path={PARSER_PAGE} element={<ParserPage />} />
                 <Route path={LOGIN} element={<LoginPage />} />
                 <Route path={FORGET_PASSWORD} element={<ForgetPasswordPage />} />
@@ -76,15 +64,6 @@ const RouterComponent = () => {
                 {profile.role.name === RoleNamesEnum.Administrator && (
                   <>
                     <Route path={INDEX} element={<Navigate to={USERS} />} />
-                    <Route path={USERS} element={<UsersPage />} />
-                    <Route path={USERS} element={<UsersPage />} />
-                    <Route path={PARENT} element={<ParentPage />} />
-                    <Route path={STUDENT} element={<StudentPage />} />
-                    <Route path={DISCIPLINES} element={<DisciplinePage />} />
-                    <Route path={MODULES} element={<ModulesPage />} />
-                    <Route path={THEMES} element={<ThemesPage />} />
-                    <Route path={LESSONS} element={<LessonsPage />} />
-                    <Route path={LESSON} element={<LessonPage />} />
                     <Route path="*" element={<Navigate to={INDEX} />} />
                   </>
                 )}

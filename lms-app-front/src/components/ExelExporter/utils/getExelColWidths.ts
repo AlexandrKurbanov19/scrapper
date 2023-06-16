@@ -1,4 +1,4 @@
-import {WorkSheet} from "xlsx";
+import { WorkSheet } from 'xlsx';
 
 export function getExcelColWidths(worksheet: WorkSheet) {
   const maxColWidthsMap = Object.keys(worksheet)

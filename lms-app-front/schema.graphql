@@ -56,55 +56,6 @@ input AdministratorInput {
   vk: String
 }
 
-type AuditLog {
-  action: ENUM_AUDITLOG_ACTION!
-  contentType: String!
-  createdAt: DateTime
-  entityId: Int
-  params: JSON
-  result: JSON
-  updatedAt: DateTime
-  userAuthor: UsersPermissionsUserEntityResponse
-}
-
-type AuditLogEntity {
-  attributes: AuditLog
-  id: ID
-}
-
-type AuditLogEntityResponse {
-  data: AuditLogEntity
-}
-
-type AuditLogEntityResponseCollection {
-  data: [AuditLogEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input AuditLogFiltersInput {
-  action: StringFilterInput
-  and: [AuditLogFiltersInput]
-  contentType: StringFilterInput
-  createdAt: DateTimeFilterInput
-  entityId: IntFilterInput
-  id: IDFilterInput
-  not: AuditLogFiltersInput
-  or: [AuditLogFiltersInput]
-  params: JSONFilterInput
-  result: JSONFilterInput
-  updatedAt: DateTimeFilterInput
-  userAuthor: UsersPermissionsUserFiltersInput
-}
-
-input AuditLogInput {
-  action: ENUM_AUDITLOG_ACTION
-  contentType: String
-  entityId: Int
-  params: JSON
-  result: JSON
-  userAuthor: ID
-}
-
 input BooleanFilterInput {
   and: [Boolean]
   between: [Boolean]
@@ -129,163 +80,7 @@ input BooleanFilterInput {
   startsWith: Boolean
 }
 
-type Comment {
-  attaches: JSON
-  authorUser: UsersPermissionsUserEntityResponse
-  createdAt: DateTime
-  isDeleted: Boolean!
-  subjectContentType: ENUM_COMMENT_SUBJECTCONTENTTYPE!
-  subjectContentTypeId: String!
-  text: String
-  updatedAt: DateTime
-}
-
-type CommentEntity {
-  attributes: Comment
-  id: ID
-}
-
-type CommentEntityResponse {
-  data: CommentEntity
-}
-
-type CommentEntityResponseCollection {
-  data: [CommentEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input CommentFiltersInput {
-  and: [CommentFiltersInput]
-  attaches: JSONFilterInput
-  authorUser: UsersPermissionsUserFiltersInput
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  isDeleted: BooleanFilterInput
-  not: CommentFiltersInput
-  or: [CommentFiltersInput]
-  subjectContentType: StringFilterInput
-  subjectContentTypeId: StringFilterInput
-  text: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input CommentInput {
-  attaches: JSON
-  authorUser: ID
-  isDeleted: Boolean
-  subjectContentType: ENUM_COMMENT_SUBJECTCONTENTTYPE
-  subjectContentTypeId: String
-  text: String
-}
-
-type Course {
-  course_parts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartRelationResponseCollection
-  createdAt: DateTime
-  endDate: Date!
-  startDate: Date!
-  student: StudentEntityResponse
-  updatedAt: DateTime
-}
-
-type CourseEntity {
-  attributes: Course
-  id: ID
-}
-
-type CourseEntityResponse {
-  data: CourseEntity
-}
-
-type CourseEntityResponseCollection {
-  data: [CourseEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input CourseFiltersInput {
-  and: [CourseFiltersInput]
-  course_parts: CoursePartFiltersInput
-  createdAt: DateTimeFilterInput
-  endDate: DateFilterInput
-  id: IDFilterInput
-  not: CourseFiltersInput
-  or: [CourseFiltersInput]
-  startDate: DateFilterInput
-  student: StudentFiltersInput
-  updatedAt: DateTimeFilterInput
-}
-
-input CourseInput {
-  course_parts: [ID]
-  endDate: Date
-  startDate: Date
-  student: ID
-}
-
-type CoursePart {
-  course: CourseEntityResponse
-  createdAt: DateTime
-  curator: CuratorEntityResponse
-  endDate: Date!
-  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
-  payed: Boolean!
-  startDate: Date!
-  tariff: TariffEntityResponse
-  tutor: TutorEntityResponse
-  updatedAt: DateTime
-}
-
-type CoursePartEntity {
-  attributes: CoursePart
-  id: ID
-}
-
-type CoursePartEntityResponse {
-  data: CoursePartEntity
-}
-
-type CoursePartEntityResponseCollection {
-  data: [CoursePartEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input CoursePartFiltersInput {
-  and: [CoursePartFiltersInput]
-  course: CourseFiltersInput
-  createdAt: DateTimeFilterInput
-  curator: CuratorFiltersInput
-  endDate: DateFilterInput
-  id: IDFilterInput
-  lessons: LessonFiltersInput
-  not: CoursePartFiltersInput
-  or: [CoursePartFiltersInput]
-  payed: BooleanFilterInput
-  startDate: DateFilterInput
-  tariff: TariffFiltersInput
-  tutor: TutorFiltersInput
-  updatedAt: DateTimeFilterInput
-}
-
-input CoursePartInput {
-  course: ID
-  curator: ID
-  endDate: Date
-  lessons: [ID]
-  payed: Boolean
-  startDate: Date
-  tariff: ID
-  tutor: ID
-}
-
-type CoursePartRelationResponseCollection {
-  data: [CoursePartEntity!]!
-}
-
-type CourseRelationResponseCollection {
-  data: [CourseEntity!]!
-}
-
 type Curator {
-  assigned_course_parts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartRelationResponseCollection
   avatarUrl: String
   createdAt: DateTime
   email: String!
@@ -316,7 +111,6 @@ type CuratorEntityResponseCollection {
 
 input CuratorFiltersInput {
   and: [CuratorFiltersInput]
-  assigned_course_parts: CoursePartFiltersInput
   avatarUrl: StringFilterInput
   createdAt: DateTimeFilterInput
   email: StringFilterInput
@@ -335,7 +129,6 @@ input CuratorFiltersInput {
 }
 
 input CuratorInput {
-  assigned_course_parts: [ID]
   avatarUrl: String
   email: String
   firstname: String
@@ -410,57 +203,6 @@ input DateTimeFilterInput {
   startsWith: DateTime
 }
 
-type Discipline {
-  createdAt: DateTime
-  modules(filters: ModuleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ModuleRelationResponseCollection
-  title: String!
-  updatedAt: DateTime
-}
-
-type DisciplineEntity {
-  attributes: Discipline
-  id: ID
-}
-
-type DisciplineEntityResponse {
-  data: DisciplineEntity
-}
-
-type DisciplineEntityResponseCollection {
-  data: [DisciplineEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input DisciplineFiltersInput {
-  and: [DisciplineFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  modules: ModuleFiltersInput
-  not: DisciplineFiltersInput
-  or: [DisciplineFiltersInput]
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input DisciplineInput {
-  modules: [ID]
-  title: String
-}
-
-enum ENUM_AUDITLOG_ACTION {
-  CREATE
-  DELETE
-  UPDATE
-}
-
-enum ENUM_COMMENT_SUBJECTCONTENTTYPE {
-  CURATOR
-  PARENT
-  STUDENT
-  TEACHER
-  TUTOR
-}
-
 enum ENUM_VIDEO_POSTPROCESSSTATUS {
   IN_PROCESS
   NEED_PROCESS
@@ -498,13 +240,12 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = Administrator | AuditLog | Comment | Course | CoursePart | Curator | Discipline | HistoryDataParsing | HistoryRequest | I18NLocale | Lesson | LessonKnowledgeConsolidationTask | LessonPracticalTask | LessonPracticalTaskAnswer | LessonProgress | LessonTest | LessonTestAnswer | Module | Parent | Student | StudentTariffPeriod | Tariff | Teacher | Theme | Tutor | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video
+union GenericMorph = Administrator | Curator | HistoryDataParsing | HistoryRequest | I18NLocale | Parent | Student | StudentTariffPeriod | Tariff | Teacher | Tutor | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video
 
 type HistoryDataParsing {
   createdAt: DateTime
   history_request: HistoryRequestEntityResponse
   parsingData: JSON
-  publishedAt: DateTime
   updatedAt: DateTime
 }
 
@@ -530,19 +271,17 @@ input HistoryDataParsingFiltersInput {
   not: HistoryDataParsingFiltersInput
   or: [HistoryDataParsingFiltersInput]
   parsingData: JSONFilterInput
-  publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input HistoryDataParsingInput {
   history_request: ID
   parsingData: JSON
-  publishedAt: DateTime
 }
 
 type HistoryRequest {
   createdAt: DateTime
-  dataForParsing: JSON!
+  dataForParsing: JSON
   history_data_parsing: HistoryDataParsingEntityResponse
   updatedAt: DateTime
 }
@@ -694,454 +433,18 @@ input JSONFilterInput {
   startsWith: JSON
 }
 
-type Lesson {
-  coursePart: CoursePartEntityResponse
-  createdAt: DateTime
-  goalText: String!
-  intoLeftContent: JSON!
-  intoRightContent: JSON!
-  lessonKnowledgeConsolidationTask: LessonKnowledgeConsolidationTaskEntityResponse
-  lessonPracticalTask: LessonPracticalTaskEntityResponse
-  lessonProgress: LessonProgressEntityResponse
-  lessonTest: LessonTestEntityResponse
-  module: ModuleEntityResponse
-  nextLessonSpoiler: String!
-  numberOfTestAttemptsForLesson: Int!
-  order: Int
-  outroContent: JSON!
-  testSpoilerText: String!
-  theme: ThemeEntityResponse
-  theoryContent: JSON!
-  title: String!
-  updatedAt: DateTime
-}
-
-type LessonEntity {
-  attributes: Lesson
-  id: ID
-}
-
-type LessonEntityResponse {
-  data: LessonEntity
-}
-
-type LessonEntityResponseCollection {
-  data: [LessonEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input LessonFiltersInput {
-  and: [LessonFiltersInput]
-  coursePart: CoursePartFiltersInput
-  createdAt: DateTimeFilterInput
-  goalText: StringFilterInput
-  id: IDFilterInput
-  intoLeftContent: JSONFilterInput
-  intoRightContent: JSONFilterInput
-  lessonKnowledgeConsolidationTask: LessonKnowledgeConsolidationTaskFiltersInput
-  lessonPracticalTask: LessonPracticalTaskFiltersInput
-  lessonProgress: LessonProgressFiltersInput
-  lessonTest: LessonTestFiltersInput
-  module: ModuleFiltersInput
-  nextLessonSpoiler: StringFilterInput
-  not: LessonFiltersInput
-  numberOfTestAttemptsForLesson: IntFilterInput
-  or: [LessonFiltersInput]
-  order: IntFilterInput
-  outroContent: JSONFilterInput
-  testSpoilerText: StringFilterInput
-  theme: ThemeFiltersInput
-  theoryContent: JSONFilterInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input LessonInput {
-  coursePart: ID
-  goalText: String
-  intoLeftContent: JSON
-  intoRightContent: JSON
-  lessonKnowledgeConsolidationTask: ID
-  lessonPracticalTask: ID
-  lessonProgress: ID
-  lessonTest: ID
-  module: ID
-  nextLessonSpoiler: String
-  numberOfTestAttemptsForLesson: Int
-  order: Int
-  outroContent: JSON
-  testSpoilerText: String
-  theme: ID
-  theoryContent: JSON
-  title: String
-}
-
-type LessonKnowledgeConsolidationTask {
-  createdAt: DateTime
-  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
-  questions: JSON!
-  rightAnswers: JSON!
-  testMaxPoints: Int!
-  updatedAt: DateTime
-}
-
-type LessonKnowledgeConsolidationTaskEntity {
-  attributes: LessonKnowledgeConsolidationTask
-  id: ID
-}
-
-type LessonKnowledgeConsolidationTaskEntityResponse {
-  data: LessonKnowledgeConsolidationTaskEntity
-}
-
-type LessonKnowledgeConsolidationTaskEntityResponseCollection {
-  data: [LessonKnowledgeConsolidationTaskEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input LessonKnowledgeConsolidationTaskFiltersInput {
-  and: [LessonKnowledgeConsolidationTaskFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  lessons: LessonFiltersInput
-  not: LessonKnowledgeConsolidationTaskFiltersInput
-  or: [LessonKnowledgeConsolidationTaskFiltersInput]
-  questions: JSONFilterInput
-  rightAnswers: JSONFilterInput
-  testMaxPoints: IntFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input LessonKnowledgeConsolidationTaskInput {
-  lessons: [ID]
-  questions: JSON
-  rightAnswers: JSON
-  testMaxPoints: Int
-}
-
-type LessonPracticalTask {
-  createdAt: DateTime
-  deadlineDaysAfterFinishTest: Int!
-  lesson: LessonEntityResponse
-  questions: JSON!
-  rightAnswers: JSON!
-  testMaxPoints: Int!
-  updatedAt: DateTime
-}
-
-type LessonPracticalTaskAnswer {
-  answers: JSON!
-  attemptNumber: Int!
-  completeDateTime: DateTime
-  createdAt: DateTime
-  lessonProgress: LessonProgressEntityResponse
-  points: Int
-  startDateTime: DateTime
-  updatedAt: DateTime
-  whenWasRatedDateTime: DateTime
-}
-
-type LessonPracticalTaskAnswerEntity {
-  attributes: LessonPracticalTaskAnswer
-  id: ID
-}
-
-type LessonPracticalTaskAnswerEntityResponse {
-  data: LessonPracticalTaskAnswerEntity
-}
-
-type LessonPracticalTaskAnswerEntityResponseCollection {
-  data: [LessonPracticalTaskAnswerEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input LessonPracticalTaskAnswerFiltersInput {
-  and: [LessonPracticalTaskAnswerFiltersInput]
-  answers: JSONFilterInput
-  attemptNumber: IntFilterInput
-  completeDateTime: DateTimeFilterInput
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  lessonProgress: LessonProgressFiltersInput
-  not: LessonPracticalTaskAnswerFiltersInput
-  or: [LessonPracticalTaskAnswerFiltersInput]
-  points: IntFilterInput
-  startDateTime: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
-  whenWasRatedDateTime: DateTimeFilterInput
-}
-
-input LessonPracticalTaskAnswerInput {
-  answers: JSON
-  attemptNumber: Int
-  completeDateTime: DateTime
-  lessonProgress: ID
-  points: Int
-  startDateTime: DateTime
-  whenWasRatedDateTime: DateTime
-}
-
-type LessonPracticalTaskEntity {
-  attributes: LessonPracticalTask
-  id: ID
-}
-
-type LessonPracticalTaskEntityResponse {
-  data: LessonPracticalTaskEntity
-}
-
-type LessonPracticalTaskEntityResponseCollection {
-  data: [LessonPracticalTaskEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input LessonPracticalTaskFiltersInput {
-  and: [LessonPracticalTaskFiltersInput]
-  createdAt: DateTimeFilterInput
-  deadlineDaysAfterFinishTest: IntFilterInput
-  id: IDFilterInput
-  lesson: LessonFiltersInput
-  not: LessonPracticalTaskFiltersInput
-  or: [LessonPracticalTaskFiltersInput]
-  questions: JSONFilterInput
-  rightAnswers: JSONFilterInput
-  testMaxPoints: IntFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input LessonPracticalTaskInput {
-  deadlineDaysAfterFinishTest: Int
-  lesson: ID
-  questions: JSON
-  rightAnswers: JSON
-  testMaxPoints: Int
-}
-
-type LessonProgress {
-  acceptedLessonTestAnswer: LessonTestAnswerEntityResponse
-  createdAt: DateTime
-  intoReadDateTime: DateTime
-  lesson: LessonEntityResponse
-  lessonPracticalTaskAnswer: LessonPracticalTaskAnswerEntityResponse
-  lessonTestAnswers(filters: LessonTestAnswerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonTestAnswerRelationResponseCollection
-  theoryReadDateTime: DateTime
-  updatedAt: DateTime
-}
-
-type LessonProgressEntity {
-  attributes: LessonProgress
-  id: ID
-}
-
-type LessonProgressEntityResponse {
-  data: LessonProgressEntity
-}
-
-type LessonProgressEntityResponseCollection {
-  data: [LessonProgressEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input LessonProgressFiltersInput {
-  acceptedLessonTestAnswer: LessonTestAnswerFiltersInput
-  and: [LessonProgressFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  intoReadDateTime: DateTimeFilterInput
-  lesson: LessonFiltersInput
-  lessonPracticalTaskAnswer: LessonPracticalTaskAnswerFiltersInput
-  lessonTestAnswers: LessonTestAnswerFiltersInput
-  not: LessonProgressFiltersInput
-  or: [LessonProgressFiltersInput]
-  theoryReadDateTime: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input LessonProgressInput {
-  acceptedLessonTestAnswer: ID
-  intoReadDateTime: DateTime
-  lesson: ID
-  lessonPracticalTaskAnswer: ID
-  lessonTestAnswers: [ID]
-  theoryReadDateTime: DateTime
-}
-
-type LessonRelationResponseCollection {
-  data: [LessonEntity!]!
-}
-
-type LessonTest {
-  createdAt: DateTime
-  lesson: LessonEntityResponse
-  questions: JSON!
-  rightAnswers: JSON!
-  testMaxPoints: Int!
-  updatedAt: DateTime
-}
-
-type LessonTestAnswer {
-  answers: JSON!
-  attemptNumber: Int!
-  completeDateTime: DateTime
-  createdAt: DateTime
-  lessonProgress: LessonProgressEntityResponse
-  lessonProgressWhereAccepted: LessonProgressEntityResponse
-  points: Int
-  startDateTime: DateTime!
-  updatedAt: DateTime
-}
-
-type LessonTestAnswerEntity {
-  attributes: LessonTestAnswer
-  id: ID
-}
-
-type LessonTestAnswerEntityResponse {
-  data: LessonTestAnswerEntity
-}
-
-type LessonTestAnswerEntityResponseCollection {
-  data: [LessonTestAnswerEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input LessonTestAnswerFiltersInput {
-  and: [LessonTestAnswerFiltersInput]
-  answers: JSONFilterInput
-  attemptNumber: IntFilterInput
-  completeDateTime: DateTimeFilterInput
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  lessonProgress: LessonProgressFiltersInput
-  lessonProgressWhereAccepted: LessonProgressFiltersInput
-  not: LessonTestAnswerFiltersInput
-  or: [LessonTestAnswerFiltersInput]
-  points: IntFilterInput
-  startDateTime: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input LessonTestAnswerInput {
-  answers: JSON
-  attemptNumber: Int
-  completeDateTime: DateTime
-  lessonProgress: ID
-  lessonProgressWhereAccepted: ID
-  points: Int
-  startDateTime: DateTime
-}
-
-type LessonTestAnswerRelationResponseCollection {
-  data: [LessonTestAnswerEntity!]!
-}
-
-type LessonTestEntity {
-  attributes: LessonTest
-  id: ID
-}
-
-type LessonTestEntityResponse {
-  data: LessonTestEntity
-}
-
-type LessonTestEntityResponseCollection {
-  data: [LessonTestEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input LessonTestFiltersInput {
-  and: [LessonTestFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  lesson: LessonFiltersInput
-  not: LessonTestFiltersInput
-  or: [LessonTestFiltersInput]
-  questions: JSONFilterInput
-  rightAnswers: JSONFilterInput
-  testMaxPoints: IntFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input LessonTestInput {
-  lesson: ID
-  questions: JSON
-  rightAnswers: JSON
-  testMaxPoints: Int
-}
-
-type Module {
-  age: Int!
-  createdAt: DateTime
-  discipline: DisciplineEntityResponse
-  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
-  title: String!
-  updatedAt: DateTime
-}
-
-type ModuleEntity {
-  attributes: Module
-  id: ID
-}
-
-type ModuleEntityResponse {
-  data: ModuleEntity
-}
-
-type ModuleEntityResponseCollection {
-  data: [ModuleEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input ModuleFiltersInput {
-  age: IntFilterInput
-  and: [ModuleFiltersInput]
-  createdAt: DateTimeFilterInput
-  discipline: DisciplineFiltersInput
-  id: IDFilterInput
-  lessons: LessonFiltersInput
-  not: ModuleFiltersInput
-  or: [ModuleFiltersInput]
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input ModuleInput {
-  age: Int
-  discipline: ID
-  lessons: [ID]
-  title: String
-}
-
-type ModuleRelationResponseCollection {
-  data: [ModuleEntity!]!
-}
-
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   createAdministrator(data: AdministratorInput!): AdministratorEntityResponse
-  createAuditLog(data: AuditLogInput!): AuditLogEntityResponse
-  createComment(data: CommentInput!): CommentEntityResponse
-  createCourse(data: CourseInput!): CourseEntityResponse
-  createCoursePart(data: CoursePartInput!): CoursePartEntityResponse
   createCurator(data: CuratorInput!): CuratorEntityResponse
-  createDiscipline(data: DisciplineInput!): DisciplineEntityResponse
   createHistoryDataParsing(data: HistoryDataParsingInput!): HistoryDataParsingEntityResponse
   createHistoryRequest(data: HistoryRequestInput!): HistoryRequestEntityResponse
-  createLesson(data: LessonInput!): LessonEntityResponse
-  createLessonKnowledgeConsolidationTask(data: LessonKnowledgeConsolidationTaskInput!): LessonKnowledgeConsolidationTaskEntityResponse
-  createLessonPracticalTask(data: LessonPracticalTaskInput!): LessonPracticalTaskEntityResponse
-  createLessonPracticalTaskAnswer(data: LessonPracticalTaskAnswerInput!): LessonPracticalTaskAnswerEntityResponse
-  createLessonProgress(data: LessonProgressInput!): LessonProgressEntityResponse
-  createLessonTest(data: LessonTestInput!): LessonTestEntityResponse
-  createLessonTestAnswer(data: LessonTestAnswerInput!): LessonTestAnswerEntityResponse
-  createModule(data: ModuleInput!): ModuleEntityResponse
   createParent(data: ParentInput!): ParentEntityResponse
   createStudent(data: StudentInput!): StudentEntityResponse
   createStudentTariffPeriod(data: StudentTariffPeriodInput!): StudentTariffPeriodEntityResponse
   createTariff(data: TariffInput!): TariffEntityResponse
   createTeacher(data: TeacherInput!): TeacherEntityResponse
-  createTheme(data: ThemeInput!): ThemeEntityResponse
   createTutor(data: TutorInput!): TutorEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
@@ -1153,28 +456,14 @@ type Mutation {
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
   createVideo(data: VideoInput!): VideoEntityResponse
   deleteAdministrator(id: ID!): AdministratorEntityResponse
-  deleteAuditLog(id: ID!): AuditLogEntityResponse
-  deleteComment(id: ID!): CommentEntityResponse
-  deleteCourse(id: ID!): CourseEntityResponse
-  deleteCoursePart(id: ID!): CoursePartEntityResponse
   deleteCurator(id: ID!): CuratorEntityResponse
-  deleteDiscipline(id: ID!): DisciplineEntityResponse
   deleteHistoryDataParsing(id: ID!): HistoryDataParsingEntityResponse
   deleteHistoryRequest(id: ID!): HistoryRequestEntityResponse
-  deleteLesson(id: ID!): LessonEntityResponse
-  deleteLessonKnowledgeConsolidationTask(id: ID!): LessonKnowledgeConsolidationTaskEntityResponse
-  deleteLessonPracticalTask(id: ID!): LessonPracticalTaskEntityResponse
-  deleteLessonPracticalTaskAnswer(id: ID!): LessonPracticalTaskAnswerEntityResponse
-  deleteLessonProgress(id: ID!): LessonProgressEntityResponse
-  deleteLessonTest(id: ID!): LessonTestEntityResponse
-  deleteLessonTestAnswer(id: ID!): LessonTestAnswerEntityResponse
-  deleteModule(id: ID!): ModuleEntityResponse
   deleteParent(id: ID!): ParentEntityResponse
   deleteStudent(id: ID!): StudentEntityResponse
   deleteStudentTariffPeriod(id: ID!): StudentTariffPeriodEntityResponse
   deleteTariff(id: ID!): TariffEntityResponse
   deleteTeacher(id: ID!): TeacherEntityResponse
-  deleteTheme(id: ID!): ThemeEntityResponse
   deleteTutor(id: ID!): TutorEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
@@ -1204,29 +493,15 @@ type Mutation {
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   updateAdministrator(data: AdministratorInput!, id: ID!): AdministratorEntityResponse
-  updateAuditLog(data: AuditLogInput!, id: ID!): AuditLogEntityResponse
-  updateComment(data: CommentInput!, id: ID!): CommentEntityResponse
-  updateCourse(data: CourseInput!, id: ID!): CourseEntityResponse
-  updateCoursePart(data: CoursePartInput!, id: ID!): CoursePartEntityResponse
   updateCurator(data: CuratorInput!, id: ID!): CuratorEntityResponse
-  updateDiscipline(data: DisciplineInput!, id: ID!): DisciplineEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateHistoryDataParsing(data: HistoryDataParsingInput!, id: ID!): HistoryDataParsingEntityResponse
   updateHistoryRequest(data: HistoryRequestInput!, id: ID!): HistoryRequestEntityResponse
-  updateLesson(data: LessonInput!, id: ID!): LessonEntityResponse
-  updateLessonKnowledgeConsolidationTask(data: LessonKnowledgeConsolidationTaskInput!, id: ID!): LessonKnowledgeConsolidationTaskEntityResponse
-  updateLessonPracticalTask(data: LessonPracticalTaskInput!, id: ID!): LessonPracticalTaskEntityResponse
-  updateLessonPracticalTaskAnswer(data: LessonPracticalTaskAnswerInput!, id: ID!): LessonPracticalTaskAnswerEntityResponse
-  updateLessonProgress(data: LessonProgressInput!, id: ID!): LessonProgressEntityResponse
-  updateLessonTest(data: LessonTestInput!, id: ID!): LessonTestEntityResponse
-  updateLessonTestAnswer(data: LessonTestAnswerInput!, id: ID!): LessonTestAnswerEntityResponse
-  updateModule(data: ModuleInput!, id: ID!): ModuleEntityResponse
   updateParent(data: ParentInput!, id: ID!): ParentEntityResponse
   updateStudent(data: StudentInput!, id: ID!): StudentEntityResponse
   updateStudentTariffPeriod(data: StudentTariffPeriodInput!, id: ID!): StudentTariffPeriodEntityResponse
   updateTariff(data: TariffInput!, id: ID!): TariffEntityResponse
   updateTeacher(data: TeacherInput!, id: ID!): TeacherEntityResponse
-  updateTheme(data: ThemeInput!, id: ID!): ThemeEntityResponse
   updateTutor(data: TutorInput!, id: ID!): TutorEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
@@ -1335,49 +610,18 @@ type ParentRelationResponseCollection {
   data: [ParentEntity!]!
 }
 
-enum PublicationState {
-  LIVE
-  PREVIEW
-}
-
 type Query {
   administrator(id: ID): AdministratorEntityResponse
   administrators(filters: AdministratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdministratorEntityResponseCollection
-  auditLog(id: ID): AuditLogEntityResponse
-  auditLogs(filters: AuditLogFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AuditLogEntityResponseCollection
-  comment(id: ID): CommentEntityResponse
-  comments(filters: CommentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CommentEntityResponseCollection
-  course(id: ID): CourseEntityResponse
-  coursePart(id: ID): CoursePartEntityResponse
-  courseParts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartEntityResponseCollection
-  courses(filters: CourseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CourseEntityResponseCollection
   curator(id: ID): CuratorEntityResponse
   curators(filters: CuratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CuratorEntityResponseCollection
-  discipline(id: ID): DisciplineEntityResponse
-  disciplines(filters: DisciplineFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DisciplineEntityResponseCollection
   historyDataParsing(id: ID): HistoryDataParsingEntityResponse
-  historyDataParsings(filters: HistoryDataParsingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HistoryDataParsingEntityResponseCollection
+  historyDataParsings(filters: HistoryDataParsingFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): HistoryDataParsingEntityResponseCollection
   historyRequest(id: ID): HistoryRequestEntityResponse
   historyRequests(filters: HistoryRequestFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): HistoryRequestEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
-  lesson(id: ID): LessonEntityResponse
-  lessonKnowledgeConsolidationTask(id: ID): LessonKnowledgeConsolidationTaskEntityResponse
-  lessonKnowledgeConsolidationTasks(filters: LessonKnowledgeConsolidationTaskFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonKnowledgeConsolidationTaskEntityResponseCollection
-  lessonPracticalTask(id: ID): LessonPracticalTaskEntityResponse
-  lessonPracticalTaskAnswer(id: ID): LessonPracticalTaskAnswerEntityResponse
-  lessonPracticalTaskAnswers(filters: LessonPracticalTaskAnswerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonPracticalTaskAnswerEntityResponseCollection
-  lessonPracticalTasks(filters: LessonPracticalTaskFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonPracticalTaskEntityResponseCollection
-  lessonProgress(id: ID): LessonProgressEntityResponse
-  lessonProgresses(filters: LessonProgressFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonProgressEntityResponseCollection
-  lessonTest(id: ID): LessonTestEntityResponse
-  lessonTestAnswer(id: ID): LessonTestAnswerEntityResponse
-  lessonTestAnswers(filters: LessonTestAnswerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonTestAnswerEntityResponseCollection
-  lessonTests(filters: LessonTestFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonTestEntityResponseCollection
-  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonEntityResponseCollection
   me: UsersPermissionsMe
-  module(id: ID): ModuleEntityResponse
-  modules(filters: ModuleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ModuleEntityResponseCollection
   myProfile: MyProfileResponse!
   parent(id: ID): ParentEntityResponse
   parents(filters: ParentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ParentEntityResponseCollection
@@ -1390,8 +634,6 @@ type Query {
   tariffs(filters: TariffFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TariffEntityResponseCollection
   teacher(id: ID): TeacherEntityResponse
   teachers(filters: TeacherFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TeacherEntityResponseCollection
-  theme(id: ID): ThemeEntityResponse
-  themes(filters: ThemeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ThemeEntityResponseCollection
   tutor(id: ID): TutorEntityResponse
   tutors(filters: TutorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TutorEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
@@ -1437,7 +679,6 @@ input StringFilterInput {
 type Student {
   avatarUrl: String
   birthday: Date
-  courses(filters: CourseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CourseRelationResponseCollection
   createdAt: DateTime
   curators(filters: CuratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CuratorRelationResponseCollection
   email: String!
@@ -1446,7 +687,6 @@ type Student {
   parents(filters: ParentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ParentRelationResponseCollection
   patronymic: String
   phone: String
-  student_tariff_periods(filters: StudentTariffPeriodFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentTariffPeriodRelationResponseCollection
   tariff: TariffEntityResponse
   telegram: String
   tutors(filters: TutorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TutorRelationResponseCollection
@@ -1473,7 +713,6 @@ input StudentFiltersInput {
   and: [StudentFiltersInput]
   avatarUrl: StringFilterInput
   birthday: DateFilterInput
-  courses: CourseFiltersInput
   createdAt: DateTimeFilterInput
   curators: CuratorFiltersInput
   email: StringFilterInput
@@ -1485,7 +724,6 @@ input StudentFiltersInput {
   parents: ParentFiltersInput
   patronymic: StringFilterInput
   phone: StringFilterInput
-  student_tariff_periods: StudentTariffPeriodFiltersInput
   tariff: TariffFiltersInput
   telegram: StringFilterInput
   tutors: TutorFiltersInput
@@ -1497,7 +735,6 @@ input StudentFiltersInput {
 input StudentInput {
   avatarUrl: String
   birthday: Date
-  courses: [ID]
   curators: [ID]
   email: String
   firstname: String
@@ -1505,7 +742,6 @@ input StudentInput {
   parents: [ID]
   patronymic: String
   phone: String
-  student_tariff_periods: [ID]
   tariff: ID
   telegram: String
   tutors: [ID]
@@ -1522,9 +758,9 @@ type StudentTariffPeriod {
   createdAt: DateTime
   end: Date!
   start: Date!
-  student: StudentEntityResponse
   tariff: TariffEntityResponse
   updatedAt: DateTime
+  users_permissions_user: UsersPermissionsUserEntityResponse
 }
 
 type StudentTariffPeriodEntity {
@@ -1550,17 +786,17 @@ input StudentTariffPeriodFiltersInput {
   not: StudentTariffPeriodFiltersInput
   or: [StudentTariffPeriodFiltersInput]
   start: DateFilterInput
-  student: StudentFiltersInput
   tariff: TariffFiltersInput
   updatedAt: DateTimeFilterInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
 }
 
 input StudentTariffPeriodInput {
   active: Boolean
   end: Date
   start: Date
-  student: ID
   tariff: ID
+  users_permissions_user: ID
 }
 
 type StudentTariffPeriodRelationResponseCollection {
@@ -1665,45 +901,7 @@ input TeacherInput {
   vk: String
 }
 
-type Theme {
-  createdAt: DateTime
-  lessons(filters: LessonFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): LessonRelationResponseCollection
-  title: String!
-  updatedAt: DateTime
-}
-
-type ThemeEntity {
-  attributes: Theme
-  id: ID
-}
-
-type ThemeEntityResponse {
-  data: ThemeEntity
-}
-
-type ThemeEntityResponseCollection {
-  data: [ThemeEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input ThemeFiltersInput {
-  and: [ThemeFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  lessons: LessonFiltersInput
-  not: ThemeFiltersInput
-  or: [ThemeFiltersInput]
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input ThemeInput {
-  lessons: [ID]
-  title: String
-}
-
 type Tutor {
-  assigned_course_parts(filters: CoursePartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CoursePartRelationResponseCollection
   avatarUrl: String
   createdAt: DateTime
   email: String!
@@ -1734,7 +932,6 @@ type TutorEntityResponseCollection {
 
 input TutorFiltersInput {
   and: [TutorFiltersInput]
-  assigned_course_parts: CoursePartFiltersInput
   avatarUrl: StringFilterInput
   createdAt: DateTimeFilterInput
   email: StringFilterInput
@@ -1753,7 +950,6 @@ input TutorFiltersInput {
 }
 
 input TutorInput {
-  assigned_course_parts: [ID]
   avatarUrl: String
   email: String
   firstname: String
@@ -2041,6 +1237,7 @@ type UsersPermissionsUser {
   provider: String
   role: UsersPermissionsRoleEntityResponse
   student: StudentEntityResponse
+  tariff_periods(filters: StudentTariffPeriodFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentTariffPeriodRelationResponseCollection
   teacher: TeacherEntityResponse
   tutor: TutorEntityResponse
   updatedAt: DateTime
@@ -2079,6 +1276,7 @@ input UsersPermissionsUserFiltersInput {
   resetPasswordToken: StringFilterInput
   role: UsersPermissionsRoleFiltersInput
   student: StudentFiltersInput
+  tariff_periods: StudentTariffPeriodFiltersInput
   teacher: TeacherFiltersInput
   tutor: TutorFiltersInput
   updatedAt: DateTimeFilterInput
@@ -2098,6 +1296,7 @@ input UsersPermissionsUserInput {
   resetPasswordToken: String
   role: ID
   student: ID
+  tariff_periods: [ID]
   teacher: ID
   tutor: ID
   username: String

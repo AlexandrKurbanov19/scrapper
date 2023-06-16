@@ -3,7 +3,7 @@ import { ConfigProvider } from 'antd';
 import ruRU from 'antd/lib/locale/ru_RU';
 import React from 'react';
 import LmsProgressLine from '../components/common/LmsProgressLine/LmsProgressLine';
-import getTheme from "../antToken";
+import getTheme from '../antToken';
 
 const meta: Meta<typeof LmsProgressLine> = {
   title: 'LmsProgressLine',

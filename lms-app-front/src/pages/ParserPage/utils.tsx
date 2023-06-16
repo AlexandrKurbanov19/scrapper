@@ -1,4 +1,4 @@
-export const categoryOptions =[
+const categoryOptions = [
   {
     label: 'Недвижимость',
     value: 'nedvizhimost',
@@ -21,7 +21,7 @@ export const categoryOptions =[
   {
     label: 'Услуги',
     options: [
-      { label: 'Предложения услуг', value: 'predlozheniya_uslug'},
+      { label: 'Предложения услуг', value: 'predlozheniya_uslug' },
       { label: 'Запросы на услуги', value: 'zapros_uslug' },
     ],
   },
@@ -54,7 +54,7 @@ export const categoryOptions =[
       { label: 'Игры, приставки и программы', value: 'igry_pristavki_i_programmy' },
       { label: 'Настольные компьютеры', value: 'nastolnye_kompyutery' },
       { label: 'Ноутбуки', value: 'noutbuki' },
-      { label: 'Оргтехника и расходники', value: 'orgtehnika_i_rashodniki'},
+      { label: 'Оргтехника и расходники', value: 'orgtehnika_i_rashodniki' },
       { label: 'Планшеты и электронные книги', value: 'planshety_i_elektronnye_knigi' },
       { label: 'Телефоны', value: 'telefony' },
       { label: 'Товары для компьютера', value: 'tovary_dlya_kompyutera' },
@@ -85,3 +85,4 @@ export const categoryOptions =[
     ],
   },
 ];
+export default categoryOptions;

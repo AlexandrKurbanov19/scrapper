@@ -101,6 +101,12 @@
       "relation": "oneToOne",
       "target": "api::teacher.teacher",
       "mappedBy": "user"
+    },
+    "tariff_periods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-tariff-period.student-tariff-period",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

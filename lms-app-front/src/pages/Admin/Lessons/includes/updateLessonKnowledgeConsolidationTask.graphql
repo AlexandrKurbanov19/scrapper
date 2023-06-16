@@ -1,7 +1,0 @@
-mutation updateLessonKnowledgeConsolidationTask($id: ID!, $data: LessonKnowledgeConsolidationTaskInput!) {
-    updateLessonKnowledgeConsolidationTask(data: $data, id: $id) {
-        data {
-            id
-        }
-    }
-}

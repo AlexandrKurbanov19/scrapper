@@ -4,15 +4,17 @@ import {
   Typography,
   Spin,
 } from 'antd';
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import {
   useCreateHistoryRequestMutation,
   useGetParsingDataMutation,
-  GetParsingDataMutation, useCreateHistoryDataParsingMutation
+  GetParsingDataMutation, useCreateHistoryDataParsingMutation,
 } from '../../generated/graphql';
-import ResultScrapper from "../../components/ResultScrapper/ResultScrapper";
-import ParserForm from "./ParserForm";
-import CommonLayout from "../../components/layout/CommonLayout";
+import ResultScrapper from '../../components/ResultScrapper/ResultScrapper';
+import ParserForm from './ParserForm';
+import CommonLayout from '../../components/layout/CommonLayout';
 
 const { Title } = Typography;
 
@@ -33,12 +35,12 @@ interface IParsingDataItem {
 const ParserPage = () => {
   const [parsingData, setParsingData] = useState<GetParsingDataMutation['getParsingData'] | undefined>(undefined);
   const [freeRequest, setFreeRequest] = useState(
-    { count:  5}
+    { count: 5 },
   );
   const [pending, setPending] = useState<boolean>(false);
 
-  const [createHistoryDataParsing, { data: historyDataParsingData}] = useCreateHistoryDataParsingMutation();
-  const [createHistoryRequest, { data: historyRequestData}] = useCreateHistoryRequestMutation();
+  const [createHistoryDataParsing, { data: historyDataParsingData }] = useCreateHistoryDataParsingMutation();
+  const [createHistoryRequest, { data: historyRequestData }] = useCreateHistoryRequestMutation();
   const [getParsingData, { data: parsingResponseData, loading }] = useGetParsingDataMutation({
     onCompleted: (data) => {
       setPending(false);
@@ -48,21 +50,21 @@ const ParserPage = () => {
       if (freeRequest.count > 0 && Number(freeRequest.count)) {
         setFreeRequest((prev) => {
           localStorage.setItem('freeRequest', JSON.stringify(freeRequest.count - 1));
-          return { ...prev, count: prev.count - 1};
-        })
+          return { ...prev, count: prev.count - 1 };
+        });
       }
-    }
+    },
   });
 
   useEffect(() => {
     const oldCount = Number(localStorage.getItem('freeRequest'));
     if (oldCount && oldCount !== freeRequest.count) {
-      setFreeRequest((prev) => ({ ...prev, count: oldCount}))
+      setFreeRequest((prev) => ({ ...prev, count: oldCount }));
     }
   }, []);
 
-
-  useEffect(() => {
+  useEffect(
+    () => {
       const historyRequestId = historyRequestData?.createHistoryRequest?.data?.id;
       if (historyRequestId && parsingData) {
         (async () => {
@@ -70,44 +72,43 @@ const ParserPage = () => {
             variables: {
               data: {
                 history_request: historyRequestId,
-                parsingData: parsingData,
-              }
-            }
-          })
+                parsingData,
+              },
+            },
+          });
         })();
       }
     },
-    [historyRequestData, parsingData]);
+    [historyRequestData, parsingData],
+  );
 
-  const onSubmitFailed = useCallback( (errorInfo: any) => {
+  const onSubmitFailed = useCallback((errorInfo: any) => {
     console.log('Failed:', errorInfo);
-  }, [])
-
+  }, []);
 
   const goToScrapperForm = useCallback(() => {
     setParsingData(undefined);
   }, []);
 
   const onSubmit = useCallback(async (values: any) => {
-    setPending(true)
+    setPending(true);
     if (values) {
       await createHistoryRequest({
         variables: {
           data: {
             dataForParsing: values,
-          }
+          },
         },
         onCompleted: async () => {
           await getParsingData({
             variables: {
               data: {
                 dataForParsing: values,
-              }
-            }
+              },
+            },
           });
-        }
-      })
-
+        },
+      });
     }
   }, [createHistoryRequest, getParsingData]);
 
@@ -116,15 +117,15 @@ const ParserPage = () => {
   const normalizedData = useMemo(() => {
     if (parsingData && Array.isArray(parsingData)) {
       return parsingData?.map((el: IParsingDataItem) => ({
-        "Название": el?.title,
-        "Дата публикации": el?.dateOfPosting,
-        "Цена товара": el?.price,
-        "Ссылка": el?.url,
-        "Описание товара": el?.description,
-        "Валюта": el?.currency,
-        "Адрес": el?.address,
-        "Информация о продавце": el?.sellerInfo,
-      }))
+        Название: el?.title,
+        'Дата публикации': el?.dateOfPosting,
+        'Цена товара': el?.price,
+        Ссылка: el?.url,
+        'Описание товара': el?.description,
+        Валюта: el?.currency,
+        Адрес: el?.address,
+        'Информация о продавце': el?.sellerInfo,
+      }));
     }
     return [];
   }, [parsingData]);

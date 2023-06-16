@@ -1,7 +1,0 @@
-mutation createParent($data: ParentInput!) {
-    createParent(data: $data) {
-        data {
-            id
-        }
-    }
-}

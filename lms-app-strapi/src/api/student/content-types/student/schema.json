@@ -59,12 +59,6 @@
       "target": "api::curator.curator",
       "inversedBy": "students"
     },
-    "student_tariff_periods": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::student-tariff-period.student-tariff-period",
-      "mappedBy": "student"
-    },
     "avatarUrl": {
       "type": "string"
     },
@@ -76,12 +70,6 @@
     },
     "birthday": {
       "type": "date"
-    },
-    "courses": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::course.course",
-      "mappedBy": "student"
     }
   }
 }

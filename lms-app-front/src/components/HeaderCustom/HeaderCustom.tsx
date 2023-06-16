@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite';
 import cn from 'classnames';
 
 import useStore from 'domain/modelLayer/store/useStore';
-import {FORGET_PASSWORD, LOGIN, LOGOUT} from '../../routes';
+import { FORGET_PASSWORD, LOGIN, LOGOUT } from '../../routes';
 import logo from '../../logo.webp';
 import UserAvatar from '../UserAvatar';
 import translateRoleName from '../../utils/translateRoleName';
@@ -69,19 +69,16 @@ export const HeaderCustom: FC<IProps> = () => {
       )}
 
       {lg && (
-        <Link to="/" className="shrink-0 flex">
-          <img src={logo} alt="logo" className="w-16 sm:w-36" />
-        </Link>
+        <h2 className="text-white">PARSING-HUB</h2>
       )}
 
       {
         profile && (
           <div className="ml-auto">
             <div className="flex items-center text-white pl-4 leading-5">
-        <span className="text-xs sm:text-base">
-          {`${profile?.fullName} (${translateRoleName(profile?.role.name || '???')})`}
-        </span>
-
+              <span className="text-xs sm:text-base">
+                {`${profile?.fullName} (${translateRoleName(profile?.role.name || '???')})`}
+              </span>
 
               <Dropdown
                 menu={profileMenu}
@@ -111,7 +108,6 @@ export const HeaderCustom: FC<IProps> = () => {
           </div>
         )
       }
-
 
     </Header>
   );

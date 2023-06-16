@@ -49,12 +49,6 @@
     },
     "avatarUrl": {
       "type": "string"
-    },
-    "assigned_course_parts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::course-part.course-part",
-      "mappedBy": "curator"
     }
   }
 }
