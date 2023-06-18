@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import {
-  Button, Input, Space, message, Form, Select,
+  Button, Input, Space, message, Form,
 } from 'antd';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import MaskedInput from 'antd-mask-input';
 import useStore from 'domain/modelLayer/store/useStore';
 import CenterLayout from '../../components/layout/CenterLayout';
-import {ABOUT_PAGE, INDEX} from '../../routes';
+import { ABOUT_PAGE } from '../../routes';
 import {
   useRegisterParentOrChildrenMutation,
 } from '../../generated/graphql';
@@ -23,7 +23,6 @@ interface ILoginUserData {
 }
 
 const RegistrationPage: FC = () => {
-  const { Option } = Select;
   const [registerParentOrChildrenMutation] = useRegisterParentOrChildrenMutation();
   const [form] = Form.useForm();
   const { authStore: store } = useStore();
@@ -53,7 +52,7 @@ const RegistrationPage: FC = () => {
 
       store.auth.setToken(jwt);
       store.auth.setUserId(userId);
-      navigate(INDEX);
+      navigate(ABOUT_PAGE);
     } catch (error: any) {
       // eslint-disable-next-line no-console
       console.error(error);

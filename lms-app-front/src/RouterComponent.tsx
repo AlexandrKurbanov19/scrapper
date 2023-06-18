@@ -37,7 +37,7 @@ import FeedbackPage from './pages/FeedbackPage/FeedbackPage';
 import ParserPage from './pages/ParserPage/ParserPage';
 import InstructionPage from './pages/InstructionPage/InstructionPage';
 import ParsingExamplePage from './pages/ParsingExamplePage/ParsingExamplePage';
-import RegistrationPage from "./pages/Auth/RegistrationPage";
+import RegistrationPage from './pages/Auth/RegistrationPage';
 
 const RouterComponent = () => {
   const { profileStore: { profile } } = useStore();

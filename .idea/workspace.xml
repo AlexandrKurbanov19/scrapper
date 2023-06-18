@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea5a04d7-239f-4834-975d-f6896e9aa5d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lms-app-front/src/pages/Auth/RegistrationPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lms-app-front/graphql.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/graphql.schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lms-app-front/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/schema.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lms-app-front/src/RouterComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/RouterComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/HeaderCustom/HeaderCustom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/components/HeaderCustom/HeaderCustom.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lms-app-front/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/generated/graphql.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/Auth/AuthFlowMutations.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/Auth/AuthFlowMutations.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/Auth/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/Auth/LoginPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lms-app-front/src/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lms-app-strapi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-strapi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/Auth/RegistrationPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/Auth/RegistrationPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-strapi/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lms-app-strapi/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-strapi/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +116,7 @@
       <workItem from="1686891517124" duration="15000" />
       <workItem from="1686891544923" duration="1607000" />
       <workItem from="1686893186730" duration="4352000" />
-      <workItem from="1687070248519" duration="8753000" />
+      <workItem from="1687070248519" duration="9081000" />
     </task>
     <servers />
   </component>

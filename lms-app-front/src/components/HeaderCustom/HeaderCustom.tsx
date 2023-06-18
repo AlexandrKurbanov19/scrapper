@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite';
 import cn from 'classnames';
 
 import useStore from 'domain/modelLayer/store/useStore';
-import {LOGIN, LOGOUT, REGISTRATION} from '../../routes';
+import { LOGIN, LOGOUT, REGISTRATION } from '../../routes';
 import UserAvatar from '../UserAvatar';
 import translateRoleName from '../../utils/translateRoleName';
 
@@ -42,6 +42,9 @@ export const HeaderCustom: FC<IProps> = () => {
   const { lg } = useBreakpoint();
 
   const sideBarMenu = useSideBarMenu(profile?.role.name || RoleNamesEnum.Guest);
+
+
+  console.log('profile', JSON.stringify(profile))
 
   return (
     <Header

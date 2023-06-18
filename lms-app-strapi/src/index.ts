@@ -79,15 +79,6 @@ export default {
                   );
                 }
 
-                const userSelectedRole = args.data.role[0] + args.data.role.toLowerCase().slice(1)
-                const role = await strapi
-                  .query('plugin::users-permissions.role')
-                  .findOne({ where: { name: userSelectedRole } });
-
-                if (!role) {
-                  throw new ApplicationError('Impossible to find the default role');
-                }
-
                 // Check if the provided email is valid or not.
                 const isEmail = emailRegExp.test(params.email);
                 if (isEmail) {
@@ -95,8 +86,6 @@ export default {
                 } else {
                   throw new ValidationError('Please provide a valid email address');
                 }
-
-                params.role = role.id;
 
                 const user = await strapi.query('plugin::users-permissions.user').findOne({
                   where: { email: params.email },

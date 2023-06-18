@@ -7,7 +7,9 @@ import { observer } from 'mobx-react-lite';
 import type { Rule } from 'rc-field-form/lib/interface';
 
 import useStore from 'domain/modelLayer/store/useStore';
-import {ABOUT_PAGE, FORGET_PASSWORD, INDEX, REGISTRATION} from '../../routes';
+import {
+  ABOUT_PAGE, FORGET_PASSWORD, INDEX, REGISTRATION,
+} from '../../routes';
 import { useLoginMutation } from '../../generated/graphql';
 import CenterLayout from '../../components/layout/CenterLayout';
 
