@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import {
   Alert, Badge, Button, Card, Descriptions, Tag,
 } from 'antd';
-import { ExportToExcel } from '../ExelExporter/ExcelExporter';
+import ExportToExcel from '../ExelExporter/ExcelExporter';
 
 interface IProp {
   loading?: boolean,
@@ -40,7 +40,7 @@ const ResultScrapper: FC<IProp> = (
       </Descriptions.Item>
       {dataForDownload?.length && (
         <Descriptions.Item label="Файл для скачивания:" span={3}>
-          <ExportToExcel apiData={dataForDownload} />
+          <ExportToExcel apiDataForTable={dataForDownload} />
         </Descriptions.Item>
       )}
       {!dataForDownload?.length && (

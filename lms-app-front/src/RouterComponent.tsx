@@ -68,7 +68,7 @@ const RouterComponent = () => {
                   </>
                 )}
 
-                {profile.role.name === RoleNamesEnum.Student && (
+                {profile.role.name === RoleNamesEnum.Client && (
                   <>
                     <Route path={INDEX} element={<Navigate to={STUDENT_DASHBOARD} />} />
                     <Route path="*" element={<Navigate to={INDEX} />} />

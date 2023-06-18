@@ -4,11 +4,120 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea5a04d7-239f-4834-975d-f6896e9aa5d3" name="Changes" comment="" />
+    <list default="true" id="ea5a04d7-239f-4834-975d-f6896e9aa5d3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lms-app-front/src/domain/dataLayer/dataProvider/graphql/requests/updateUserPassword.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/graphql.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/graphql.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/RouterComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/RouterComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/antToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/antToken.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/ExelExporter/ExcelExporter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/components/ExelExporter/ExcelExporter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/ExelExporter/utils/getExelColWidths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/components/ExelExporter/utils/getExelColWidths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/HeaderCustom/HeaderCustom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/components/HeaderCustom/HeaderCustom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/LessonForm/LessonForm.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/LessonForm/LessonForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/ResultScrapper/ResultScrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/components/ResultScrapper/ResultScrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/SidebarMenu/useSideBarMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/components/SidebarMenu/useSideBarMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/StudentLeftSidebarMenu/StudentLeftSidebarMenu.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/StudentLeftSidebarMenu/StudentLeftSidebarMenu.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/StudentLeftSidebarMenu/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/StudentLessonsMenu/StudentLessonsMenu.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/StudentLessonsMenu/StudentLessonsMenu.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/StudentLessonsMenu/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/ContentEditorFormInput.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/DisciplineSelector.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/FullScreenComponent/FullScreen.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/FullScreenComponent/FullScreenComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/FullScreenComponent/types/IFullScreen.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/FullScreenComponent/types/typings.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/FullScreenComponent/utils/useFullScreenHandle.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LessonSummary/LessonSummaryCompany.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LessonSummary/LessonSummaryCompany.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsIntroActionCard/LmsIntroActionCard.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsIntroActionCard/LmsIntroActionCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsIntroContentCard/LmsIntroContentCard.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsIntroContentCard/LmsIntroContentCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsLessonsProgressBar/LmsLessonsProgressBar.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsLessonsProgressBar/LmsLessonsProgressBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsProgressLine/LmsProgressLine.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsProgressLine/LmsProgressLine.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestAttemptComponent/LmsTestAttemptComponent.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestAttemptComponent/LmsTestAttemptComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestAttemptComponent/components/LmsTestAttemptCounter.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestAttemptComponent/components/LmsTestAttemptCounter.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestAttemptComponent/components/LmsTestAttemptItem.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestAttemptComponent/components/LmsTestAttemptItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestResultComponent/LmsTestResultComponent.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTestResultComponent/LmsTestResultComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/LmsTheoryContentCard/LmsTheoryContentCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/ModuleSelector.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/StudentActivities.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/components/Activity/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/components/Activity/styles.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/components/DatePicker/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/components/DatePicker/styles.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/components/Title/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/components/Title/styles.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/styles.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/StudentActivities/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/TestEditorFormInput.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/common/ThemeSelector.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/layout/StudentLayout/StudentLayout.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/components/layout/StudentLayout/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/domain/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/domain/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/generated/graphql.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/generated/graphql.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/AboutPage/AboutPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/AboutPage/AboutPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/FeedbackPage/FeedbackPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/FeedbackPage/FeedbackPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/LawsPage/LawsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/LawsPage/LawsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/ParserPage/ParserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/ParserPage/ParserForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/ParserPage/ParserPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/ParserPage/ParserPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/pages/ParserPage/utils.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/pages/ParserPage/utils.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/stories/LmsIntroActionCard.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/stories/LmsIntroContentCard.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/stories/LmsLessonsProgressBar.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/stories/LmsProgressLine.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/stories/LmsTestAttemptComponen.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/stories/LmsTestResultComponent.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-front/src/utils/translateRoleName.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-front/src/utils/translateRoleName.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/curator/content-types/curator/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/curator/controllers/curator.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/curator/routes/curator.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/curator/services/curator.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/parent/content-types/parent/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/parent/controllers/parent.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/parent/routes/parent.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/parent/services/parent.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/student/content-types/student/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/student/controllers/student.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/student/routes/student.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/student/services/student.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/tariff/content-types/tariff/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-strapi/src/api/tariff/content-types/tariff/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/teacher/content-types/teacher/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/teacher/controllers/teacher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/teacher/routes/teacher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/teacher/services/teacher.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/tutor/content-types/tutor/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/tutor/controllers/tutor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/tutor/routes/tutor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/api/tutor/services/tutor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lms-app-strapi/src/extensions/users-permissions/content-types/user/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/lms-app-strapi/src/extensions/users-permissions/content-types/user/schema.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="com.haulmont.rcb.palette" />
+        <option value="com.haulmont.rcb.previews" />
+        <option value="com.haulmont.rcb.index" />
+        <option value="com.haulmont.rcb.useInitial" />
+        <option value="com.haulmont.rcb.README" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -17,7 +126,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2QmI71Nux1iS8D9U3fiENuKFzUd" />
   <component name="ProjectViewState">
@@ -28,7 +137,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/LMS__ONLINE-54",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Alexandr/Desktop/програмирование/парсер 2/lms-app-front/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -99,6 +208,7 @@
       <workItem from="1686891517124" duration="15000" />
       <workItem from="1686891544923" duration="1607000" />
       <workItem from="1686893186730" duration="4352000" />
+      <workItem from="1687070248519" duration="7118000" />
     </task>
     <servers />
   </component>

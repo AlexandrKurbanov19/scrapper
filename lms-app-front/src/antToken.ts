@@ -17,6 +17,7 @@ const componentsOverrides: ThemeConfig = {
       paddingContentHorizontal: themeToken?.paddingContentHorizontal,
       colorBorder: themeToken?.['purple.5'],
       borderRadius: 16,
+      borderRadiusSM: 16,
       borderRadiusLG: 20,
       colorLink: '#713EDD',
       fontSize: 14,

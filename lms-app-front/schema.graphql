@@ -80,69 +80,62 @@ input BooleanFilterInput {
   startsWith: Boolean
 }
 
-type Curator {
+type Client {
   avatarUrl: String
   createdAt: DateTime
-  email: String!
-  firstname: String
-  lastname: String
+  email: String
+  firstname: String!
+  lastname: String!
   patronymic: String
-  phone: String
-  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
+  phone: String!
   telegram: String
   updatedAt: DateTime
-  user: UsersPermissionsUserEntityResponse
+  users_permissions_user: UsersPermissionsUserEntityResponse
   vk: String
 }
 
-type CuratorEntity {
-  attributes: Curator
+type ClientEntity {
+  attributes: Client
   id: ID
 }
 
-type CuratorEntityResponse {
-  data: CuratorEntity
+type ClientEntityResponse {
+  data: ClientEntity
 }
 
-type CuratorEntityResponseCollection {
-  data: [CuratorEntity!]!
+type ClientEntityResponseCollection {
+  data: [ClientEntity!]!
   meta: ResponseCollectionMeta!
 }
 
-input CuratorFiltersInput {
-  and: [CuratorFiltersInput]
+input ClientFiltersInput {
+  and: [ClientFiltersInput]
   avatarUrl: StringFilterInput
   createdAt: DateTimeFilterInput
   email: StringFilterInput
   firstname: StringFilterInput
   id: IDFilterInput
   lastname: StringFilterInput
-  not: CuratorFiltersInput
-  or: [CuratorFiltersInput]
+  not: ClientFiltersInput
+  or: [ClientFiltersInput]
   patronymic: StringFilterInput
   phone: StringFilterInput
-  students: StudentFiltersInput
   telegram: StringFilterInput
   updatedAt: DateTimeFilterInput
-  user: UsersPermissionsUserFiltersInput
+  users_permissions_user: UsersPermissionsUserFiltersInput
   vk: StringFilterInput
 }
 
-input CuratorInput {
+input ClientInput {
   avatarUrl: String
   email: String
   firstname: String
   lastname: String
   patronymic: String
   phone: String
-  students: [ID]
   telegram: String
-  user: ID
+  users_permissions_user: ID
   vk: String
-}
-
-type CuratorRelationResponseCollection {
-  data: [CuratorEntity!]!
 }
 
 """
@@ -240,7 +233,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = Administrator | Curator | HistoryDataParsing | HistoryRequest | I18NLocale | Parent | Student | StudentTariffPeriod | Tariff | Teacher | Tutor | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video
+union GenericMorph = Administrator | Client | HistoryDataParsing | HistoryRequest | I18NLocale | StudentTariffPeriod | Tariff | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video
 
 type HistoryDataParsing {
   createdAt: DateTime
@@ -437,15 +430,11 @@ type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   createAdministrator(data: AdministratorInput!): AdministratorEntityResponse
-  createCurator(data: CuratorInput!): CuratorEntityResponse
+  createClient(data: ClientInput!): ClientEntityResponse
   createHistoryDataParsing(data: HistoryDataParsingInput!): HistoryDataParsingEntityResponse
   createHistoryRequest(data: HistoryRequestInput!): HistoryRequestEntityResponse
-  createParent(data: ParentInput!): ParentEntityResponse
-  createStudent(data: StudentInput!): StudentEntityResponse
   createStudentTariffPeriod(data: StudentTariffPeriodInput!): StudentTariffPeriodEntityResponse
   createTariff(data: TariffInput!): TariffEntityResponse
-  createTeacher(data: TeacherInput!): TeacherEntityResponse
-  createTutor(data: TutorInput!): TutorEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -456,15 +445,11 @@ type Mutation {
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
   createVideo(data: VideoInput!): VideoEntityResponse
   deleteAdministrator(id: ID!): AdministratorEntityResponse
-  deleteCurator(id: ID!): CuratorEntityResponse
+  deleteClient(id: ID!): ClientEntityResponse
   deleteHistoryDataParsing(id: ID!): HistoryDataParsingEntityResponse
   deleteHistoryRequest(id: ID!): HistoryRequestEntityResponse
-  deleteParent(id: ID!): ParentEntityResponse
-  deleteStudent(id: ID!): StudentEntityResponse
   deleteStudentTariffPeriod(id: ID!): StudentTariffPeriodEntityResponse
   deleteTariff(id: ID!): TariffEntityResponse
-  deleteTeacher(id: ID!): TeacherEntityResponse
-  deleteTutor(id: ID!): TutorEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -493,16 +478,12 @@ type Mutation {
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   updateAdministrator(data: AdministratorInput!, id: ID!): AdministratorEntityResponse
-  updateCurator(data: CuratorInput!, id: ID!): CuratorEntityResponse
+  updateClient(data: ClientInput!, id: ID!): ClientEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateHistoryDataParsing(data: HistoryDataParsingInput!, id: ID!): HistoryDataParsingEntityResponse
   updateHistoryRequest(data: HistoryRequestInput!, id: ID!): HistoryRequestEntityResponse
-  updateParent(data: ParentInput!, id: ID!): ParentEntityResponse
-  updateStudent(data: StudentInput!, id: ID!): StudentEntityResponse
   updateStudentTariffPeriod(data: StudentTariffPeriodInput!, id: ID!): StudentTariffPeriodEntityResponse
   updateTariff(data: TariffInput!, id: ID!): TariffEntityResponse
-  updateTeacher(data: TeacherInput!, id: ID!): TeacherEntityResponse
-  updateTutor(data: TutorInput!, id: ID!): TutorEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -545,76 +526,11 @@ input PaginationArg {
   start: Int
 }
 
-type Parent {
-  avatarUrl: String
-  children(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
-  createdAt: DateTime
-  email: String!
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  telegram: String
-  updatedAt: DateTime
-  user: UsersPermissionsUserEntityResponse
-  vk: String
-}
-
-type ParentEntity {
-  attributes: Parent
-  id: ID
-}
-
-type ParentEntityResponse {
-  data: ParentEntity
-}
-
-type ParentEntityResponseCollection {
-  data: [ParentEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input ParentFiltersInput {
-  and: [ParentFiltersInput]
-  avatarUrl: StringFilterInput
-  children: StudentFiltersInput
-  createdAt: DateTimeFilterInput
-  email: StringFilterInput
-  firstname: StringFilterInput
-  id: IDFilterInput
-  lastname: StringFilterInput
-  not: ParentFiltersInput
-  or: [ParentFiltersInput]
-  patronymic: StringFilterInput
-  phone: StringFilterInput
-  telegram: StringFilterInput
-  updatedAt: DateTimeFilterInput
-  user: UsersPermissionsUserFiltersInput
-  vk: StringFilterInput
-}
-
-input ParentInput {
-  avatarUrl: String
-  children: [ID]
-  email: String
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  telegram: String
-  user: ID
-  vk: String
-}
-
-type ParentRelationResponseCollection {
-  data: [ParentEntity!]!
-}
-
 type Query {
   administrator(id: ID): AdministratorEntityResponse
   administrators(filters: AdministratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdministratorEntityResponseCollection
-  curator(id: ID): CuratorEntityResponse
-  curators(filters: CuratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CuratorEntityResponseCollection
+  client(id: ID): ClientEntityResponse
+  clients(filters: ClientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ClientEntityResponseCollection
   historyDataParsing(id: ID): HistoryDataParsingEntityResponse
   historyDataParsings(filters: HistoryDataParsingFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): HistoryDataParsingEntityResponseCollection
   historyRequest(id: ID): HistoryRequestEntityResponse
@@ -623,19 +539,11 @@ type Query {
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   me: UsersPermissionsMe
   myProfile: MyProfileResponse!
-  parent(id: ID): ParentEntityResponse
-  parents(filters: ParentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ParentEntityResponseCollection
   sendFeedback(data: sendFeedbackInput): sendFeedbackResponse!
-  student(id: ID): StudentEntityResponse
   studentTariffPeriod(id: ID): StudentTariffPeriodEntityResponse
   studentTariffPeriods(filters: StudentTariffPeriodFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentTariffPeriodEntityResponseCollection
-  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentEntityResponseCollection
   tariff(id: ID): TariffEntityResponse
   tariffs(filters: TariffFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TariffEntityResponseCollection
-  teacher(id: ID): TeacherEntityResponse
-  teachers(filters: TeacherFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TeacherEntityResponseCollection
-  tutor(id: ID): TutorEntityResponse
-  tutors(filters: TutorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TutorEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
@@ -674,83 +582,6 @@ input StringFilterInput {
   null: Boolean
   or: [String]
   startsWith: String
-}
-
-type Student {
-  avatarUrl: String
-  birthday: Date
-  createdAt: DateTime
-  curators(filters: CuratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CuratorRelationResponseCollection
-  email: String!
-  firstname: String
-  lastname: String
-  parents(filters: ParentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ParentRelationResponseCollection
-  patronymic: String
-  phone: String
-  tariff: TariffEntityResponse
-  telegram: String
-  tutors(filters: TutorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TutorRelationResponseCollection
-  updatedAt: DateTime
-  user: UsersPermissionsUserEntityResponse
-  vk: String
-}
-
-type StudentEntity {
-  attributes: Student
-  id: ID
-}
-
-type StudentEntityResponse {
-  data: StudentEntity
-}
-
-type StudentEntityResponseCollection {
-  data: [StudentEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input StudentFiltersInput {
-  and: [StudentFiltersInput]
-  avatarUrl: StringFilterInput
-  birthday: DateFilterInput
-  createdAt: DateTimeFilterInput
-  curators: CuratorFiltersInput
-  email: StringFilterInput
-  firstname: StringFilterInput
-  id: IDFilterInput
-  lastname: StringFilterInput
-  not: StudentFiltersInput
-  or: [StudentFiltersInput]
-  parents: ParentFiltersInput
-  patronymic: StringFilterInput
-  phone: StringFilterInput
-  tariff: TariffFiltersInput
-  telegram: StringFilterInput
-  tutors: TutorFiltersInput
-  updatedAt: DateTimeFilterInput
-  user: UsersPermissionsUserFiltersInput
-  vk: StringFilterInput
-}
-
-input StudentInput {
-  avatarUrl: String
-  birthday: Date
-  curators: [ID]
-  email: String
-  firstname: String
-  lastname: String
-  parents: [ID]
-  patronymic: String
-  phone: String
-  tariff: ID
-  telegram: String
-  tutors: [ID]
-  user: ID
-  vk: String
-}
-
-type StudentRelationResponseCollection {
-  data: [StudentEntity!]!
 }
 
 type StudentTariffPeriod {
@@ -807,7 +638,6 @@ type Tariff {
   createdAt: DateTime
   description: JSON!
   name: String!
-  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
   updatedAt: DateTime
 }
 
@@ -833,137 +663,12 @@ input TariffFiltersInput {
   name: StringFilterInput
   not: TariffFiltersInput
   or: [TariffFiltersInput]
-  students: StudentFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
 input TariffInput {
   description: JSON
   name: String
-  students: [ID]
-}
-
-type Teacher {
-  avatarUrl: String
-  createdAt: DateTime
-  email: String!
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  telegram: String
-  updatedAt: DateTime
-  user: UsersPermissionsUserEntityResponse
-  vk: String
-}
-
-type TeacherEntity {
-  attributes: Teacher
-  id: ID
-}
-
-type TeacherEntityResponse {
-  data: TeacherEntity
-}
-
-type TeacherEntityResponseCollection {
-  data: [TeacherEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input TeacherFiltersInput {
-  and: [TeacherFiltersInput]
-  avatarUrl: StringFilterInput
-  createdAt: DateTimeFilterInput
-  email: StringFilterInput
-  firstname: StringFilterInput
-  id: IDFilterInput
-  lastname: StringFilterInput
-  not: TeacherFiltersInput
-  or: [TeacherFiltersInput]
-  patronymic: StringFilterInput
-  phone: StringFilterInput
-  telegram: StringFilterInput
-  updatedAt: DateTimeFilterInput
-  user: UsersPermissionsUserFiltersInput
-  vk: StringFilterInput
-}
-
-input TeacherInput {
-  avatarUrl: String
-  email: String
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  telegram: String
-  user: ID
-  vk: String
-}
-
-type Tutor {
-  avatarUrl: String
-  createdAt: DateTime
-  email: String!
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  students(filters: StudentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentRelationResponseCollection
-  telegram: String
-  updatedAt: DateTime
-  user: UsersPermissionsUserEntityResponse
-  vk: String
-}
-
-type TutorEntity {
-  attributes: Tutor
-  id: ID
-}
-
-type TutorEntityResponse {
-  data: TutorEntity
-}
-
-type TutorEntityResponseCollection {
-  data: [TutorEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input TutorFiltersInput {
-  and: [TutorFiltersInput]
-  avatarUrl: StringFilterInput
-  createdAt: DateTimeFilterInput
-  email: StringFilterInput
-  firstname: StringFilterInput
-  id: IDFilterInput
-  lastname: StringFilterInput
-  not: TutorFiltersInput
-  or: [TutorFiltersInput]
-  patronymic: StringFilterInput
-  phone: StringFilterInput
-  students: StudentFiltersInput
-  telegram: StringFilterInput
-  updatedAt: DateTimeFilterInput
-  user: UsersPermissionsUserFiltersInput
-  vk: StringFilterInput
-}
-
-input TutorInput {
-  avatarUrl: String
-  email: String
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  students: [ID]
-  telegram: String
-  user: ID
-  vk: String
-}
-
-type TutorRelationResponseCollection {
-  data: [TutorEntity!]!
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -1229,17 +934,13 @@ type UsersPermissionsUpdateRolePayload {
 type UsersPermissionsUser {
   administrator: AdministratorEntityResponse
   blocked: Boolean
+  client: ClientEntityResponse
   confirmed: Boolean
   createdAt: DateTime
-  curator: CuratorEntityResponse
   email: String!
-  parent: ParentEntityResponse
   provider: String
   role: UsersPermissionsRoleEntityResponse
-  student: StudentEntityResponse
   tariff_periods(filters: StudentTariffPeriodFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentTariffPeriodRelationResponseCollection
-  teacher: TeacherEntityResponse
-  tutor: TutorEntityResponse
   updatedAt: DateTime
   username: String!
 }
@@ -1262,23 +963,19 @@ input UsersPermissionsUserFiltersInput {
   administrator: AdministratorFiltersInput
   and: [UsersPermissionsUserFiltersInput]
   blocked: BooleanFilterInput
+  client: ClientFiltersInput
   confirmationToken: StringFilterInput
   confirmed: BooleanFilterInput
   createdAt: DateTimeFilterInput
-  curator: CuratorFiltersInput
   email: StringFilterInput
   id: IDFilterInput
   not: UsersPermissionsUserFiltersInput
   or: [UsersPermissionsUserFiltersInput]
-  parent: ParentFiltersInput
   password: StringFilterInput
   provider: StringFilterInput
   resetPasswordToken: StringFilterInput
   role: UsersPermissionsRoleFiltersInput
-  student: StudentFiltersInput
   tariff_periods: StudentTariffPeriodFiltersInput
-  teacher: TeacherFiltersInput
-  tutor: TutorFiltersInput
   updatedAt: DateTimeFilterInput
   username: StringFilterInput
 }
@@ -1286,19 +983,15 @@ input UsersPermissionsUserFiltersInput {
 input UsersPermissionsUserInput {
   administrator: ID
   blocked: Boolean
+  client: ID
   confirmationToken: String
   confirmed: Boolean
-  curator: ID
   email: String
-  parent: ID
   password: String
   provider: String
   resetPasswordToken: String
   role: ID
-  student: ID
   tariff_periods: [ID]
-  teacher: ID
-  tutor: ID
   username: String
 }
 

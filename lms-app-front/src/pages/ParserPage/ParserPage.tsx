@@ -1,10 +1,9 @@
 import {
   Card,
-  Layout,
   Typography,
   Spin,
 } from 'antd';
-import {
+import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import {
@@ -39,9 +38,9 @@ const ParserPage = () => {
   );
   const [pending, setPending] = useState<boolean>(false);
 
-  const [createHistoryDataParsing, { data: historyDataParsingData }] = useCreateHistoryDataParsingMutation();
+  const [createHistoryDataParsing] = useCreateHistoryDataParsingMutation();
   const [createHistoryRequest, { data: historyRequestData }] = useCreateHistoryRequestMutation();
-  const [getParsingData, { data: parsingResponseData, loading }] = useGetParsingDataMutation({
+  const [getParsingData, { loading }] = useGetParsingDataMutation({
     onCompleted: (data) => {
       setPending(false);
       if (data) {
@@ -83,7 +82,7 @@ const ParserPage = () => {
   );
 
   const onSubmitFailed = useCallback((errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+    console.error('Failed:', errorInfo);
   }, []);
 
   const goToScrapperForm = useCallback(() => {

@@ -10,7 +10,7 @@ const { Title } = Typography;
 
 const FeedBackPage = () => {
   const [pending, setPending] = useState<boolean>(false);
-  const [sendFeedback, { data, error }] = useSendFeedbackDataLazyQuery({
+  const [sendFeedback] = useSendFeedbackDataLazyQuery({
     onCompleted: (data) => {
       if (data.sendFeedback.status) {
         message.success('Ваше сообщение отправлено!');
@@ -21,7 +21,7 @@ const FeedBackPage = () => {
     },
   });
   const onSubmitFailed = useCallback((errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+    console.error('Failed:', errorInfo);
   }, []);
   const onSubmit = useCallback(async (values: any) => {
     setPending(true);

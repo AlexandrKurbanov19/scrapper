@@ -20,12 +20,6 @@
     "description": {
       "type": "json",
       "required": true
-    },
-    "students": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::student.student",
-      "mappedBy": "tariff"
     }
   }
 }

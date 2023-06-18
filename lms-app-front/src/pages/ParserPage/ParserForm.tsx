@@ -7,7 +7,7 @@ import {
   Select, DatePicker,
 } from 'antd';
 import React, { FC } from 'react';
-import { categoryOptions } from './utils';
+import categoryOptions from './utils';
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;

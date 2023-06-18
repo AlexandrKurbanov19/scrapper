@@ -66,46 +66,22 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "parent": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::parent.parent",
-      "mappedBy": "user"
-    },
     "administrator": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::administrator.administrator",
       "mappedBy": "user"
     },
-    "curator": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::curator.curator",
-      "mappedBy": "user"
-    },
-    "tutor": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::tutor.tutor",
-      "mappedBy": "user"
-    },
-    "student": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::student.student",
-      "mappedBy": "user"
-    },
-    "teacher": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::teacher.teacher",
-      "mappedBy": "user"
-    },
     "tariff_periods": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::student-tariff-period.student-tariff-period",
+      "mappedBy": "users_permissions_user"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::client.client",
       "mappedBy": "users_permissions_user"
     }
   }

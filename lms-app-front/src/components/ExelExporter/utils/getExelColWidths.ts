@@ -1,6 +1,6 @@
 import { WorkSheet } from 'xlsx';
 
-export function getExcelColWidths(worksheet: WorkSheet) {
+const getExcelColWidths = (worksheet: WorkSheet) => {
   const maxColWidthsMap = Object.keys(worksheet)
     /** удаляем !ref, !cols, !merges, !protect, !autofilter ключи
      * оставляем только ключи с ячейками A1, A2, B3, AG34 и т.д.
@@ -43,4 +43,5 @@ export function getExcelColWidths(worksheet: WorkSheet) {
     .map((key) => ({
       width: maxColWidthsMap[key],
     }));
-}
+};
+export default getExcelColWidths;

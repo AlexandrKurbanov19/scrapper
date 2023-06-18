@@ -100,7 +100,7 @@ const useSideBarMenu = (roleName: RoleNamesEnum) => {
     } as const;
   }
 
-  if (roleName === RoleNamesEnum.Student) {
+  if (roleName === RoleNamesEnum.Client) {
     const selectedKeys = [
       STUDENT_DASHBOARD,
       STUDENT_LESSONS,

@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
+// @ts-ignore
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Button, Space } from 'antd';
-import { getExcelColWidths } from './utils/getExelColWidths';
+import getExcelColWidths from './utils/getExelColWidths';
 
 interface IProp {
-  apiData: any;
+  apiDataForTable: any;
 }
-export const ExportToExcel: FC<IProp> = ({ apiData }) => {
+const ExportToExcel: FC<IProp> = ({ apiDataForTable }) => {
   const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   const fileExtension = '.xlsx';
-  const fileName = 'Данные';
+  const fileNameTable = 'Данные';
 
   const exportToCSV = (apiData: any, fileName: string) => {
     const ws = XLSX.utils.json_to_sheet(apiData);
@@ -23,9 +24,10 @@ export const ExportToExcel: FC<IProp> = ({ apiData }) => {
 
   return (
     <Space wrap>
-      <Button type="default" size="middle" onClick={(e) => exportToCSV(apiData, fileName)}>
+      <Button type="default" size="middle" onClick={() => exportToCSV(apiDataForTable, fileNameTable)}>
         Скачать результат парсинга
       </Button>
     </Space>
   );
 };
+export default ExportToExcel;
