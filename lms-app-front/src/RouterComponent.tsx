@@ -14,7 +14,14 @@ import {
   LOGOUT,
   RESET_PASSWORD,
   USERS,
-  STUDENT_DASHBOARD, ABOUT_PAGE, LAW_PAGE, FEEDBACK_PAGE, PARSER_PAGE, INSTRUCTION_PAGE, PARSING_EXAMPLE_PAGE,
+  STUDENT_DASHBOARD,
+  ABOUT_PAGE,
+  LAW_PAGE,
+  FEEDBACK_PAGE,
+  PARSER_PAGE,
+  INSTRUCTION_PAGE,
+  PARSING_EXAMPLE_PAGE,
+  REGISTRATION,
 } from './routes';
 import { RoleNamesEnum } from './domain/types';
 
@@ -30,6 +37,7 @@ import FeedbackPage from './pages/FeedbackPage/FeedbackPage';
 import ParserPage from './pages/ParserPage/ParserPage';
 import InstructionPage from './pages/InstructionPage/InstructionPage';
 import ParsingExamplePage from './pages/ParsingExamplePage/ParsingExamplePage';
+import RegistrationPage from "./pages/Auth/RegistrationPage";
 
 const RouterComponent = () => {
   const { profileStore: { profile } } = useStore();
@@ -50,6 +58,7 @@ const RouterComponent = () => {
                 <Route path={INSTRUCTION_PAGE} element={<InstructionPage />} />
                 <Route path={PARSING_EXAMPLE_PAGE} element={<ParsingExamplePage />} />
                 <Route path={PARSER_PAGE} element={<ParserPage />} />
+                <Route path={REGISTRATION} element={<RegistrationPage />} />
                 <Route path={LOGIN} element={<LoginPage />} />
                 <Route path={FORGET_PASSWORD} element={<ForgetPasswordPage />} />
                 <Route path={RESET_PASSWORD} element={<ResetPasswordPage />} />

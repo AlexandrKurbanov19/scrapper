@@ -1,7 +1,22 @@
 import { Strapi } from '@strapi/strapi';
 import customGraphql from './custom-graphql';
-import { Roles } from './constants/roles';
-import generateUserPassword from './utils/generateUserPassword';
+import _ from 'lodash';
+import utils from '@strapi/utils';
+import hash from 'password-hash';
+import { getService } from '@strapi/plugin-users-permissions/server/utils';
+import { validateRegisterBody } from '@strapi/plugin-users-permissions/server/controllers/validation/auth';
+
+const { ApplicationError, ValidationError } = utils.errors;
+const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const { sanitize } = utils;
+
+const sanitizeUser = (user, ctx, strapi: Strapi) => {
+  const { auth } = ctx.state;
+  const userSchema = strapi.getModel('plugin::users-permissions.user');
+
+  return sanitize.contentAPI.output(user, userSchema, { auth });
+};
+
 
 export default {
   /**
@@ -19,6 +34,102 @@ export default {
       } else {
         extensionService.use(customGraphqlExtension);
       }
+
+      extensionService.use({
+        typeDefs: `
+
+        input RegisterParentOrChildrenInput {
+          email: String!,
+          password: String!,
+          phone: String!,
+          firstname: String!,
+          lastname: String!,
+          patronymic: String!,
+          username: String!,
+        }
+
+        type RegisterParentOrChildrenResponse {
+          user: UsersPermissionsUserEntity,
+          jwt: String,
+        }
+
+        extend type Mutation {
+          registerParentOrChildren(data: RegisterParentOrChildrenInput!): RegisterParentOrChildrenResponse,
+        }
+
+        `,
+        resolversConfig: {
+          'Mutation.registerParentOrChildren': {
+            auth: false,
+            middlewares: [
+              // регистрация новых пользователей
+              async (next, parent, args, context) => {
+                const params: any = {
+                  ..._.omit(args.data),
+                  provider: 'local',
+                };
+
+                await validateRegisterBody(params);
+
+                // Throw an error if the password selected by the user
+                // contains more than three times the symbol '$'.
+                if (hash.isHashed(params.password)) {
+                  throw new ValidationError(
+                    'Your password cannot contain more than three times the symbol `$`'
+                  );
+                }
+
+                const userSelectedRole = args.data.role[0] + args.data.role.toLowerCase().slice(1)
+                const role = await strapi
+                  .query('plugin::users-permissions.role')
+                  .findOne({ where: { name: userSelectedRole } });
+
+                if (!role) {
+                  throw new ApplicationError('Impossible to find the default role');
+                }
+
+                // Check if the provided email is valid or not.
+                const isEmail = emailRegExp.test(params.email);
+                if (isEmail) {
+                  params.email = params.email.toLowerCase();
+                } else {
+                  throw new ValidationError('Please provide a valid email address');
+                }
+
+                params.role = role.id;
+
+                const user = await strapi.query('plugin::users-permissions.user').findOne({
+                  where: { email: params.email },
+                });
+
+                if (user) {
+                  throw new ApplicationError('Email уже существует!');
+                }
+
+                try {
+                  const user = await getService('user').add(params);
+                  const sanitizedUser = await sanitizeUser(user, context, strapi);
+                  const jwt = getService('jwt').issue(_.pick(user, ['id']));
+
+                  return {
+                    jwt,
+                    user: sanitizedUser,
+                  };
+                } catch (err) {
+                  if (_.includes(err.message, 'username')) {
+                    throw new ApplicationError('Username already taken');
+                  } else if (_.includes(err.message, 'email')) {
+                    throw new ApplicationError('Email already taken');
+                  } else {
+                    strapi.log.error(err);
+                    throw new ApplicationError('An error occurred during account creation');
+                  }
+                }
+              }
+            ]
+          },
+        }
+      });
     });
   },
 

@@ -471,6 +471,7 @@ type Mutation {
 
   """Register a user"""
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  registerParentOrChildren(data: RegisterParentOrChildrenInput!): RegisterParentOrChildrenResponse
   removeFile(id: ID!): UploadFileEntityResponse
 
   """
@@ -554,6 +555,21 @@ type Query {
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
   video(id: ID): VideoEntityResponse
   videos(filters: VideoFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): VideoEntityResponseCollection
+}
+
+input RegisterParentOrChildrenInput {
+  email: String!
+  firstname: String!
+  lastname: String!
+  password: String!
+  patronymic: String!
+  phone: String!
+  username: String!
+}
+
+type RegisterParentOrChildrenResponse {
+  jwt: String
+  user: UsersPermissionsUserEntity
 }
 
 type ResponseCollectionMeta {

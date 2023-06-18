@@ -493,6 +493,7 @@ export type Mutation = {
   multipleUpload: Array<Maybe<UploadFileEntityResponse>>;
   /** Register a user */
   register: UsersPermissionsLoginPayload;
+  registerParentOrChildren?: Maybe<RegisterParentOrChildrenResponse>;
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
@@ -661,6 +662,11 @@ export type MutationMultipleUploadArgs = {
 
 export type MutationRegisterArgs = {
   input: UsersPermissionsRegisterInput;
+};
+
+
+export type MutationRegisterParentOrChildrenArgs = {
+  data: RegisterParentOrChildrenInput;
 };
 
 
@@ -967,6 +973,22 @@ export type QueryVideosArgs = {
   filters?: InputMaybe<VideoFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type RegisterParentOrChildrenInput = {
+  email: Scalars['String']['input'];
+  firstname: Scalars['String']['input'];
+  lastname: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  patronymic: Scalars['String']['input'];
+  phone: Scalars['String']['input'];
+  username: Scalars['String']['input'];
+};
+
+export type RegisterParentOrChildrenResponse = {
+  __typename?: 'RegisterParentOrChildrenResponse';
+  jwt?: Maybe<Scalars['String']['output']>;
+  user?: Maybe<UsersPermissionsUserEntity>;
 };
 
 export type ResponseCollectionMeta = {
@@ -1616,6 +1638,13 @@ export type ResetPasswordMutationVariables = Exact<{
 
 export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword?: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, blocked?: boolean | null } } | null };
 
+export type RegisterParentOrChildrenMutationVariables = Exact<{
+  data: RegisterParentOrChildrenInput;
+}>;
+
+
+export type RegisterParentOrChildrenMutation = { __typename?: 'Mutation', registerParentOrChildren?: { __typename?: 'RegisterParentOrChildrenResponse', jwt?: string | null, user?: { __typename?: 'UsersPermissionsUserEntity', id?: string | null } | null } | null };
+
 
 export const CreateHistoryDataParsingDocument = gql`
     mutation createHistoryDataParsing($data: HistoryDataParsingInput!) {
@@ -1951,3 +1980,39 @@ export function useResetPasswordMutation(baseOptions?: Apollo.MutationHookOption
 export type ResetPasswordMutationHookResult = ReturnType<typeof useResetPasswordMutation>;
 export type ResetPasswordMutationResult = Apollo.MutationResult<ResetPasswordMutation>;
 export type ResetPasswordMutationOptions = Apollo.BaseMutationOptions<ResetPasswordMutation, ResetPasswordMutationVariables>;
+export const RegisterParentOrChildrenDocument = gql`
+    mutation registerParentOrChildren($data: RegisterParentOrChildrenInput!) {
+  registerParentOrChildren(data: $data) {
+    jwt
+    user {
+      id
+    }
+  }
+}
+    `;
+export type RegisterParentOrChildrenMutationFn = Apollo.MutationFunction<RegisterParentOrChildrenMutation, RegisterParentOrChildrenMutationVariables>;
+
+/**
+ * __useRegisterParentOrChildrenMutation__
+ *
+ * To run a mutation, you first call `useRegisterParentOrChildrenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterParentOrChildrenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [registerParentOrChildrenMutation, { data, loading, error }] = useRegisterParentOrChildrenMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useRegisterParentOrChildrenMutation(baseOptions?: Apollo.MutationHookOptions<RegisterParentOrChildrenMutation, RegisterParentOrChildrenMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<RegisterParentOrChildrenMutation, RegisterParentOrChildrenMutationVariables>(RegisterParentOrChildrenDocument, options);
+      }
+export type RegisterParentOrChildrenMutationHookResult = ReturnType<typeof useRegisterParentOrChildrenMutation>;
+export type RegisterParentOrChildrenMutationResult = Apollo.MutationResult<RegisterParentOrChildrenMutation>;
+export type RegisterParentOrChildrenMutationOptions = Apollo.BaseMutationOptions<RegisterParentOrChildrenMutation, RegisterParentOrChildrenMutationVariables>;

@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite';
 import cn from 'classnames';
 
 import useStore from 'domain/modelLayer/store/useStore';
-import { LOGIN, LOGOUT } from '../../routes';
+import {LOGIN, LOGOUT, REGISTRATION} from '../../routes';
 import UserAvatar from '../UserAvatar';
 import translateRoleName from '../../utils/translateRoleName';
 
@@ -94,7 +94,7 @@ export const HeaderCustom: FC<IProps> = () => {
       {
         !profile && (
           <div className="ml-auto flex gap-1 lg:gap-4 lg:flex-wrap">
-            <Link to={LOGIN}>
+            <Link to={REGISTRATION}>
               <Button size="small" block>
                 Зарегистрироваться?
               </Button>

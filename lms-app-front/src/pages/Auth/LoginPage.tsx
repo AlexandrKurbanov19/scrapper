@@ -7,7 +7,7 @@ import { observer } from 'mobx-react-lite';
 import type { Rule } from 'rc-field-form/lib/interface';
 
 import useStore from 'domain/modelLayer/store/useStore';
-import { ABOUT_PAGE, FORGET_PASSWORD, INDEX } from '../../routes';
+import {ABOUT_PAGE, FORGET_PASSWORD, INDEX, REGISTRATION} from '../../routes';
 import { useLoginMutation } from '../../generated/graphql';
 import CenterLayout from '../../components/layout/CenterLayout';
 
@@ -121,6 +121,13 @@ const LoginPage: FC = () => {
                 Войти
               </Button>
             )}
+          </Form.Item>
+          <Form.Item>
+            <Link to={REGISTRATION}>
+              <Button type="primary" size="large" block>
+                Регистрация
+              </Button>
+            </Link>
           </Form.Item>
           <Form.Item>
             <Link to={FORGET_PASSWORD}>
