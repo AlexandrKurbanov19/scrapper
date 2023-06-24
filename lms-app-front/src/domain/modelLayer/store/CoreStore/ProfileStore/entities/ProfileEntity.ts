@@ -11,7 +11,6 @@ export const BaseProfileEntity = NamedPerson
   .named('BaseProfileEntity')
   .props({
     id: t.string,
-    userId: t.string,
     email: t.string,
     role: RoleEntity,
     avatarUrl: t.maybeNull(t.string),

@@ -7,6 +7,9 @@ const myProfileEndpoint = async (next, parent, args, context) => {
     throw new Error('Authentication requested');
   }
 
+  console.log(user);
+  
+
   const upUser = await strapi
     .query('plugin::users-permissions.user')
     .findOne({
@@ -24,59 +27,20 @@ const myProfileEndpoint = async (next, parent, args, context) => {
   if (!upUser) {
     throw new Error('User not found');
   }
+  
 
-  if (upUser.role.name === Roles.Administrator) {
-    const [administator] = await strapi
-      .entityService
-      .findMany('api::administrator.administrator', {
-        // fields: ['title', 'description'],
-        filters: {
-          user: {
-            id: {
-              $eq: user.id,
-            },
-          },
-        },
-        limit: 1,
-      });
-
-    if (!administator) {
-      throw new Error('Administrator not found');
-    }
-
-    return {
-      ...administator,
-      role: upUser.role,
-      userId: user.id,
-    };
+  return {
+    id: user.id,
+    email: user.email,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    patronymic: user.patronymic,
+    avatarUrl: user.avatarUrl,
+    role: {
+      id: user?.role.id,
+      name: user?.role.name,
+    },
   }
-
-  if (upUser.role.name === Roles.Student) {
-    const [student] = await strapi
-      .entityService
-      .findMany('api::student.student', {
-        filters: {
-          user: {
-            id: {
-              $eq: user.id,
-            },
-          },
-        },
-        limit: 1,
-      });
-
-    if (!student) {
-      throw new Error('Student not found');
-    }
-
-    return {
-      ...student,
-      role: upUser.role,
-      userId: user.id,
-    };
-  }
-
-  throw new Error('Not implemented for this role');
 };
 
 export default myProfileEndpoint;

@@ -37,8 +37,12 @@ export default {
 
       extensionService.use({
         typeDefs: `
+        enum ENUM_PUBLIC_REGISTRATION_ROLE {
+          CLIENT
+        }
 
         input RegisterParentOrChildrenInput {
+          role: ENUM_PUBLIC_REGISTRATION_ROLE!,
           email: String!,
           password: String!,
           phone: String!,
@@ -68,9 +72,9 @@ export default {
                   ..._.omit(args.data),
                   provider: 'local',
                 };
-
+  
                 await validateRegisterBody(params);
-
+  
                 // Throw an error if the password selected by the user
                 // contains more than three times the symbol '$'.
                 if (hash.isHashed(params.password)) {
@@ -78,7 +82,16 @@ export default {
                     'Your password cannot contain more than three times the symbol `$`'
                   );
                 }
-
+  
+                const userSelectedRole = args.data.role[0] + args.data.role.toLowerCase().slice(1)
+                const role = await strapi
+                  .query('plugin::users-permissions.role')
+                  .findOne({ where: { name: userSelectedRole } });
+  
+                if (!role) {
+                  throw new ApplicationError('Impossible to find the default role');
+                }
+  
                 // Check if the provided email is valid or not.
                 const isEmail = emailRegExp.test(params.email);
                 if (isEmail) {
@@ -86,20 +99,22 @@ export default {
                 } else {
                   throw new ValidationError('Please provide a valid email address');
                 }
-
+  
+                params.role = role.id;
+  
                 const user = await strapi.query('plugin::users-permissions.user').findOne({
                   where: { email: params.email },
                 });
-
+  
                 if (user) {
                   throw new ApplicationError('Email уже существует!');
                 }
-
+  
                 try {
                   const user = await getService('user').add(params);
                   const sanitizedUser = await sanitizeUser(user, context, strapi);
                   const jwt = getService('jwt').issue(_.pick(user, ['id']));
-
+  
                   return {
                     jwt,
                     user: sanitizedUser,

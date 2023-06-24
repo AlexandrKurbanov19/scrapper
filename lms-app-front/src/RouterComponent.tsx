@@ -6,7 +6,6 @@ import { observer } from 'mobx-react-lite';
 import 'moment/locale/ru';
 import useStore from 'domain/modelLayer/store/useStore';
 
-import ScrollToTop from './components/ScrollToTop';
 import {
   FORGET_PASSWORD,
   INDEX,
@@ -46,7 +45,6 @@ const RouterComponent = () => {
 
   return (
     <Router>
-      <ScrollToTop />
       <LayoutContextProvider>
         <Routes>
           <>
@@ -72,15 +70,15 @@ const RouterComponent = () => {
 
                 {profile.role.name === RoleNamesEnum.Administrator && (
                   <>
-                    <Route path={INDEX} element={<Navigate to={USERS} />} />
-                    <Route path="*" element={<Navigate to={INDEX} />} />
+                    <Route path={ABOUT_PAGE} element={<Navigate to={USERS} />} />
+                    <Route path="*" element={<Navigate to={ABOUT_PAGE} />} />
                   </>
                 )}
 
                 {profile.role.name === RoleNamesEnum.Client && (
                   <>
-                    <Route path={INDEX} element={<Navigate to={STUDENT_DASHBOARD} />} />
-                    <Route path="*" element={<Navigate to={INDEX} />} />
+                    <Route path={ABOUT_PAGE} element={<Navigate to={ABOUT_PAGE} />} />
+                    <Route path="*" element={<Navigate to={ABOUT_PAGE} />} />
                   </>
                 )}
               </>

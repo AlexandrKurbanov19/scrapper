@@ -21,68 +21,6 @@ export type Scalars = {
   Upload: { input: any; output: any; }
 };
 
-export type Administrator = {
-  __typename?: 'Administrator';
-  avatarUrl?: Maybe<Scalars['String']['output']>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  email: Scalars['String']['output'];
-  firstname?: Maybe<Scalars['String']['output']>;
-  lastname?: Maybe<Scalars['String']['output']>;
-  patronymic?: Maybe<Scalars['String']['output']>;
-  phone?: Maybe<Scalars['String']['output']>;
-  telegram?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  user?: Maybe<UsersPermissionsUserEntityResponse>;
-  vk?: Maybe<Scalars['String']['output']>;
-};
-
-export type AdministratorEntity = {
-  __typename?: 'AdministratorEntity';
-  attributes?: Maybe<Administrator>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type AdministratorEntityResponse = {
-  __typename?: 'AdministratorEntityResponse';
-  data?: Maybe<AdministratorEntity>;
-};
-
-export type AdministratorEntityResponseCollection = {
-  __typename?: 'AdministratorEntityResponseCollection';
-  data: Array<AdministratorEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type AdministratorFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<AdministratorFiltersInput>>>;
-  avatarUrl?: InputMaybe<StringFilterInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  email?: InputMaybe<StringFilterInput>;
-  firstname?: InputMaybe<StringFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  lastname?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<AdministratorFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<AdministratorFiltersInput>>>;
-  patronymic?: InputMaybe<StringFilterInput>;
-  phone?: InputMaybe<StringFilterInput>;
-  telegram?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-  user?: InputMaybe<UsersPermissionsUserFiltersInput>;
-  vk?: InputMaybe<StringFilterInput>;
-};
-
-export type AdministratorInput = {
-  avatarUrl?: InputMaybe<Scalars['String']['input']>;
-  email?: InputMaybe<Scalars['String']['input']>;
-  firstname?: InputMaybe<Scalars['String']['input']>;
-  lastname?: InputMaybe<Scalars['String']['input']>;
-  patronymic?: InputMaybe<Scalars['String']['input']>;
-  phone?: InputMaybe<Scalars['String']['input']>;
-  telegram?: InputMaybe<Scalars['String']['input']>;
-  user?: InputMaybe<Scalars['ID']['input']>;
-  vk?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>;
@@ -105,68 +43,6 @@ export type BooleanFilterInput = {
   null?: InputMaybe<Scalars['Boolean']['input']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>;
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type Client = {
-  __typename?: 'Client';
-  avatarUrl?: Maybe<Scalars['String']['output']>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  email?: Maybe<Scalars['String']['output']>;
-  firstname: Scalars['String']['output'];
-  lastname: Scalars['String']['output'];
-  patronymic?: Maybe<Scalars['String']['output']>;
-  phone: Scalars['String']['output'];
-  telegram?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  users_permissions_user?: Maybe<UsersPermissionsUserEntityResponse>;
-  vk?: Maybe<Scalars['String']['output']>;
-};
-
-export type ClientEntity = {
-  __typename?: 'ClientEntity';
-  attributes?: Maybe<Client>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type ClientEntityResponse = {
-  __typename?: 'ClientEntityResponse';
-  data?: Maybe<ClientEntity>;
-};
-
-export type ClientEntityResponseCollection = {
-  __typename?: 'ClientEntityResponseCollection';
-  data: Array<ClientEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type ClientFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ClientFiltersInput>>>;
-  avatarUrl?: InputMaybe<StringFilterInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  email?: InputMaybe<StringFilterInput>;
-  firstname?: InputMaybe<StringFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  lastname?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ClientFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ClientFiltersInput>>>;
-  patronymic?: InputMaybe<StringFilterInput>;
-  phone?: InputMaybe<StringFilterInput>;
-  telegram?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-  users_permissions_user?: InputMaybe<UsersPermissionsUserFiltersInput>;
-  vk?: InputMaybe<StringFilterInput>;
-};
-
-export type ClientInput = {
-  avatarUrl?: InputMaybe<Scalars['String']['input']>;
-  email?: InputMaybe<Scalars['String']['input']>;
-  firstname?: InputMaybe<Scalars['String']['input']>;
-  lastname?: InputMaybe<Scalars['String']['input']>;
-  patronymic?: InputMaybe<Scalars['String']['input']>;
-  phone?: InputMaybe<Scalars['String']['input']>;
-  telegram?: InputMaybe<Scalars['String']['input']>;
-  users_permissions_user?: InputMaybe<Scalars['ID']['input']>;
-  vk?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DateFilterInput = {
@@ -217,6 +93,10 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
+export enum Enum_Public_Registration_Role {
+  Client = 'CLIENT'
+}
+
 export enum Enum_Video_Postprocessstatus {
   InProcess = 'IN_PROCESS',
   NeedProcess = 'NEED_PROCESS',
@@ -254,7 +134,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Administrator | Client | HistoryDataParsing | HistoryRequest | I18NLocale | StudentTariffPeriod | Tariff | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video;
+export type GenericMorph = HistoryDataParsing | HistoryRequest | I18NLocale | StudentTariffPeriod | Tariff | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video;
 
 export type HistoryDataParsing = {
   __typename?: 'HistoryDataParsing';
@@ -458,8 +338,6 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
-  createAdministrator?: Maybe<AdministratorEntityResponse>;
-  createClient?: Maybe<ClientEntityResponse>;
   createHistoryDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
   createHistoryRequest?: Maybe<HistoryRequestEntityResponse>;
   createStudentTariffPeriod?: Maybe<StudentTariffPeriodEntityResponse>;
@@ -471,8 +349,6 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   createVideo?: Maybe<VideoEntityResponse>;
-  deleteAdministrator?: Maybe<AdministratorEntityResponse>;
-  deleteClient?: Maybe<ClientEntityResponse>;
   deleteHistoryDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
   deleteHistoryRequest?: Maybe<HistoryRequestEntityResponse>;
   deleteStudentTariffPeriod?: Maybe<StudentTariffPeriodEntityResponse>;
@@ -497,8 +373,6 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
-  updateAdministrator?: Maybe<AdministratorEntityResponse>;
-  updateClient?: Maybe<ClientEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateHistoryDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
   updateHistoryRequest?: Maybe<HistoryRequestEntityResponse>;
@@ -519,16 +393,6 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
   passwordConfirmation: Scalars['String']['input'];
-};
-
-
-export type MutationCreateAdministratorArgs = {
-  data: AdministratorInput;
-};
-
-
-export type MutationCreateClientArgs = {
-  data: ClientInput;
 };
 
 
@@ -574,16 +438,6 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 export type MutationCreateVideoArgs = {
   data: VideoInput;
-};
-
-
-export type MutationDeleteAdministratorArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
-export type MutationDeleteClientArgs = {
-  id: Scalars['ID']['input'];
 };
 
 
@@ -682,18 +536,6 @@ export type MutationResetPasswordArgs = {
 };
 
 
-export type MutationUpdateAdministratorArgs = {
-  data: AdministratorInput;
-  id: Scalars['ID']['input'];
-};
-
-
-export type MutationUpdateClientArgs = {
-  data: ClientInput;
-  id: Scalars['ID']['input'];
-};
-
-
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']['input'];
   info?: InputMaybe<FileInfoInput>;
@@ -771,7 +613,6 @@ export type MyProfileResponse = {
   lastname?: Maybe<Scalars['String']['output']>;
   patronymic?: Maybe<Scalars['String']['output']>;
   role: MyProfileRole;
-  userId: Scalars['ID']['output'];
 };
 
 export type MyProfileRole = {
@@ -797,10 +638,6 @@ export type PaginationArg = {
 
 export type Query = {
   __typename?: 'Query';
-  administrator?: Maybe<AdministratorEntityResponse>;
-  administrators?: Maybe<AdministratorEntityResponseCollection>;
-  client?: Maybe<ClientEntityResponse>;
-  clients?: Maybe<ClientEntityResponseCollection>;
   historyDataParsing?: Maybe<HistoryDataParsingEntityResponse>;
   historyDataParsings?: Maybe<HistoryDataParsingEntityResponseCollection>;
   historyRequest?: Maybe<HistoryRequestEntityResponse>;
@@ -824,30 +661,6 @@ export type Query = {
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
   video?: Maybe<VideoEntityResponse>;
   videos?: Maybe<VideoEntityResponseCollection>;
-};
-
-
-export type QueryAdministratorArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-
-export type QueryAdministratorsArgs = {
-  filters?: InputMaybe<AdministratorFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type QueryClientArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-
-export type QueryClientsArgs = {
-  filters?: InputMaybe<ClientFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -982,6 +795,7 @@ export type RegisterParentOrChildrenInput = {
   password: Scalars['String']['input'];
   patronymic: Scalars['String']['input'];
   phone: Scalars['String']['input'];
+  role: Enum_Public_Registration_Role;
   username: Scalars['String']['input'];
 };
 
@@ -1427,17 +1241,21 @@ export type UsersPermissionsUpdateRolePayload = {
 
 export type UsersPermissionsUser = {
   __typename?: 'UsersPermissionsUser';
-  administrator?: Maybe<AdministratorEntityResponse>;
+  avatarUrl?: Maybe<Scalars['String']['output']>;
   blocked?: Maybe<Scalars['Boolean']['output']>;
-  client?: Maybe<ClientEntityResponse>;
   confirmed?: Maybe<Scalars['Boolean']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   email: Scalars['String']['output'];
+  firstname: Scalars['String']['output'];
+  lastname: Scalars['String']['output'];
+  patronymic?: Maybe<Scalars['String']['output']>;
   provider?: Maybe<Scalars['String']['output']>;
   role?: Maybe<UsersPermissionsRoleEntityResponse>;
   tariff_periods?: Maybe<StudentTariffPeriodRelationResponseCollection>;
+  telegram?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
   username: Scalars['String']['output'];
+  vk?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1465,39 +1283,47 @@ export type UsersPermissionsUserEntityResponseCollection = {
 };
 
 export type UsersPermissionsUserFiltersInput = {
-  administrator?: InputMaybe<AdministratorFiltersInput>;
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
+  avatarUrl?: InputMaybe<StringFilterInput>;
   blocked?: InputMaybe<BooleanFilterInput>;
-  client?: InputMaybe<ClientFiltersInput>;
   confirmationToken?: InputMaybe<StringFilterInput>;
   confirmed?: InputMaybe<BooleanFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   email?: InputMaybe<StringFilterInput>;
+  firstname?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  lastname?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<UsersPermissionsUserFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
   password?: InputMaybe<StringFilterInput>;
+  patronymic?: InputMaybe<StringFilterInput>;
   provider?: InputMaybe<StringFilterInput>;
   resetPasswordToken?: InputMaybe<StringFilterInput>;
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
   tariff_periods?: InputMaybe<StudentTariffPeriodFiltersInput>;
+  telegram?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   username?: InputMaybe<StringFilterInput>;
+  vk?: InputMaybe<StringFilterInput>;
 };
 
 export type UsersPermissionsUserInput = {
-  administrator?: InputMaybe<Scalars['ID']['input']>;
+  avatarUrl?: InputMaybe<Scalars['String']['input']>;
   blocked?: InputMaybe<Scalars['Boolean']['input']>;
-  client?: InputMaybe<Scalars['ID']['input']>;
   confirmationToken?: InputMaybe<Scalars['String']['input']>;
   confirmed?: InputMaybe<Scalars['Boolean']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
+  firstname?: InputMaybe<Scalars['String']['input']>;
+  lastname?: InputMaybe<Scalars['String']['input']>;
   password?: InputMaybe<Scalars['String']['input']>;
+  patronymic?: InputMaybe<Scalars['String']['input']>;
   provider?: InputMaybe<Scalars['String']['input']>;
   resetPasswordToken?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Scalars['ID']['input']>;
   tariff_periods?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  telegram?: InputMaybe<Scalars['String']['input']>;
   username?: InputMaybe<Scalars['String']['input']>;
+  vk?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UsersPermissionsUserRelationResponseCollection = {
@@ -1598,7 +1424,7 @@ export type GetParsingDataMutation = { __typename?: 'Mutation', getParsingData: 
 export type GetProfile_DpQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProfile_DpQuery = { __typename?: 'Query', myProfile: { __typename?: 'MyProfileResponse', id: string, userId: string, firstname?: string | null, lastname?: string | null, patronymic?: string | null, avatarUrl?: string | null, email: string, role: { __typename?: 'MyProfileRole', id: string, name: string } } };
+export type GetProfile_DpQuery = { __typename?: 'Query', myProfile: { __typename?: 'MyProfileResponse', id: string, firstname?: string | null, lastname?: string | null, patronymic?: string | null, avatarUrl?: string | null, email: string, role: { __typename?: 'MyProfileRole', id: string, name: string } } };
 
 export type SendFeedbackDataQueryVariables = Exact<{
   data: SendFeedbackInput;
@@ -1753,7 +1579,6 @@ export const GetProfile_DpDocument = gql`
     query getProfile_dp {
   myProfile {
     id
-    userId
     firstname
     lastname
     patronymic

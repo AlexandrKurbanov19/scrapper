@@ -1,6 +1,0 @@
-{
-  "name": "Parent",
-  "description": "Родитель ученика",
-  "type": "parent",
-  "permissions": []
-}

@@ -1,7 +1,6 @@
 query getProfile_dp {
     myProfile {
         id
-        userId
         firstname
         lastname
         patronymic

@@ -1,61 +1,3 @@
-type Administrator {
-  avatarUrl: String
-  createdAt: DateTime
-  email: String!
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  telegram: String
-  updatedAt: DateTime
-  user: UsersPermissionsUserEntityResponse
-  vk: String
-}
-
-type AdministratorEntity {
-  attributes: Administrator
-  id: ID
-}
-
-type AdministratorEntityResponse {
-  data: AdministratorEntity
-}
-
-type AdministratorEntityResponseCollection {
-  data: [AdministratorEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input AdministratorFiltersInput {
-  and: [AdministratorFiltersInput]
-  avatarUrl: StringFilterInput
-  createdAt: DateTimeFilterInput
-  email: StringFilterInput
-  firstname: StringFilterInput
-  id: IDFilterInput
-  lastname: StringFilterInput
-  not: AdministratorFiltersInput
-  or: [AdministratorFiltersInput]
-  patronymic: StringFilterInput
-  phone: StringFilterInput
-  telegram: StringFilterInput
-  updatedAt: DateTimeFilterInput
-  user: UsersPermissionsUserFiltersInput
-  vk: StringFilterInput
-}
-
-input AdministratorInput {
-  avatarUrl: String
-  email: String
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  telegram: String
-  user: ID
-  vk: String
-}
-
 input BooleanFilterInput {
   and: [Boolean]
   between: [Boolean]
@@ -78,64 +20,6 @@ input BooleanFilterInput {
   null: Boolean
   or: [Boolean]
   startsWith: Boolean
-}
-
-type Client {
-  avatarUrl: String
-  createdAt: DateTime
-  email: String
-  firstname: String!
-  lastname: String!
-  patronymic: String
-  phone: String!
-  telegram: String
-  updatedAt: DateTime
-  users_permissions_user: UsersPermissionsUserEntityResponse
-  vk: String
-}
-
-type ClientEntity {
-  attributes: Client
-  id: ID
-}
-
-type ClientEntityResponse {
-  data: ClientEntity
-}
-
-type ClientEntityResponseCollection {
-  data: [ClientEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input ClientFiltersInput {
-  and: [ClientFiltersInput]
-  avatarUrl: StringFilterInput
-  createdAt: DateTimeFilterInput
-  email: StringFilterInput
-  firstname: StringFilterInput
-  id: IDFilterInput
-  lastname: StringFilterInput
-  not: ClientFiltersInput
-  or: [ClientFiltersInput]
-  patronymic: StringFilterInput
-  phone: StringFilterInput
-  telegram: StringFilterInput
-  updatedAt: DateTimeFilterInput
-  users_permissions_user: UsersPermissionsUserFiltersInput
-  vk: StringFilterInput
-}
-
-input ClientInput {
-  avatarUrl: String
-  email: String
-  firstname: String
-  lastname: String
-  patronymic: String
-  phone: String
-  telegram: String
-  users_permissions_user: ID
-  vk: String
 }
 
 """
@@ -196,6 +80,10 @@ input DateTimeFilterInput {
   startsWith: DateTime
 }
 
+enum ENUM_PUBLIC_REGISTRATION_ROLE {
+  CLIENT
+}
+
 enum ENUM_VIDEO_POSTPROCESSSTATUS {
   IN_PROCESS
   NEED_PROCESS
@@ -233,7 +121,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = Administrator | Client | HistoryDataParsing | HistoryRequest | I18NLocale | StudentTariffPeriod | Tariff | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video
+union GenericMorph = HistoryDataParsing | HistoryRequest | I18NLocale | StudentTariffPeriod | Tariff | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Video
 
 type HistoryDataParsing {
   createdAt: DateTime
@@ -429,8 +317,6 @@ input JSONFilterInput {
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
-  createAdministrator(data: AdministratorInput!): AdministratorEntityResponse
-  createClient(data: ClientInput!): ClientEntityResponse
   createHistoryDataParsing(data: HistoryDataParsingInput!): HistoryDataParsingEntityResponse
   createHistoryRequest(data: HistoryRequestInput!): HistoryRequestEntityResponse
   createStudentTariffPeriod(data: StudentTariffPeriodInput!): StudentTariffPeriodEntityResponse
@@ -444,8 +330,6 @@ type Mutation {
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
   createVideo(data: VideoInput!): VideoEntityResponse
-  deleteAdministrator(id: ID!): AdministratorEntityResponse
-  deleteClient(id: ID!): ClientEntityResponse
   deleteHistoryDataParsing(id: ID!): HistoryDataParsingEntityResponse
   deleteHistoryRequest(id: ID!): HistoryRequestEntityResponse
   deleteStudentTariffPeriod(id: ID!): StudentTariffPeriodEntityResponse
@@ -478,8 +362,6 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
-  updateAdministrator(data: AdministratorInput!, id: ID!): AdministratorEntityResponse
-  updateClient(data: ClientInput!, id: ID!): ClientEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateHistoryDataParsing(data: HistoryDataParsingInput!, id: ID!): HistoryDataParsingEntityResponse
   updateHistoryRequest(data: HistoryRequestInput!, id: ID!): HistoryRequestEntityResponse
@@ -505,7 +387,6 @@ type MyProfileResponse {
   lastname: String
   patronymic: String
   role: MyProfileRole!
-  userId: ID!
 }
 
 type MyProfileRole {
@@ -528,10 +409,6 @@ input PaginationArg {
 }
 
 type Query {
-  administrator(id: ID): AdministratorEntityResponse
-  administrators(filters: AdministratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdministratorEntityResponseCollection
-  client(id: ID): ClientEntityResponse
-  clients(filters: ClientFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ClientEntityResponseCollection
   historyDataParsing(id: ID): HistoryDataParsingEntityResponse
   historyDataParsings(filters: HistoryDataParsingFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): HistoryDataParsingEntityResponseCollection
   historyRequest(id: ID): HistoryRequestEntityResponse
@@ -564,6 +441,7 @@ input RegisterParentOrChildrenInput {
   password: String!
   patronymic: String!
   phone: String!
+  role: ENUM_PUBLIC_REGISTRATION_ROLE!
   username: String!
 }
 
@@ -948,17 +826,21 @@ type UsersPermissionsUpdateRolePayload {
 }
 
 type UsersPermissionsUser {
-  administrator: AdministratorEntityResponse
+  avatarUrl: String
   blocked: Boolean
-  client: ClientEntityResponse
   confirmed: Boolean
   createdAt: DateTime
   email: String!
+  firstname: String!
+  lastname: String!
+  patronymic: String
   provider: String
   role: UsersPermissionsRoleEntityResponse
   tariff_periods(filters: StudentTariffPeriodFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): StudentTariffPeriodRelationResponseCollection
+  telegram: String
   updatedAt: DateTime
   username: String!
+  vk: String
 }
 
 type UsersPermissionsUserEntity {
@@ -976,39 +858,47 @@ type UsersPermissionsUserEntityResponseCollection {
 }
 
 input UsersPermissionsUserFiltersInput {
-  administrator: AdministratorFiltersInput
   and: [UsersPermissionsUserFiltersInput]
+  avatarUrl: StringFilterInput
   blocked: BooleanFilterInput
-  client: ClientFiltersInput
   confirmationToken: StringFilterInput
   confirmed: BooleanFilterInput
   createdAt: DateTimeFilterInput
   email: StringFilterInput
+  firstname: StringFilterInput
   id: IDFilterInput
+  lastname: StringFilterInput
   not: UsersPermissionsUserFiltersInput
   or: [UsersPermissionsUserFiltersInput]
   password: StringFilterInput
+  patronymic: StringFilterInput
   provider: StringFilterInput
   resetPasswordToken: StringFilterInput
   role: UsersPermissionsRoleFiltersInput
   tariff_periods: StudentTariffPeriodFiltersInput
+  telegram: StringFilterInput
   updatedAt: DateTimeFilterInput
   username: StringFilterInput
+  vk: StringFilterInput
 }
 
 input UsersPermissionsUserInput {
-  administrator: ID
+  avatarUrl: String
   blocked: Boolean
-  client: ID
   confirmationToken: String
   confirmed: Boolean
   email: String
+  firstname: String
+  lastname: String
   password: String
+  patronymic: String
   provider: String
   resetPasswordToken: String
   role: ID
   tariff_periods: [ID]
+  telegram: String
   username: String
+  vk: String
 }
 
 type UsersPermissionsUserRelationResponseCollection {

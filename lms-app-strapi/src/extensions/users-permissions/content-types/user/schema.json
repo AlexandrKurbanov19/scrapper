@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -66,23 +65,31 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "administrator": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::administrator.administrator",
-      "mappedBy": "user"
-    },
     "tariff_periods": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::student-tariff-period.student-tariff-period",
       "mappedBy": "users_permissions_user"
     },
-    "client": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::client.client",
-      "mappedBy": "users_permissions_user"
+    "telegram": {
+      "type": "string"
+    },
+    "vk": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string"
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "patronymic": {
+      "type": "string"
     }
   }
 }

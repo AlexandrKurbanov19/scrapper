@@ -22,7 +22,6 @@ export default {
         patronymic: String
         avatarUrl: String
         role: ${prefix}Role!
-        userId: ID!
       }
 
       extend type Query {

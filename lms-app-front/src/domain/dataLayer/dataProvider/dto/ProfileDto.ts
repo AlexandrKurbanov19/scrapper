@@ -3,7 +3,6 @@ import { roleDtoSchema } from './RoleDto';
 
 export const profileDtoSchema = z.object({
   id: z.string(),
-  userId: z.string(),
   email: z.string(),
   firstname: z.optional(z.nullable(z.string())),
   lastname: z.optional(z.nullable(z.string())),
