@@ -15,7 +15,7 @@ const componentsOverrides: ThemeConfig = {
     Button: {
       fontFamily: 'SF Pro Text',
       paddingContentHorizontal: themeToken?.paddingContentHorizontal,
-      colorBorder: themeToken?.['purple.5'],
+      colorBorder: themeToken?.['blue.5'],
       borderRadius: 16,
       borderRadiusSM: 16,
       borderRadiusLG: 20,

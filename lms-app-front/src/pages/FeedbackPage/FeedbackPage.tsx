@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import {
+  Button,
   Card, Divider, message, Typography,
 } from 'antd';
 import FeedbackForm from './FeedbackForm';
@@ -38,6 +39,11 @@ const FeedBackPage = () => {
       <Card className="text-lg">
         <Title level={2}>Страница обратной связи:</Title>
         <Divider />
+        <div className="my-4 flex flex-col lg:flex-row gap-2 items-center">
+          <p>1)Техподдержка телеграм чат:</p>
+          <Button type="primary" href="https://t.me/AdAnalyzerPro">Перейти в общий телеграм чат</Button>
+        </div>
+        <p className="my-4">2)Форма обратной связи email:</p>
         <FeedbackForm
           onSubmitForm={onSubmit}
           onSubmitFormFailed={onSubmitFailed}

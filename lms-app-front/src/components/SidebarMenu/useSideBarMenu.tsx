@@ -9,8 +9,6 @@ import {
   LESSON_DEMO,
   LESSONS,
   MODULES, PARSER_PAGE, PARSING_EXAMPLE_PAGE,
-  STUDENT_DASHBOARD,
-  STUDENT_LESSONS,
   THEMES,
   USERS,
 } from '../../routes';
@@ -43,14 +41,30 @@ const adminMenuItems: MenuProps['items'] = [
   },
 ];
 
-const studentMenuItems: MenuProps['items'] = [
+const clientMenuItems: MenuProps['items'] = [
   {
-    key: STUDENT_DASHBOARD,
-    label: (<Link to={STUDENT_DASHBOARD}>Дашборд</Link>),
+    key: ABOUT_PAGE,
+    label: (<Link to={ABOUT_PAGE}>О нас</Link>),
   },
   {
-    key: STUDENT_LESSONS,
-    label: (<Link to={STUDENT_LESSONS}>Мои занятия</Link>),
+    key: LAW_PAGE,
+    label: (<Link to={LAW_PAGE}>Закон и парсинг</Link>),
+  },
+  {
+    key: FEEDBACK_PAGE,
+    label: (<Link to={FEEDBACK_PAGE}>Обратная связь</Link>),
+  },
+  {
+    key: PARSER_PAGE,
+    label: (<Link to={PARSER_PAGE}>Демо парсер</Link>),
+  },
+  {
+    key: INSTRUCTION_PAGE,
+    label: (<Link to={INSTRUCTION_PAGE}>Инструкции</Link>),
+  },
+  {
+    key: PARSING_EXAMPLE_PAGE,
+    label: (<Link to={PARSING_EXAMPLE_PAGE}>Примеры парсинга</Link>),
   },
 ];
 
@@ -102,12 +116,16 @@ const useSideBarMenu = (roleName: RoleNamesEnum) => {
 
   if (roleName === RoleNamesEnum.Client) {
     const selectedKeys = [
-      STUDENT_DASHBOARD,
-      STUDENT_LESSONS,
+      ABOUT_PAGE,
+      LAW_PAGE,
+      FEEDBACK_PAGE,
+      PARSER_PAGE,
+      INSTRUCTION_PAGE,
+      PARSING_EXAMPLE_PAGE,
     ].filter((key) => location.pathname.search(key) > -1);
 
     return {
-      items: studentMenuItems,
+      items: clientMenuItems,
       selectedKeys,
     } as const;
   }

@@ -8,12 +8,10 @@ import useStore from 'domain/modelLayer/store/useStore';
 
 import {
   FORGET_PASSWORD,
-  INDEX,
   LOGIN,
   LOGOUT,
   RESET_PASSWORD,
   USERS,
-  STUDENT_DASHBOARD,
   ABOUT_PAGE,
   LAW_PAGE,
   FEEDBACK_PAGE,
@@ -44,6 +42,7 @@ const RouterComponent = () => {
   const isLogged = !!profile;
 
   return (
+    // TODO: продумать какие роуты будут для ролей
     <Router>
       <LayoutContextProvider>
         <Routes>
@@ -77,7 +76,16 @@ const RouterComponent = () => {
 
                 {profile.role.name === RoleNamesEnum.Client && (
                   <>
-                    <Route path={ABOUT_PAGE} element={<Navigate to={ABOUT_PAGE} />} />
+                    <Route path={ABOUT_PAGE} element={<AboutPage />} />
+                    <Route path={LAW_PAGE} element={<LawsPage />} />
+                    <Route path={FEEDBACK_PAGE} element={<FeedbackPage />} />
+                    <Route path={INSTRUCTION_PAGE} element={<InstructionPage />} />
+                    <Route path={PARSING_EXAMPLE_PAGE} element={<ParsingExamplePage />} />
+                    <Route path={PARSER_PAGE} element={<ParserPage />} />
+                    <Route path={REGISTRATION} element={<RegistrationPage />} />
+                    <Route path={LOGIN} element={<LoginPage />} />
+                    <Route path={FORGET_PASSWORD} element={<ForgetPasswordPage />} />
+                    <Route path={RESET_PASSWORD} element={<ResetPasswordPage />} />
                     <Route path="*" element={<Navigate to={ABOUT_PAGE} />} />
                   </>
                 )}

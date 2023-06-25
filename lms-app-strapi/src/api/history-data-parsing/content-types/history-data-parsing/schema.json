@@ -4,7 +4,8 @@
   "info": {
     "singularName": "history-data-parsing",
     "pluralName": "history-data-parsings",
-    "displayName": "HistoryDataParsing"
+    "displayName": "HistoryDataParsing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -19,6 +20,12 @@
       "relation": "oneToOne",
       "target": "api::history-request.history-request",
       "inversedBy": "history_data_parsing"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "history_data"
     }
   }
 }

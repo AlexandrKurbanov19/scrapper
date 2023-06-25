@@ -142,6 +142,7 @@ export type HistoryDataParsing = {
   history_request?: Maybe<HistoryRequestEntityResponse>;
   parsingData?: Maybe<Scalars['JSON']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  user?: Maybe<UsersPermissionsUserEntityResponse>;
 };
 
 export type HistoryDataParsingEntity = {
@@ -170,11 +171,13 @@ export type HistoryDataParsingFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<HistoryDataParsingFiltersInput>>>;
   parsingData?: InputMaybe<JsonFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
+  user?: InputMaybe<UsersPermissionsUserFiltersInput>;
 };
 
 export type HistoryDataParsingInput = {
   history_request?: InputMaybe<Scalars['ID']['input']>;
   parsingData?: InputMaybe<Scalars['JSON']['input']>;
+  user?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type HistoryRequest = {
@@ -183,6 +186,7 @@ export type HistoryRequest = {
   dataForParsing?: Maybe<Scalars['JSON']['output']>;
   history_data_parsing?: Maybe<HistoryDataParsingEntityResponse>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  user?: Maybe<UsersPermissionsUserEntityResponse>;
 };
 
 export type HistoryRequestEntity = {
@@ -211,6 +215,7 @@ export type HistoryRequestFiltersInput = {
   not?: InputMaybe<HistoryRequestFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<HistoryRequestFiltersInput>>>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
+  user?: InputMaybe<UsersPermissionsUserFiltersInput>;
 };
 
 export type HistoryRequestInput = {
@@ -224,6 +229,7 @@ export type HistoryRequestInput = {
   keyWords?: InputMaybe<Scalars['String']['input']>;
   rangeDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteNameForParsing?: InputMaybe<Scalars['String']['input']>;
+  user?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type I18NLocale = {
@@ -1247,6 +1253,8 @@ export type UsersPermissionsUser = {
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   email: Scalars['String']['output'];
   firstname: Scalars['String']['output'];
+  history_data?: Maybe<HistoryDataParsingEntityResponse>;
+  history_request_for_user?: Maybe<HistoryRequestEntityResponse>;
   lastname: Scalars['String']['output'];
   patronymic?: Maybe<Scalars['String']['output']>;
   provider?: Maybe<Scalars['String']['output']>;
@@ -1291,6 +1299,8 @@ export type UsersPermissionsUserFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   email?: InputMaybe<StringFilterInput>;
   firstname?: InputMaybe<StringFilterInput>;
+  history_data?: InputMaybe<HistoryDataParsingFiltersInput>;
+  history_request_for_user?: InputMaybe<HistoryRequestFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
   lastname?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<UsersPermissionsUserFiltersInput>;
@@ -1314,6 +1324,8 @@ export type UsersPermissionsUserInput = {
   confirmed?: InputMaybe<Scalars['Boolean']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   firstname?: InputMaybe<Scalars['String']['input']>;
+  history_data?: InputMaybe<Scalars['ID']['input']>;
+  history_request_for_user?: InputMaybe<Scalars['ID']['input']>;
   lastname?: InputMaybe<Scalars['String']['input']>;
   password?: InputMaybe<Scalars['String']['input']>;
   patronymic?: InputMaybe<Scalars['String']['input']>;

@@ -4,6 +4,24 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::history-data-parsing.history-data-parsing.create"
+    },
+    {
+      "action": "api::history-data-parsing.history-data-parsing.find"
+    },
+    {
+      "action": "api::history-data-parsing.history-data-parsing.findOne"
+    },
+    {
+      "action": "api::history-request.history-request.create"
+    },
+    {
+      "action": "api::history-request.history-request.find"
+    },
+    {
+      "action": "api::history-request.history-request.findOne"
+    },
+    {
       "action": "plugin::users-permissions.auth.callback"
     },
     {

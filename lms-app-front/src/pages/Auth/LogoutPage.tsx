@@ -4,10 +4,13 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { observer } from 'mobx-react-lite';
 import { useApolloClient } from '@apollo/client';
 import useStore from 'domain/modelLayer/store/useStore';
+import { useNavigate } from 'react-router-dom';
+import { ABOUT_PAGE } from '../../routes';
 
 const LogoutPage: FC = () => {
   const client = useApolloClient();
   const store = useStore();
+  const navigate = useNavigate();
 
   const antIcon = <LoadingOutlined className="text-2xl" spin />;
 
@@ -15,7 +18,7 @@ const LogoutPage: FC = () => {
     store.onLogout();
     client.stop();
     client.clearStore();
-    window.location.reload();
+    navigate(ABOUT_PAGE);
   });
 
   return <Spin indicator={antIcon} />;

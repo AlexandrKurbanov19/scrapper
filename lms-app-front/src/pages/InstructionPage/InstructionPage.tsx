@@ -67,10 +67,27 @@ const InstructionPage = () => {
               {
                 title: (
                   <h3>
-                    Получите запрошенные данные в удобном формате (EXEL, JSON).
+                    Получите запрошенные данные в удобном формате
                   </h3>
                 ),
-                description: current === 2 ? <Image src={result} /> : null,
+                description: current === 2 ? (
+                  <div>
+                    <Image src={result} />
+                    <Alert
+                      className="max-w-[500px] my-2"
+                      showIcon
+                      message={
+                      (
+                        <p>
+                          Данные предоставляються в удобном формате EXCEL,
+                          так же возможно индивидуальное предоставление в формате JSON.
+                        </p>
+                      )
+                    }
+                    />
+                  </div>
+
+                ) : null,
               },
             ]}
           />

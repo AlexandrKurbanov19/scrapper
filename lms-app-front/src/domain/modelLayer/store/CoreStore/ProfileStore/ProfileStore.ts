@@ -33,7 +33,7 @@ export const ProfileStore = t
     },
     init: flow(function* init(): Generator<Promise<void>, void, void> {
       const { eventChannelsService: { authenticationEventChannel } } = getEnv<Env>(self);
-
+      yield self.fetchProfile();
       try {
         yield self.fetchProfile();
       } catch (error) {

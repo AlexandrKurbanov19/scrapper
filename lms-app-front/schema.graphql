@@ -128,6 +128,7 @@ type HistoryDataParsing {
   history_request: HistoryRequestEntityResponse
   parsingData: JSON
   updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
 }
 
 type HistoryDataParsingEntity {
@@ -153,11 +154,13 @@ input HistoryDataParsingFiltersInput {
   or: [HistoryDataParsingFiltersInput]
   parsingData: JSONFilterInput
   updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
 }
 
 input HistoryDataParsingInput {
   history_request: ID
   parsingData: JSON
+  user: ID
 }
 
 type HistoryRequest {
@@ -165,6 +168,7 @@ type HistoryRequest {
   dataForParsing: JSON
   history_data_parsing: HistoryDataParsingEntityResponse
   updatedAt: DateTime
+  user: UsersPermissionsUserEntityResponse
 }
 
 type HistoryRequestEntity {
@@ -190,6 +194,7 @@ input HistoryRequestFiltersInput {
   not: HistoryRequestFiltersInput
   or: [HistoryRequestFiltersInput]
   updatedAt: DateTimeFilterInput
+  user: UsersPermissionsUserFiltersInput
 }
 
 input HistoryRequestInput {
@@ -203,6 +208,7 @@ input HistoryRequestInput {
   keyWords: String
   rangeDate: [String]
   siteNameForParsing: String
+  user: ID
 }
 
 type I18NLocale {
@@ -832,6 +838,8 @@ type UsersPermissionsUser {
   createdAt: DateTime
   email: String!
   firstname: String!
+  history_data: HistoryDataParsingEntityResponse
+  history_request_for_user: HistoryRequestEntityResponse
   lastname: String!
   patronymic: String
   provider: String
@@ -866,6 +874,8 @@ input UsersPermissionsUserFiltersInput {
   createdAt: DateTimeFilterInput
   email: StringFilterInput
   firstname: StringFilterInput
+  history_data: HistoryDataParsingFiltersInput
+  history_request_for_user: HistoryRequestFiltersInput
   id: IDFilterInput
   lastname: StringFilterInput
   not: UsersPermissionsUserFiltersInput
@@ -889,6 +899,8 @@ input UsersPermissionsUserInput {
   confirmed: Boolean
   email: String
   firstname: String
+  history_data: ID
+  history_request_for_user: ID
   lastname: String
   password: String
   patronymic: String

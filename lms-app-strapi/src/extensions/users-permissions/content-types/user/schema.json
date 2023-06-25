@@ -90,6 +90,18 @@
     },
     "patronymic": {
       "type": "string"
+    },
+    "history_data": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::history-data-parsing.history-data-parsing",
+      "mappedBy": "user"
+    },
+    "history_request_for_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::history-request.history-request",
+      "mappedBy": "user"
     }
   }
 }

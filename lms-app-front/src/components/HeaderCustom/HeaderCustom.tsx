@@ -43,9 +43,6 @@ export const HeaderCustom: FC<IProps> = () => {
 
   const sideBarMenu = useSideBarMenu(profile?.role.name || RoleNamesEnum.Guest);
 
-
-  console.log('profile', JSON.stringify(profile))
-
   return (
     <Header
       className={cn([
@@ -71,7 +68,7 @@ export const HeaderCustom: FC<IProps> = () => {
       )}
 
       {lg && (
-        <h2 className="text-white">PARSING-HUB</h2>
+        <h2 className="text-white">AdAnalyzerPro</h2>
       )}
 
       {
