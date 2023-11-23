@@ -1,0 +1,109 @@
+stages:
+  - test
+  - build
+  - deploy
+  - notify
+
+.setup_node:
+  variables:
+    NODE_VERSION: "16.15.1"
+  before_script:
+    - export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" --no-use
+    - eval "[ -f .nvmrc ] && nvm install || nvm install ${NODE_VERSION}"
+    - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+.build:
+  needs:
+    - test-front
+  stage: build
+  tags:
+    - lms
+    - shell
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -f ci/docker/front/Dockerfile -t $IMAGE_TAG-front .
+    - docker build -f ci/docker/strapi/Dockerfile -t $IMAGE_TAG-strapi .
+    - docker push $IMAGE_TAG-front
+    - docker push $IMAGE_TAG-strapi
+
+.deploy:
+  stage: deploy
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker stack deploy -c stack.yml scrapper-online --with-registry-auth --prune
+    - sh ci/ci-notify.sh ✅
+
+Build:
+  extends: .build
+  tags:
+    - lms
+    - stage
+    - shell
+
+Deploy-stage:
+  needs: ["Build"]
+  extends: .deploy
+  environment:
+    name: STAGE
+  tags:
+    - lms
+    - stage
+    - shell
+  when: manual
+
+Deploy-production:
+  needs: ["Build"]
+  extends: .deploy
+  environment:
+    name: PRODUCTION
+  tags:
+    - lms
+    - prod
+    - shell
+  when: manual
+  rules:
+    - if: $CI_COMMIT_REF_SLUG == "master" || $CI_COMMIT_REF_NAME =~ /release_/
+
+test-front:
+  stage: test
+  extends: .setup_node
+  coverage: /Lines\s*:\s*(\d+.?\d*)%/
+  tags:
+    - lms
+    - stage
+    - shell
+  script:
+    - cd scrapper-front
+    - yarn install --frozen-lockfile
+    - yarn tsc --noEmit
+    - yarn eslint ./src
+    - yarn test:ci
+  cache:
+    paths:
+      - scrapper-front/node_modules/
+  artifacts:
+    when: always
+    paths:
+      - scrapper-front/coverage/cobertura-coverage.xml
+      - scrapper-front/coverage/junit.xml
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: scrapper-front/coverage/cobertura-coverage.xml
+      junit:
+        - scrapper-front/coverage/junit.xml
+
+
+notify_error:
+  tags:
+    - lms
+    - shell
+  stage: notify
+  script:
+    - sh ci/ci-notify.sh ❌
+  when: on_failure #deploy fail
+

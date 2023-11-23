@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_tariff_periods",
+  "info": {
+    "singularName": "student-tariff-period",
+    "pluralName": "student-tariff-periods",
+    "displayName": "TariffPeriod",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tariff": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tariff.tariff"
+    },
+    "start": {
+      "type": "date",
+      "required": true
+    },
+    "end": {
+      "type": "date",
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "tariff_periods"
+    },
+    "active": {
+      "type": "boolean",
+      "required": true
+    }
+  }
+}

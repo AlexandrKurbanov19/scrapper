@@ -1,0 +1,52 @@
+{
+  "name": "Client",
+  "description": "Client app ",
+  "type": "client",
+  "permissions": [
+    {
+      "action": "api::history-data-parsing.history-data-parsing.create"
+    },
+    {
+      "action": "api::history-data-parsing.history-data-parsing.find"
+    },
+    {
+      "action": "api::history-data-parsing.history-data-parsing.findOne"
+    },
+    {
+      "action": "api::history-request.history-request.create"
+    },
+    {
+      "action": "api::history-request.history-request.find"
+    },
+    {
+      "action": "api::history-request.history-request.findOne"
+    },
+    {
+      "action": "api::tariff.tariff.find"
+    },
+    {
+      "action": "api::tariff.tariff.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.auth.register"
+    },
+    {
+      "action": "plugin::users-permissions.role.find"
+    },
+    {
+      "action": "plugin::users-permissions.role.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.user.create"
+    },
+    {
+      "action": "plugin::users-permissions.user.find"
+    },
+    {
+      "action": "plugin::users-permissions.user.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.user.me"
+    }
+  ]
+}

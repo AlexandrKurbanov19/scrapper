@@ -1,0 +1,4 @@
+node_modules
+.gitlab-ci.yml
+ci-notify.sh
+ci-test-mr-notify.sh

@@ -1,0 +1,16 @@
+mutation changeUserData($id: ID!, $data: UsersPermissionsUserInput!) {
+    updateUsersPermissionsUser(id: $id, data: $data) {
+        data {
+            id
+        }
+    }
+}
+
+mutation changeOwnPassword($data: ChangeOwnPasswordInput!) {
+    changeOwnPassword(
+        data: $data
+    ) {
+        success
+        message
+    }
+}

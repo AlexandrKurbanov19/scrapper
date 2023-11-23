@@ -1,0 +1,6 @@
+query sendFeedbackData($data: sendFeedbackInput!) {
+    sendFeedback(data: $data) {
+        status
+    }
+
+}

@@ -1,0 +1,20 @@
+.ts:
+  techs:
+    - strong typed typescript
+    - vitest
+    - react-hooks
+  tips:
+    - use 2 spaces for indentation
+    - wrap each group of tests in a describe block
+    - Don't forget to import the things you need.
+    - Use strong typescript typing
+    - Write test descriptions in Russian
+    - Не доступскай ошибок в typescript
+    - Создавай данные которые точно соответвуют типу typescript
+    - Не используй any
+    - Не используй типы которые не соответвуют типу данных
+    - Не используй приведение типов typescript (as)
+    - Используй строгие типы typescript
+    - Используй одинарные кавычки
+    - use LF line endings
+    - use UTF-8 encoding

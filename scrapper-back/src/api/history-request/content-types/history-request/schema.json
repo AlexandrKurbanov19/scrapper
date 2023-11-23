@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "history_requests",
+  "info": {
+    "singularName": "history-request",
+    "pluralName": "history-requests",
+    "displayName": "HistoryRequest",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dataForParsing": {
+      "type": "json"
+    },
+    "history_data_parsing": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::history-data-parsing.history-data-parsing",
+      "mappedBy": "history_request"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "history_request_for_user"
+    }
+  }
+}

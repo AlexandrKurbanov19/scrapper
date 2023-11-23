@@ -1,0 +1,7 @@
+mutation createHistoryRequest($data: HistoryRequestInput!){
+  createHistoryRequest(data: $data) {
+    data {
+      id
+    }
+  }
+}

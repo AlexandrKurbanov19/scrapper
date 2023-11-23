@@ -1,0 +1,9 @@
+overwrite: true
+schema: "http://localhost:1337/graphql"
+generates:
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
+  ./schema.graphql:
+    plugins:
+      - "schema-ast"

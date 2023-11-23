@@ -1,0 +1,7 @@
+src/generated/graphql.tsx
+.eslintrc.js
+cypress.config.ts
+tailwind.config.js
+vite.config.ts
+build
+node_modules

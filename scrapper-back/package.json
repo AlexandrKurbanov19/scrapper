@@ -1,0 +1,57 @@
+{
+  "name": "strapi-ts",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "cs": "config-sync",
+    "cs:import": "yarn cs import",
+    "cs:export": "yarn cs export",
+    "genTypes": "yarn strapi ts:generate-types"
+  },
+  "devDependencies": {
+    "@types/minio": "^7.0.18"
+  },
+  "dependencies": {
+    "@sentry/integrations": "^7.51.2",
+    "@strapi/plugin-graphql": "4.10.5",
+    "@strapi/plugin-i18n": "4.10.5",
+    "@strapi/plugin-sentry": "4.10.5",
+    "@strapi/plugin-users-permissions": "4.10.5",
+    "@strapi/provider-email-nodemailer": "4.10.5",
+    "@strapi/strapi": "4.10.5",
+    "axios": "^1.4.0",
+    "download": "^8.0.0",
+    "faker": "^6.6.6",
+    "generate-password": "^1.7.0",
+    "lodash": "^4.17.21",
+    "mime-types": "^2.1.35",
+    "minio": "^7.1.0",
+    "mmmagic": "^0.5.3",
+    "password-hash": "^1.2.2",
+    "moment": "^2.29.4",
+    "pg": "8.8.0",
+    "strapi-plugin-config-sync": "^1.1.2",
+    "strapi-plugin-generate-data": "^1.0.23",
+    "uuid": "^9.0.0",
+    "zod": "^3.21.4",
+    "jsdom": "^21.1.1",
+    "nodemailer": "^6.9.2",
+    "user-agents": "^1.0.1387"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "321a1eed-fbd4-49fc-8c91-abc69dbcc96f"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

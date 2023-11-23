@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "videos",
+  "info": {
+    "singularName": "video",
+    "pluralName": "videos",
+    "displayName": "Video",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "originalVideoUri": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "shortCode": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "filename": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "thumb": {
+      "type": "string",
+      "required": true
+    },
+    "hls": {
+      "type": "string",
+      "required": true
+    },
+    "postProcessStatus": {
+      "type": "enumeration",
+      "enum": [
+        "NEED_PROCESS",
+        "IN_PROCESS",
+        "PROCESS_DONE",
+        "PROCESS_ERROR"
+      ],
+      "default": "NEED_PROCESS",
+      "required": true
+    }
+  }
+}
