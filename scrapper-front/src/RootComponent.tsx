@@ -10,13 +10,10 @@ import { useInstance } from 'react-ioc';
 import { FC } from 'react';
 import getTheme from './antToken';
 import RouterComponent from './RouterComponent';
-import useIdentifyUserInTrackers from './trackers/useIdentifyUserInTrackers';
 
 const RootComponent: FC = () => {
   const apolloClient = useInstance(ApolloClient);
   const store = useStore();
-
-  useIdentifyUserInTrackers();
 
   const {
     ready,

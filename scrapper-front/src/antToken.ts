@@ -13,7 +13,7 @@ const componentsOverrides: ThemeConfig = {
       borderRadiusLG: 8,
     },
     Button: {
-      fontFamily: 'SF Pro Text',
+      fontFamily: 'SF Pro Display',
       paddingContentHorizontal: themeToken?.paddingContentHorizontal,
       colorBorder: themeToken?.['blue.5'],
       borderRadius: 16,
@@ -58,7 +58,7 @@ const getTheme = (type: ThemeType) => {
       ...componentsOverrides,
       token: {
         ...dark,
-        fontFamily: 'SF Pro Text',
+        fontFamily: 'SF Pro Display',
       },
     };
   }
@@ -70,7 +70,7 @@ const getTheme = (type: ThemeType) => {
       ...componentsOverrides,
       token: {
         ...light,
-        fontFamily: 'SF Pro Text',
+        fontFamily: 'SF Pro Display',
       },
     };
   }

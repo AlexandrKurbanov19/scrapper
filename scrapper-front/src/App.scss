@@ -1,11 +1,10 @@
-//@import "tailwindcss/src/css/preflight.css";
 @use 'styles/variables' as vars;
-
-@import 'fonts/fonts.css';
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import "./../tokens/figma-variables";
 
 html, body, #root {
   height: 100%;

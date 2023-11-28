@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import initTrackers from './trackers/initTrackers';
 
 const container = document.getElementById('root');
 if (!container) {
@@ -14,10 +13,7 @@ if (!container) {
 
 const root = createRoot(container);
 
-initTrackers()
-  .finally(() => {
-    root.render(<App />);
-  });
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

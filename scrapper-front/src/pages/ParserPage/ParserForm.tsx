@@ -6,7 +6,10 @@ import {
   Typography,
   Select, DatePicker,
 } from 'antd';
-import React, { FC, useEffect, useState } from 'react';
+import React, {
+  FC, useCallback, useEffect, useState,
+} from 'react';
+import type { BaseOptionType } from 'rc-select/lib/Select';
 import categoryOptions from './utils';
 
 const { Option } = Select;
@@ -44,6 +47,8 @@ interface IParserForm {
   onSubmitFormFailed: (error: any) => void,
 }
 
+const initVal = { size: 'default' };
+const selectWidth = { width: 200 };
 const ParserForm: FC<IParserForm> = (
   {
     userId,
@@ -60,6 +65,12 @@ const ParserForm: FC<IParserForm> = (
       .then((data) => setJsonData(data))
       .catch((error) => console.error(error));
   }, []);
+
+  const selectFilterOptionWithChildren = useCallback((input: string, option: BaseOptionType | undefined) => (typeof (option?.label) === 'string'
+      && option?.label?.toLowerCase()?.indexOf(input.toLowerCase()) >= 0)
+    || option?.groupLabel?.toLowerCase().indexOf(input.toLowerCase()) >= 0, []);
+
+  const filterCategory = useCallback((input: string, option: BaseOptionType | undefined) => (typeof (option?.label) === 'string' && option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0), []);
 
   return (
     <div>
@@ -82,8 +93,8 @@ const ParserForm: FC<IParserForm> = (
     }
       <Form
         layout="vertical"
-        initialValues={{ size: 'default' }}
-        className="m-auto max-w-600"
+        initialValues={initVal}
+        className="m-auto max-w-[600px]"
         onFinish={onSubmitForm}
         onFinishFailed={onSubmitFormFailed}
       >
@@ -104,10 +115,8 @@ const ParserForm: FC<IParserForm> = (
           <Select
             showSearch
             allowClear
-            filterOption={(input, option) => (typeof (option?.label) === 'string'
-              && option?.label?.toLowerCase()?.indexOf(input.toLowerCase()) >= 0)
-              || option?.groupLabel?.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-            style={{ width: 200 }}
+            filterOption={selectFilterOptionWithChildren}
+            style={selectWidth}
           >
             <Option value="all" key="all" label="Все регионы">
               Все регионы
@@ -132,7 +141,7 @@ const ParserForm: FC<IParserForm> = (
             showSearch
             placeholder="Все категории"
             allowClear
-            filterOption={(input, option) => (typeof (option?.label) === 'string' && option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0)}
+            filterOption={filterCategory}
             options={categoryOptions}
           />
         </Form.Item>

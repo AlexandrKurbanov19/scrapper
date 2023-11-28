@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite';
 import 'moment/locale/ru';
 import useStore from 'domain/modelLayer/store/useStore';
 
+import { Spin } from 'antd';
 import {
   FORGET_PASSWORD,
   LOGIN,
@@ -21,21 +22,21 @@ import {
   REGISTRATION, PROFILE,
 } from './routes';
 import { RoleNamesEnum } from './domain/types';
-
-import LoginPage from './pages/Auth/LoginPage';
-import ForgetPasswordPage from './pages/Auth/ForgetPasswordPage';
-import LogoutPage from './pages/Auth/LogoutPage';
-import ResetPasswordPage from './pages/Auth/ResetPasswordPage';
-
 import LayoutContextProvider from './components/layout/LayoutContextProvider';
-import AboutPage from './pages/AboutPage/AboutPage';
-import LawsPage from './pages/LawsPage/LawsPage';
-import FeedbackPage from './pages/FeedbackPage/FeedbackPage';
-import ParserPage from './pages/ParserPage/ParserPage';
-import InstructionPage from './pages/InstructionPage/InstructionPage';
-import ParsingExamplePage from './pages/ParsingExamplePage/ParsingExamplePage';
-import RegistrationPage from './pages/Auth/RegistrationPage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+
+const LoginPage = React.lazy(() => import('./pages/Auth/LoginPage'));
+const ForgetPasswordPage = React.lazy(() => import('./pages/Auth/ForgetPasswordPage'));
+const LogoutPage = React.lazy(() => import('./pages/Auth/LogoutPage'));
+const ResetPasswordPage = React.lazy(() => import('./pages/Auth/ResetPasswordPage'));
+const AboutPage = React.lazy(() => import('./pages/AboutPage/AboutPage'));
+const LawsPage = React.lazy(() => import('./pages/LawsPage/LawsPage'));
+const FeedbackPage = React.lazy(() => import('./pages/FeedbackPage/FeedbackPage'));
+const ParserPage = React.lazy(() => import('./pages/ParserPage/ParserPage'));
+const InstructionPage = React.lazy(() => import('./pages/InstructionPage/InstructionPage'));
+const ParsingExamplePage = React.lazy(() => import('./pages/ParsingExamplePage/ParsingExamplePage'));
+const RegistrationPage = React.lazy(() => import('./pages/Auth/RegistrationPage'));
+const ProfilePage = React.lazy(() => import('./pages/ProfilePage/ProfilePage'));
+const fallBack = <div className="absolute top-[50%] left-[50%]"><Spin size="large" tip="Загрузка данных..." /></div>;
 
 const RouterComponent = () => {
   const { profileStore: { profile } } = useStore();
@@ -43,31 +44,107 @@ const RouterComponent = () => {
   const isLogged = !!profile;
 
   return (
-    // TODO: продумать какие роуты будут для ролей
     <Router>
       <LayoutContextProvider>
         <Routes>
           <>
             {!isLogged && (
               <>
-                <Route path={ABOUT_PAGE} element={<AboutPage />} />
-                <Route path={LAW_PAGE} element={<LawsPage />} />
-                <Route path={FEEDBACK_PAGE} element={<FeedbackPage />} />
-                <Route path={INSTRUCTION_PAGE} element={<InstructionPage />} />
-                <Route path={PARSING_EXAMPLE_PAGE} element={<ParsingExamplePage />} />
-                <Route path={PARSER_PAGE} element={<ParserPage />} />
-                <Route path={REGISTRATION} element={<RegistrationPage />} />
-                <Route path={LOGIN} element={<LoginPage />} />
-                <Route path={FORGET_PASSWORD} element={<ForgetPasswordPage />} />
-                <Route path={RESET_PASSWORD} element={<ResetPasswordPage />} />
+                <Route
+                  path={ABOUT_PAGE}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <AboutPage />
+                    </React.Suspense>
+                   )}
+                />
+                <Route
+                  path={LAW_PAGE}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <LawsPage />
+                    </React.Suspense>
+                   )}
+                />
+                <Route
+                  path={FEEDBACK_PAGE}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <FeedbackPage />
+                    </React.Suspense>
+                   )}
+                />
+                <Route
+                  path={INSTRUCTION_PAGE}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <InstructionPage />
+                    </React.Suspense>
+                   )}
+                />
+                <Route
+                  path={PARSING_EXAMPLE_PAGE}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <ParsingExamplePage />
+                    </React.Suspense>
+                   )}
+                />
+                <Route
+                  path={PARSER_PAGE}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <ParserPage />
+                    </React.Suspense>
+                   )}
+                />
+                <Route
+                  path={REGISTRATION}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <RegistrationPage />
+                    </React.Suspense>
+                  )}
+                />
+                <Route
+                  path={LOGIN}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <LoginPage />
+                    </React.Suspense>
+                  )}
+                />
+                <Route
+                  path={FORGET_PASSWORD}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <ForgetPasswordPage />
+                    </React.Suspense>
+                  )}
+                />
+                <Route
+                  path={RESET_PASSWORD}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <ResetPasswordPage />
+                    </React.Suspense>
+                  )}
+                />
+
                 <Route path="*" element={<Navigate to={ABOUT_PAGE} />} />
               </>
             )}
 
             {isLogged && (
               <>
-                <Route path={LOGOUT} element={<LogoutPage />} />
-
+                <Route
+                  path={LOGOUT}
+                  element={(
+                    <React.Suspense fallback={fallBack}>
+                      <LogoutPage />
+                    </React.Suspense>
+                  )}
+                />
                 {profile.role.name === RoleNamesEnum.Administrator && (
                   <>
                     <Route path={ABOUT_PAGE} element={<Navigate to={USERS} />} />
@@ -77,18 +154,96 @@ const RouterComponent = () => {
 
                 {profile.role.name === RoleNamesEnum.Client && (
                   <>
-                    <Route path={ABOUT_PAGE} element={<AboutPage />} />
-                    <Route path={LAW_PAGE} element={<LawsPage />} />
-                    <Route path={FEEDBACK_PAGE} element={<FeedbackPage />} />
-                    <Route path={INSTRUCTION_PAGE} element={<InstructionPage />} />
-                    <Route path={PARSING_EXAMPLE_PAGE} element={<ParsingExamplePage />} />
-                    <Route path={PARSER_PAGE} element={<ParserPage />} />
-                    <Route path={REGISTRATION} element={<RegistrationPage />} />
-                    <Route path={LOGIN} element={<LoginPage />} />
-                    <Route path={FORGET_PASSWORD} element={<ForgetPasswordPage />} />
-                    <Route path={RESET_PASSWORD} element={<ResetPasswordPage />} />
+                    <Route
+                      path={ABOUT_PAGE}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <AboutPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={LAW_PAGE}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <LawsPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={FEEDBACK_PAGE}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <FeedbackPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={INSTRUCTION_PAGE}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <InstructionPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={PARSING_EXAMPLE_PAGE}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <ParsingExamplePage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={PARSER_PAGE}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <ParserPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={REGISTRATION}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <RegistrationPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={LOGIN}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <LoginPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={FORGET_PASSWORD}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <ForgetPasswordPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={RESET_PASSWORD}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <ResetPasswordPage />
+                        </React.Suspense>
+                      )}
+                    />
+                    <Route
+                      path={PROFILE}
+                      element={(
+                        <React.Suspense fallback={fallBack}>
+                          <ProfilePage />
+                        </React.Suspense>
+                      )}
+                    />
+
                     <Route path="*" element={<Navigate to={ABOUT_PAGE} />} />
-                    <Route path={PROFILE} element={<ProfilePage />} />
                   </>
                 )}
               </>

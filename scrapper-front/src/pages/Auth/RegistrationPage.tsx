@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import {
   Button, Input, Space, message, Form, Select, Card,
 } from 'antd';
@@ -28,14 +28,14 @@ interface ILoginUserData {
   username: string;
   lastname?: string;
 }
-
+const dependencyArr = ['password'];
 const RegistrationPage: FC = () => {
   const [registerParentOrChildrenMutation] = useRegisterParentOrChildrenMutation();
   const [form] = Form.useForm();
   const { authStore: store } = useStore();
   const navigate = useNavigate();
 
-  const onSubmit = async (values: ILoginUserData) => {
+  const onSubmit = useCallback(async (values: ILoginUserData) => {
     try {
       const res = await registerParentOrChildrenMutation({
         variables: {
@@ -68,8 +68,8 @@ const RegistrationPage: FC = () => {
         message.error('Ошибка получения данных');
       }
     }
-  };
-
+  }, [registerParentOrChildrenMutation, store.auth, navigate]);
+  const onFormFinish = useCallback((values: ILoginUserData) => onSubmit(values), [onSubmit]);
   return (
     <CenterLayout>
       <Space direction="vertical" size={10} className="w-full">
@@ -78,7 +78,7 @@ const RegistrationPage: FC = () => {
             name="basic"
             form={form}
             layout="vertical"
-            onFinish={(values) => onSubmit(values)}
+            onFinish={onFormFinish}
             autoComplete="off"
           >
             <Form.Item
@@ -147,7 +147,7 @@ const RegistrationPage: FC = () => {
             <Form.Item
               name="confirm"
               label="Подтвердить пароль"
-              dependencies={['password']}
+              dependencies={dependencyArr}
               className="mb-2"
               hasFeedback
               rules={confirmPassRule}

@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   Card, Divider, Steps, Image,
   Typography, Alert,
 } from 'antd';
-import scrapperFormImg from '../../../public/assets/formScrapper.png';
+import scrapperFormImg from '../../assets/scrapperFormImg.png';
 import scrapperFormFilter from '../../../public/assets/loadData.png';
 import result from '../../../public/assets/result.png';
 import demoOne from '../../../public/assets/demoStep1.png';
@@ -14,9 +14,9 @@ const { Title } = Typography;
 const InstructionPage = () => {
   const [current, setCurrent] = useState(0);
 
-  const onChange = (value: number) => {
+  const onChange = useCallback((value: number) => {
     setCurrent(value);
-  };
+  }, [setCurrent]);
 
   const stepsItems = useMemo(() => [
     {
