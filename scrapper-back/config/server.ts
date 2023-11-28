@@ -5,7 +5,6 @@ export default ({ env }) => ({
     keys: env.array('APP_KEYS'),
   },
   selfBaseUrl: env('SELF_BASE_URL', 'http://localhost:1337'),
-  videoStreamingBaseUrl: env('VIDEO_STREAMING_BASE_URL', 'https://video.den-nsk.ru'),
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
