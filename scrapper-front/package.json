@@ -5,7 +5,7 @@
   "scripts": {
     "====COMMANDS====": "",
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "cross-env VITE_API_BASE=http://localhost:1337 vite build",
     "serve": "vite preview",
     "eslint-fix": "eslint ./src --fix && tsc --noEmit",
     "generate": "graphql-codegen --config ./codegen-schema.yml && graphql-codegen",
@@ -43,8 +43,10 @@
     "axios": "~1.4.0",
     "c8": "~7.13.0",
     "classnames": "~2.3.2",
+    "cross-env": "^7.0.3",
     "cross-fetch": "^3.1.6",
     "dayjs": "^1.11.7",
+    "file-saver": "^2.0.5",
     "fp-ts": "~2.16.0",
     "fscreen": "^1.0.2",
     "generate-password": "^1.7.0",
@@ -70,6 +72,7 @@
     "react-router": "~6.2.2",
     "react-router-dom": "~6.2.2",
     "reflect-metadata": "~0.1.13",
+    "serve": "^14.2.1",
     "socket.io-client": "~4.6.1",
     "tsc": "~2.0.4",
     "tsconfig-paths-webpack-plugin": "~4.0.1",
@@ -83,9 +86,8 @@
     "vite": "~4.3.9",
     "vitest": "~0.31.1",
     "web-vitals": "~3.3.1",
-    "zod": "~3.21.4",
     "xlsx": "^0.18.5",
-    "file-saver": "^2.0.5"
+    "zod": "~3.21.4"
   },
   "eslintConfig": {
     "extends": [
