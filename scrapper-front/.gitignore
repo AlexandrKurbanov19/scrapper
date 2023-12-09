@@ -33,7 +33,3 @@ cypress.env.json
 /public/runtime/env-config.js
 env-config.js
 
-tokens-transformer.secret.json
-tokens/_lms-variables.scss
-tokens/dark.json
-tokens/light.json

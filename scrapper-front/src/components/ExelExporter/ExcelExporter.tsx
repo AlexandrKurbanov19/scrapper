@@ -1,7 +1,4 @@
 import React, { FC, useCallback } from 'react';
-// @ts-ignore
-import * as FileSaver from 'file-saver';
-import * as XLSX from 'xlsx';
 import { Button, Space } from 'antd';
 import getExcelColWidths from './utils/getExelColWidths';
 
@@ -13,7 +10,10 @@ const ExportToExcel: FC<IProp> = ({ apiDataForTable }) => {
   const fileExtension = '.xlsx';
   const fileNameTable = 'Данные';
 
-  const exportToCSV = (apiData: any, fileName: string) => {
+  const exportToCSV = async (apiData: any, fileName: string) => {
+    // @ts-ignore
+    const { default: FileSaver } = await import('file-saver');
+    const { default: XLSX } = await import('xlsx');
     const ws = XLSX.utils.json_to_sheet(apiData);
     const wb = { Sheets: { data: ws }, SheetNames: ['data'] };
     ws['!cols'] = getExcelColWidths(ws);
