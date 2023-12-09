@@ -2,10 +2,11 @@
   "name": "scrapper-front",
   "private": true,
   "version": "1.9.0",
+  "homepage": ".",
   "scripts": {
     "====COMMANDS====": "",
     "start": "vite",
-    "build": "cross-env VITE_API_BASE=http://localhost:1337 vite build",
+    "build": "cross-env VITE_API_BASE=http://5.35.83.129/strapi vite build",
     "serve": "vite preview",
     "eslint-fix": "eslint ./src --fix && tsc --noEmit",
     "generate": "graphql-codegen --config ./codegen-schema.yml && graphql-codegen",
