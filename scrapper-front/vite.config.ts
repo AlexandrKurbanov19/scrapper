@@ -42,6 +42,31 @@ export default defineConfig({
       output: {
         sourcemap: false,
         manualChunks: (id) => {
+          if (id.includes('xlsx')) {
+            return 'xlsx';
+          }
+          if (id.includes('moment')) {
+            return 'moment';
+          }
+          if (id.includes('zod')) {
+            return 'zod';
+          }
+          if (id.includes('rc-picker')) {
+            return 'rc-picker';
+          }
+          if (id.includes('imask')) {
+            return 'imask';
+          }
+          if (id.includes('rc-select')) {
+            return 'rc-select';
+          }
+          if (id.includes('mobx')) {
+            return 'mobx';
+          }
+          if (id.includes('apollo')) {
+            return 'apollo';
+          }
+
           if (id.includes('node_modules')) {
             return 'vendor';
           }
