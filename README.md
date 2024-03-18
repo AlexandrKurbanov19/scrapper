@@ -10,3 +10,5 @@ DATABASE_USERNAME=lms
 DATABASE_PASSWORD=lms
 4) После того как база данных запущена, заходим в папку бекенда и запускаем через yarn develop
 5) Стек технологий react, typescript, mobx, node(Strapi), и т.д
+6) Если есть отзывы и предложения писать в
+ https://t.me/alexKurbanov19
